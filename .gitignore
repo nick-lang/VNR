@@ -3,6 +3,7 @@ __pycache__/
 *.py[cod]
 *.egg-info/
 .venv/
+.venv-carc/
 venv/
 env/
 .ipynb_checkpoints/
@@ -16,6 +17,8 @@ checkpoints/
 wandb/
 outputs/
 logs/
+*.log
+experiments/**/smoke_*.json
 
 # Vendored reference repos (cloned, not committed). See references/README.md
 references/*/

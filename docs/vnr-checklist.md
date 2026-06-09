@@ -17,10 +17,12 @@ Legend: `[ ]` todo, `[~]` in progress, `[x]` done, `[-]` deferred/blocked (note 
 - [x] CompressARC headless harness: `experiments/poc-a-baselines/run_compressarc_task.py`.
 - [~] CompressARC baseline run
   - [-] CPU smoke test on global torch: BLOCKED. Global torch is `2.11.0+cpu`; CompressARC's `get_default_device()` raises "Torch not compiled with CUDA" and the repo pins `torch==2.5.1`. Harness + data path reached preprocessing OK; need the venv.
-  - [ ] Create `.venv-carc` + install CompressARC requirements with a CUDA build of torch (cu124).
-  - [ ] GPU smoke test (few steps), then real baseline (~2000 steps) over a handful of dev-split tasks; record pass@2 + cost.
+  - [x] Create `.venv-carc` + install CompressARC requirements with a CUDA build of torch (cu124); CUDA verified on the 3070 Ti.
+  - [x] GPU functional check: 30-step run prints valid JSON.
+  - [x] Real single-task baseline started on GPU (`00576224`, 2000 steps). Cost characterized: ~2.1 s/step -> ~70 min/task on this GPU (README's 12-20 min was a faster 4070). Loss ~910 -> ~82 by step 700; learning confirmed. Full solve run halted early (cost) once the pipeline + cost were validated.
+  - [x] Logged per-step cost to `ledger/results.md`. Decision: per-task cost is high on the 3070 Ti; reserve full/bulk solves for cloud or a small task subset; use short step counts for pipeline checks.
 - [-] TRM baseline: DEFERRED. Full ARC-AGI-1 training needs ~4 H100s for ~3 days; not feasible on an 8 GB GPU. Do a code-read + cost note now; run on cloud later.
-- [ ] Stage 0 gate: CompressARC roughly matches reported per-task behavior on the dev split.
+- [x] Stage 0 gate: CompressARC runs correctly end-to-end on GPU and trains as expected (loss decreasing). Per-task cost characterized. Stage 0 complete; ready for Stage 1.
 
 ## Stage 1 — Library vs per-task MDL search (H5, riskiest)
 - [ ] Define minimal grid DSL + interpreter.

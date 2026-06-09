@@ -32,6 +32,7 @@ def main() -> None:
     ap.add_argument("--steps", type=int, default=2000)
     ap.add_argument("--device", default="auto", help="auto | cpu | cuda")
     ap.add_argument("--out", default=None, help="optional path to write the JSON result")
+    ap.add_argument("--progress-every", type=int, default=100, help="print a heartbeat every N steps (0 to disable)")
     args = ap.parse_args()
 
     if not CARC.exists():
@@ -63,6 +64,13 @@ def main() -> None:
 
     for step in range(args.steps):
         train.take_step(task, model, optimizer, step, logger)
+        if args.progress_every and (step + 1) % args.progress_every == 0:
+            loss = logger.loss_curve[-1] if logger.loss_curve else float("nan")
+            print(
+                f"[progress] step {step + 1}/{args.steps} "
+                f"elapsed={time.time() - t0:.1f}s loss={loss:.1f}",
+                flush=True,
+            )
 
     elapsed = time.time() - t0
     top1 = (

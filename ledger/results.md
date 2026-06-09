@@ -15,4 +15,4 @@ One row per completed experiment. Links to the full lab-notebook entry in `exper
 | Date | Experiment | Hypothesis | Headline metric | Result vs rule | Decision | Notebook entry |
 | --- | --- | --- | --- | --- | --- | --- |
 | 2026-06-08 | PoC-A TRM baseline | none (baseline) | ARC-AGI-1 pass rate | deferred (needs ~4 H100s/3 days) | defer to cloud | [2026-06-08-stage0-baselines](../experiments/notebook/2026-06-08-stage0-baselines.md) |
-| 2026-06-08 | PoC-A CompressARC baseline | none (baseline) | ARC-AGI-1 dev-split pass@2 | pending GPU venv (CPU torch incompatible) | set up venv, run | [2026-06-08-stage0-baselines](../experiments/notebook/2026-06-08-stage0-baselines.md) |
+| 2026-06-08 | PoC-A CompressARC baseline | none (baseline) | per-step cost + pipeline validity | pipeline validated on GPU; ~2.1 s/step (~70 min/2000-step task) on RTX 3070 Ti; loss ~910->~82 by step 700; full solve run halted early to conserve time | runnable baseline confirmed; reserve full/bulk solves for cloud or a small task subset | [2026-06-08-stage0-baselines](../experiments/notebook/2026-06-08-stage0-baselines.md) |

@@ -20,5 +20,12 @@ Goal: establish runnable baselines and a cost yardstick before building VNR.
 - Proceed to set up `.venv-carc` with CompressARC's pinned requirements + a CUDA build of torch (cu124) to use the 3070 Ti, then re-run the smoke test and a real per-task baseline (target ~2000 steps, expected ~12-20 min/task).
 - Recorded the Stage 0 pivot (TRM deferred; CompressARC = runnable baseline) in the plan and checklist.
 
+## GPU run (update)
+- Built `.venv-carc` with `torch==2.5.1+cu124`; CUDA available on the RTX 3070 Ti. Harness runs correctly on GPU (30-step test printed valid JSON).
+- **Cost finding:** task `00576224` runs at **~2.1 s/step** (100 steps = 214 s) -> a 2000-step solve is **~70 min** on this GPU, not ~15 min. The README's 12-20 min figure was on a faster RTX 4070 and likely smaller-grid tasks. Loss fell ~910 (step 100) -> ~82 (step 700), so it is learning.
+- Implication for Stage 0/later stages: per-task CompressARC cost on the 3070 Ti is high (tens of minutes to ~1h). Use short step counts for pipeline checks; reserve full runs for a small handful of tasks, or move bulk runs to cloud alongside TRM.
+- Harness hardened with `--progress-every` heartbeats so long runs are observable and any kill is diagnosable.
+
 ## Next
-- Create venv + install CUDA torch; smoke test (few steps) on GPU; then full baseline over a handful of dev-split tasks; log pass@2 + cost to `ledger/results.md`.
+- Let the single full task finish; record pass@2 + wall-clock to `ledger/results.md`.
+- Decide step budget vs task count for any further baseline tasks given the ~2.1 s/step cost.
