@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+.ipynb_checkpoints/
+
+# Experiment artifacts
+runs/
+checkpoints/
+*.ckpt
+*.pt
+*.pth
+wandb/
+outputs/
+logs/
+
+# Vendored reference repos (cloned, not committed). See references/README.md
+references/*/
+!references/README.md
+
+# Large / fetched datasets (fetched via scripts). See data/README.md
+data/arc-agi-1/
+data/arc-agi-2/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/

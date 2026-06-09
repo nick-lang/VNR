@@ -1,0 +1,14 @@
+---
+description: Keep the VNR checklist in sync when working on the VNR program
+alwaysApply: true
+---
+
+# Update the VNR checklist when working on VNR
+
+When you do any work on the VNR program (anything under `experiments/`, `spec/`, `ledger/`, or the `docs/vnr-*.md` files), update [docs/vnr-checklist.md](../../docs/vnr-checklist.md) to reflect reality before ending the turn.
+
+- Mark items `[x]` done, `[~]` in progress, or `[-]` deferred/blocked (with a one-line reason).
+- Add new checklist items when new concrete tasks emerge.
+- Keep statuses honest: if a run was only a smoke test, say so; don't mark a baseline complete until it actually ran.
+
+The checklist is the single source of truth for "where are we" — a stale checklist is a bug.

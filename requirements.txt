@@ -1,0 +1,10 @@
+# Intentionally minimal for Phase 0. Phase 1 needs nothing beyond the stdlib.
+# Experiment dependencies (Phase 4+) will be added when the first PoC is built.
+
+# --- Phase 0 / data fetching ---
+# (none required; data/fetch_arc.py uses only the Python standard library)
+
+# --- Phase 4+ (uncomment when starting experiments) ---
+# numpy
+# torch
+# matplotlib

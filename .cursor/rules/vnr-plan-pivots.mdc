@@ -1,0 +1,23 @@
+---
+description: Record VNR plan/checklist pivots in git commits so history is preserved
+alwaysApply: true
+---
+
+# Commit VNR plan and checklist changes (preserve history)
+
+If anything pivots — scope, approach, hypotheses, stage ordering, or a kill-criterion fires — update BOTH [docs/vnr-build-test-plan.md](../../docs/vnr-build-test-plan.md) and [docs/vnr-checklist.md](../../docs/vnr-checklist.md) to match.
+
+Every change to the plan or the checklist must be saved in a git commit, so the decision history is always recoverable:
+
+- Make plan/checklist edits in a dedicated commit (or alongside the work that caused the pivot), never amend away prior plan history.
+- Write the commit body to explain the *why* of the pivot, not just the *what*.
+- Do not rewrite or force-push history that contains plan/checklist evolution.
+
+Example commit message:
+
+```
+plan: defer TRM baseline to cloud (Stage 0 pivot)
+
+TRM full ARC-AGI-1 training needs ~4 H100s for ~3 days; not feasible on
+the local 8 GB GPU. CompressARC becomes the runnable Stage 0 baseline.
+```
