@@ -19,7 +19,7 @@
 - Solved: `00576224 15663ba9 1d0a4b61 45737921 6df30ad6 8597cfd7 903d1b4a ae58858e cd3c21df d2acf2cb ef26cbf6`.
 - Matches published CompressARC (~20% on ARC-AGI-1 eval): clean reproduction on our split.
 - **Superset of every symbolic solve:** includes all 3 Stage 3b object-map solves — notably `6df30ad6`, which the symbolic rule overfit and CompressARC solves correctly. Raw BFS's `0c786b71` was NOT solved; union across substrates = 12/50.
-- **Cost:** 43.3 GPU-hours, ~$84.50 list (~$1.69/task, mean 3118 s, range 1492-7710 s); wall clock ~2.1 h for the 29-task resume at 10-way concurrency. Out-of-pocket lower after plan credits.
+- **Cost:** 43.3 GPU-hours of completed-task compute, ~$84.50 list (~$1.69/task, mean 3118 s, range 1492-7710 s); wall clock ~2.1 h for the 29-task resume at 10-way concurrency. **Actual billed: $116.31 usage − $30 free credits = $86.31 out of pocket** (extra ~$32 over the completed-task estimate = smoke test, CPU/memory, and in-flight training lost at the billing-cap freeze).
 
 ## Reading
 1. The neural per-task MDL substrate expresses real ARC structure that two iterations of hand-built rules could not (11/50 vs 3/50 test-correct max). The substrate slot in the VNR architecture is filled.
