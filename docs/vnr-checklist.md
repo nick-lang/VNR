@@ -40,7 +40,14 @@ Legend: `[ ]` todo, `[~]` in progress, `[x]` done, `[-]` deferred/blocked (note 
 - [x] Raw vs enriched arm on the ARC-AGI-1 dev split (matched 50k budget); ARC-AGI-2 probe (30 tasks).
 - [x] H5-on-real-ARC probe: gated — only 5/80 training solves, empty library, no transfer measurable.
 - [x] Decide H7: **KILL/PIVOT** — object arm 1/50 = raw arm (same task); ARC-2 0/30. Whole-grid op composition is the wrong substrate. See notebook `2026-06-09-stage3-perception.md`.
-- [ ] PIVOT (direction to decide): (A) structural DSL redesign — per-object program application (map/filter over objects), relations, masks; or (B) neural per-task hypothesis substrate (CompressARC-style MDL) with library/search reserved for proven-reuse domains.
+- [x] PIVOT direction decided: **Option A** — structural redesign around per-object program application. (Option B = neural per-task substrate remains the pre-registered fallback if H7-v2 kills.)
+
+## Stage 3b — Object-mapped substrate (H7-v2)
+- [ ] Pre-register H7-v2 (same accept/kill bar as v1) — see `ledger/hypotheses.md`.
+- [ ] `segment.py`: dual segmentation (same-color-4 / multicolor-8) + object features.
+- [ ] `rules.py`: per-object fate induction (keep/delete/recolor by one feature) + selection-crop; exact re-simulation verifier.
+- [ ] `run_stage3b.py`: raw BFS vs object-map vs union on the dev split + ARC-2 probe.
+- [ ] Decide H7-v2 against the pre-registered rule.
 
 ## Stage 2 — Neural proposer amortizes search (H6) — now after Stage 3
 - [ ] Tiny recurrent proposer trained on success traces over the enriched DSL; compare search cost vs uninformed.

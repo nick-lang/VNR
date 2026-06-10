@@ -84,3 +84,16 @@ These three are introduced by the synthesized "fixed core + growing library" arc
 - Object arm solved 1/50 dev tasks — identical to the raw arm (same task, `0c786b71`). ARC-AGI-2 probe: 0/30. The enriched alphabet exhausted the 50k budget on nearly every task (vs early frontier exhaustion for raw): extra whole-grid tokens made search strictly more expensive without unlocking solutions.
 - H5-on-real-ARC probe was gated by coverage: only 5/80 training tasks solved, programs too short/sparse for BPE to extract a single macro (empty library).
 - **Decision per pre-registered rule: KILL/PIVOT.** Whole-grid op composition (even with object-selection and recolor ops) is the wrong hypothesis substrate for real ARC. The pivot direction (pre-registered): per-object program application (map/filter over objects), relations, masks — a structural DSL redesign, not more whole-grid tokens.
+- **Pivot direction decided 2026-06-09: Option A (structural redesign), tested as H7-v2 below.**
+
+### H7-v2 pre-registration (2026-06-09, before running) — object-mapped substrate
+- **Statement:** a per-object hypothesis substrate (induce a rule mapping each object to a fate, or select-and-crop an object by an induced predicate) lifts real-ARC coverage where whole-grid token composition could not.
+- **Setup:** two segmentations (same-color 4-connected; multicolor 8-connected). Two rule families, both verified by exact re-simulation on all train pairs:
+  1. **Same-shape per-object fates:** each input object maps to keep / delete / recolor-to-c; the fate is a function of ONE object feature (constant, color, is_largest, is_smallest, touches_border, size, size_rank, shape_key, shape_count, color_count — tried in that fixed simplicity order, an MDL prior). Inapplicable if output has cells outside input objects (generative tasks).
+  2. **Selection-crop:** output equals one input object's crop (object-cells or bbox variant); the selector is a fixed-order list of predicates (is_largest, is_smallest, unique_color, unique_shape, only-touching-border, only-not-touching-border) that must select exactly one object per pair.
+- **Arms:** raw BFS (Stage-1 13 primitives, 50k budget, depth 7) — the unchanged control; object-map solver alone; **union (object-map, else raw BFS) = the system under test.**
+- **Benchmarks:** same as H7-v1 — 50-task ARC-AGI-1 dev split primary, 30-task ARC-AGI-2 probe secondary. "Solved" = train-consistent; test-pair exact accuracy reported separately.
+- **Decision rule (pre-committed, same bar v1 failed):**
+  - **Accept H7-v2** if the union solves >= 5/50 AND >= 4x the raw arm's count.
+  - **Kill** if the union solves <= 2/50 — the hand-built program substrate road is then judged closed at this effort level; Option B (neural per-task substrate) becomes the default next step.
+  - **Inconclusive** otherwise.
