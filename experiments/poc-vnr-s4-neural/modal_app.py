@@ -18,7 +18,10 @@ from pathlib import Path
 
 import modal
 
-REPO = Path(__file__).resolve().parents[2]
+if modal.is_local():
+    REPO = Path(__file__).resolve().parents[2]
+else:  # inside the container the file lives at /root/modal_app.py
+    REPO = Path("/root")
 CARC_LOCAL = REPO / "references" / "CompressARC"
 DEV_SPLIT = REPO / "data" / "dev_split_arc1.json"
 OUT_PATH = Path(__file__).resolve().parent / "stage4_result.json"
@@ -110,7 +113,10 @@ def main(smoke: bool = False, steps: int = STEPS):
         return
 
     t0 = time.time()
-    results = list(solve_task.map(ids, kwargs={"steps": steps}))
+    results = []
+    for r in solve_task.map(ids, kwargs={"steps": steps}):
+        results.append(r)
+        print(f"[result {len(results)}/{len(ids)}] {json.dumps(r)}", flush=True)
     by_task = {r["task"]: r for r in results}
     n1 = sum(r["solved_top1"] for r in results)
     n2 = sum(r["solved_top2"] for r in results)
