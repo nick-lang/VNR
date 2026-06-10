@@ -103,3 +103,17 @@ These three are introduced by the synthesized "fixed core + growing library" arc
 - Test-pair correctness of the new solves: `ae58858e` 1.0 (size-threshold recolor), `cd3c21df` 1.0 (select-crop by unique color), `6df30ad6` 0.0 — a spuriously specific size->color lookup that memorized train pairs (train-consistent but wrong). Union test-correct: 3/50.
 - Cost: the whole dev split + ARC-2 probe ran in ~3 s (vs ~18 min for the v1 token search): rule induction is ~1000x cheaper than BFS over tokens.
 - Reading: the structural substrate change moved coverage where token-stacking moved nothing (0 new -> 3 new), with only TWO rule families implemented (per-object fates, selection-crop). The overfit case shows the verifier needs either more train support or a stronger simplicity prior for parameter-heavy lookups. Direction decision recorded in the notebook/checklist.
+- **Direction decided 2026-06-09: A-continue, tested as H7-v3 below.**
+
+### H7-v3 pre-registration (2026-06-09, before running) — more families + stability guard
+- **Changes vs v2:**
+  1. **New rule families** (induction order = simplicity order: colormap, same-shape fates, gravity, symmetry-fill, selection-crop):
+     - *Cellwise color permutation:* same-shape; a consistent color->color lookup over all cells of all train pairs (non-identity).
+     - *Gravity/move:* all objects slide maximally in one of 4 directions (settling order = furthest along the direction first); both segmentations.
+     - *Symmetry-fill:* zeros filled from a grid symmetry (fliplr / flipud / rot180 / transpose-if-square) that reproduces every train output and fills at least one cell.
+  2. **Stability guard (the overfit fix):** a rule counts as a solve ONLY if (a) it predicts (no abstention) on every test input, and (b) for every leave-one-out subset of the train pairs, the re-induced rule exists and produces IDENTICAL predictions on all test inputs. (Test inputs are visible at solve time; outputs are not.)
+- **"Solved" (v3) = train-consistent AND guard-passed** — strictly harder than v2's definition. Unguarded counts reported alongside for transparency.
+- **Arms:** raw BFS control (unchanged, no guard); object-map (guarded); union (guarded object-map, else raw).
+- **Decision rule (pre-committed, same numeric bar):** accept if guarded union >= 5/50 AND >= 4x raw; kill if <= 2/50; else inconclusive.
+- **Validation expectation (recorded in advance):** the guard should reject 3b's spurious `6df30ad6` rule; whether it keeps the two correct 3b solves is an open measurement of guard strictness (LOO from few pairs may pick a different-but-agreeing or disagreeing rule).
+- **Known risk:** for 2-pair tasks the LOO induction sees a single pair and may legitimately disagree, costing correct solves; this is measurable (unguarded vs guarded gap) and accepted for v3.
