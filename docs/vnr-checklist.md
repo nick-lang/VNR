@@ -56,7 +56,15 @@ Legend: `[ ]` todo, `[~]` in progress, `[x]` done, `[-]` deferred/blocked (note 
 - [x] `run_stage3c.py` with the guard; report guarded + unguarded.
 - [x] Validate: guard rejected `6df30ad6` correctly (abstain) but ALSO rejected both correct 3b solves (`loo_disagree`) — the pre-registered known risk materialized fully.
 - [x] Decide H7-v3: **KILL** — guarded union 1/50; new families added zero solves even unguarded; ARC-2 0/30. See notebook `2026-06-09-stage3c-families-guard.md`.
-- [ ] NEXT (pre-registered default): **Option B — neural per-task substrate (CompressARC-style MDL)**. Cost gate: ~50-70 min/task locally; subset locally vs bulk on cloud is an owner decision.
+- [x] NEXT decided (2026-06-09): **Option B as Stage 4**, on cloud (Modal) with a <= $30 out-of-pocket budget approved by owner; local fallback if the smoke-test cost projection exceeds it.
+
+## Stage 4 — Neural per-task MDL substrate baseline (H8, Option B)
+- [ ] Pre-register H8: unmodified CompressARC, 2000 steps/task, pass@2, same 50-task dev split, same numeric bar (accept >= 5/50; kill <= 2/50); cost gate $30.
+- [ ] Build Modal fan-out harness (`experiments/poc-vnr-s4-neural/`): one GPU job per task, results collected locally.
+- [ ] Owner: create Modal account; authorize this machine (`modal setup`).
+- [ ] Cloud smoke: 1 task, measure s/step on L40S, project full-run cost; abort to local if > $30.
+- [ ] Full 50-task fan-out; record pass@1/pass@2, per-task seconds, actual $ cost.
+- [ ] Decide H8 against the pre-registered rule; record in ledger/results, notebook, README.
 
 ## Stage 2 — Neural proposer amortizes search (H6) — now after Stage 3
 - [ ] Tiny recurrent proposer trained on success traces over the enriched DSL; compare search cost vs uninformed.
