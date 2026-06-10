@@ -1,0 +1,54 @@
+{
+  "config": {
+    "budget": 50000,
+    "max_depth": 7,
+    "arc2_probe": 30,
+    "h5_train_tasks": 80,
+    "lib_cap": 8,
+    "out": "C:\\Users\\nickl\\Projects\\nextGen\\experiments\\poc-vnr-s3-perception\\stage3_result.json"
+  },
+  "dev_raw": {
+    "n": 50,
+    "n_solved": 1,
+    "solve_rate": 0.02,
+    "solved_ids": [
+      "0c786b71"
+    ],
+    "mean_test_acc_on_solved": 1.0
+  },
+  "dev_object": {
+    "n": 50,
+    "n_solved": 1,
+    "solve_rate": 0.02,
+    "solved_ids": [
+      "0c786b71"
+    ],
+    "mean_test_acc_on_solved": 1.0
+  },
+  "decision_h7": "KILL/PIVOT (object ops + recolor do not move coverage)",
+  "arc2_object": {
+    "n": 30,
+    "n_solved": 0,
+    "solve_rate": 0.0,
+    "solved_ids": [],
+    "mean_test_acc_on_solved": null
+  },
+  "h5_real_arc_probe": {
+    "train_solved": 5,
+    "train_n": 80,
+    "library": {},
+    "dev_with_library": {
+      "n": 50,
+      "n_solved": 1,
+      "solve_rate": 0.02,
+      "solved_ids": [
+        "0c786b71"
+      ],
+      "mean_test_acc_on_solved": 1.0
+    },
+    "shared_solved": 1,
+    "median_nodes_object": 406,
+    "median_nodes_object_plus_lib": 406
+  },
+  "seconds": 1068.6
+}

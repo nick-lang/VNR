@@ -87,6 +87,7 @@ Ordering principle: **test the riskiest, cheapest-to-falsify assumption first.**
 - **Build:** an object/relation extractor (connected components, color/shape/position relations) feeding the proposer; ablate against the raw-grid representation.
 - **Metric / decision rule (H7):** AGI-2-subset solve rate, object-centric vs raw-grid, matched solver.
 - **Deliverable:** `experiments/poc-vnr-s3-perception/`, notebook + results + spec update.
+- **Outcome (2026-06-09): KILL-CRITERION FIRED.** Adding object-selection ops + per-task recolor tokens to the whole-grid DSL moved dev-split coverage by zero (1/50 -> 1/50, same task; ARC-2 probe 0/30) while exhausting the search budget. Conclusion: real ARC tasks are not short compositions of whole-grid transforms; the hypothesis substrate needs a structural redesign — per-object program application (map/filter over objects), relations, masks — or a shift to a neural per-task substrate (CompressARC-style MDL). The H5-on-real-ARC probe was coverage-gated (5/80 training solves -> empty library): **coverage gates everything downstream.** Pivot direction is an open decision recorded in the checklist.
 
 ## Stage 4 — Test-time training, MDL-as-loss (H3)
 - **Goal:** per-task specialization without labels.

@@ -32,14 +32,15 @@ Legend: `[ ]` todo, `[~]` in progress, `[x]` done, `[-]` deferred/blocked (note 
 - [x] Decide H5: ACCEPTED — median states-to-solution 746 -> 228 (~3.3x), solve rate unchanged (60/60). See `ledger/results.md` + notebook `2026-06-09-stage1-library.md`.
 - [ ] Caveat to address later: DSL covers only ~2% of real ARC-AGI-1 (geometric ops only); richer ops + object-centric perception needed (Stage 3) to retest H5 on non-synthetic reuse.
 
-## Stage 3 — Object-centric perception + richer DSL (H7) — PULLED AHEAD OF STAGE 2
+## Stage 3 — Object-centric perception + richer DSL (H7) — RUN; KILL-CRITERION FIRED
 (Pivot 2026-06-09: DSL coverage (~2% of real ARC-AGI-1) is the binding constraint after Stage 1; a neural proposer over an inexpressive DSL would be premature.)
-- [ ] Pre-register concrete H7 metrics/thresholds.
-- [ ] Connected-component perception + param-free object ops (`objects.py`).
-- [ ] Enriched DSL: geometric + object ops + per-task recolor tokens.
-- [ ] Raw vs enriched arm on the ARC-AGI-1 dev split (matched search budget); ARC-AGI-2 probe.
-- [ ] H5-on-real-ARC probe: library from ARC-1 training-split solves; transfer to dev split.
-- [ ] Decide H7 against pre-registered rule.
+- [x] Pre-register concrete H7 metrics/thresholds.
+- [x] Connected-component perception + param-free object ops (`objects.py`).
+- [x] Enriched DSL: geometric + object ops + per-task recolor tokens.
+- [x] Raw vs enriched arm on the ARC-AGI-1 dev split (matched 50k budget); ARC-AGI-2 probe (30 tasks).
+- [x] H5-on-real-ARC probe: gated — only 5/80 training solves, empty library, no transfer measurable.
+- [x] Decide H7: **KILL/PIVOT** — object arm 1/50 = raw arm (same task); ARC-2 0/30. Whole-grid op composition is the wrong substrate. See notebook `2026-06-09-stage3-perception.md`.
+- [ ] PIVOT (direction to decide): (A) structural DSL redesign — per-object program application (map/filter over objects), relations, masks; or (B) neural per-task hypothesis substrate (CompressARC-style MDL) with library/search reserved for proven-reuse domains.
 
 ## Stage 2 — Neural proposer amortizes search (H6) — now after Stage 3
 - [ ] Tiny recurrent proposer trained on success traces over the enriched DSL; compare search cost vs uninformed.

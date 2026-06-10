@@ -67,3 +67,20 @@ These three are introduced by the synthesized "fixed core + growing library" arc
 - **Targets limitation:** L3.
 - **Metric / decision rule:** AGI-2-subset solve rate, object-centric vs raw-grid front-end, matched solver/compute.
 - **Stage / PoC:** Stage 3.
+
+### H7 pre-registration (2026-06-09, before running) — coverage form
+- **Setup:** same BFS solver and budget as Stage 1 (50,000 states, max depth 7, deterministic). Two arms on identical tasks:
+  - **Raw arm:** Stage-1 geometric DSL (13 primitives).
+  - **Object arm:** geometric primitives + connected-component object ops (keep/delete/crop largest/smallest) + per-task recolor tokens instantiated from the task palette.
+- **Primary benchmark:** the committed 50-task ARC-AGI-1 dev split. "Solved" = program consistent with all train pairs (test-pair exact accuracy reported separately, as in Stage 1).
+- **Secondary probes:** (a) 30-task ARC-AGI-2 evaluation subset (first 30 sorted IDs) for the AGI-1 vs AGI-2 gap; (b) H5-on-real-ARC: build a BPE/MDL library from ARC-1 *training-split* solves and report delta solved + delta nodes on the dev split.
+- **Decision rule (pre-committed):**
+  - **Accept H7 (coverage form)** if the object arm solves >= 5/50 dev tasks (10%) AND >= 4x the raw arm's solve count.
+  - **Kill / pivot** if the object arm solves <= 2/50 — object ops + recolor at this grain don't move coverage; rethink perception (relations, masks, per-object programs) before proceeding.
+  - **Inconclusive** otherwise: report and decide direction in the notebook.
+- **Fixed knobs:** budget 50,000 states; max depth 7; library cap 8; min macro count 2; no seed needed (deterministic search).
+
+### H7 outcome (2026-06-09): KILL-CRITERION FIRED
+- Object arm solved 1/50 dev tasks — identical to the raw arm (same task, `0c786b71`). ARC-AGI-2 probe: 0/30. The enriched alphabet exhausted the 50k budget on nearly every task (vs early frontier exhaustion for raw): extra whole-grid tokens made search strictly more expensive without unlocking solutions.
+- H5-on-real-ARC probe was gated by coverage: only 5/80 training tasks solved, programs too short/sparse for BPE to extract a single macro (empty library).
+- **Decision per pre-registered rule: KILL/PIVOT.** Whole-grid op composition (even with object-selection and recolor ops) is the wrong hypothesis substrate for real ARC. The pivot direction (pre-registered): per-object program application (map/filter over objects), relations, masks — a structural DSL redesign, not more whole-grid tokens.
