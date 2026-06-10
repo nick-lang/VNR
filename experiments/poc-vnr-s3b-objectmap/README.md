@@ -17,9 +17,19 @@ token chains. Pre-registration + outcome: [../../ledger/hypotheses.md](../../led
 ```
 CPU-only; ~3 s total.
 
-## Result
+## Result (v2, two families)
 See [stage3b_result.json](stage3b_result.json). Union 4/50 train-consistent
 (raw 1 + 3 new; test-correct 3/50 — `6df30ad6` overfit its train pairs).
 **INCONCLUSIVE** per the pre-registered bar (accept needed >= 5). ARC-2: 0/30.
-Rule induction is ~1000x cheaper than token BFS (3 s vs ~18 min). Next-step
-options recorded in the notebook entry.
+Rule induction is ~1000x cheaper than token BFS (3 s vs ~18 min).
+
+## Stage 3c (v3): more families + stability guard
+[run_stage3c.py](run_stage3c.py) adds colormap / gravity / symmetry-fill
+families to `rules.py` plus a leave-one-out stability guard. Result
+([stage3c_result.json](stage3c_result.json)): **KILL-CRITERION FIRED** —
+new families added zero solves even unguarded; the guard rejected the overfit
+correctly but also both correct v2 solves (`loo_disagree`). Guarded union 1/50.
+Per the pre-registered rule, the hand-built substrate is closed at this effort
+level; Option B (neural per-task MDL substrate) is the default next step.
+Note: `rules.py` now contains the v3 families, so re-running `run_stage3b.py`
+reflects the extended induction order; exact v2 behavior is at commit `d3710c6`.

@@ -156,12 +156,114 @@ def _grid_eq(a: Optional[Grid], b: Grid) -> bool:
     return a is not None and a.shape == b.shape and bool(np.array_equal(a, b))
 
 
+# --- Stage 3c families ---
+
+def induce_colormap(train) -> Optional[dict]:
+    """Cellwise color permutation: consistent color->color lookup, non-identity."""
+    if not all(inp.shape == out.shape for inp, out in train):
+        return None
+    mapping: dict[int, int] = {}
+    for inp, out in train:
+        for vi, vo in zip(inp.ravel().tolist(), out.ravel().tolist()):
+            if mapping.setdefault(int(vi), int(vo)) != int(vo):
+                return None
+    if all(k == v for k, v in mapping.items()):
+        return None  # identity is vacuous
+    return {"family": "colormap", "mapping": {str(k): v for k, v in mapping.items()},
+            "_mapping": mapping}
+
+
+def _apply_colormap(mapping: dict, inp: Grid) -> Optional[Grid]:
+    out = np.zeros_like(inp)
+    for v in np.unique(inp):
+        if int(v) not in mapping:
+            return None  # unseen color: abstain
+        out[inp == v] = mapping[int(v)]
+    return out
+
+
+GRAVITY_DIRS = {"down": (1, 0), "up": (-1, 0), "right": (0, 1), "left": (0, -1)}
+
+
+def _apply_gravity(inp: Grid, mode: str, dir_name: str) -> Optional[Grid]:
+    dr, dc = GRAVITY_DIRS[dir_name]
+    objs = seg.segment(inp, mode)
+    if not objs:
+        return inp.copy()
+    rows, cols = inp.shape
+    out = np.zeros_like(inp)
+    # Objects furthest along the direction settle first.
+    objs = sorted(objs, key=lambda o: max(r * dr + c * dc for r, c in o.cells), reverse=True)
+    for o in objs:
+        off = 0
+        while True:
+            nxt = off + 1
+            spots = [(r + dr * nxt, c + dc * nxt) for r, c in o.cells]
+            if all(0 <= r < rows and 0 <= c < cols and out[r, c] == 0 for r, c in spots):
+                off = nxt
+            else:
+                break
+        for (r, c), v in o.colors.items():
+            out[r + dr * off, c + dc * off] = v
+    return out
+
+
+def induce_gravity(train) -> Optional[dict]:
+    if not all(inp.shape == out.shape for inp, out in train):
+        return None
+    for mode in MODES:
+        for dir_name in GRAVITY_DIRS:
+            if all(_grid_eq(_apply_gravity(inp, mode, dir_name), out) for inp, out in train):
+                return {"family": "gravity", "mode": mode, "dir": dir_name}
+    return None
+
+
+SYMS: list[tuple[str, Callable[[Grid], Grid]]] = [
+    ("fliplr", np.fliplr),
+    ("flipud", np.flipud),
+    ("rot180", lambda g: np.rot90(g, 2)),
+    ("transpose", lambda g: g.T),
+]
+
+
+def _apply_symfill(inp: Grid, sym_name: str) -> Optional[Grid]:
+    fn = dict(SYMS)[sym_name]
+    if sym_name == "transpose" and inp.shape[0] != inp.shape[1]:
+        return None
+    mirror = fn(inp)
+    return np.where(inp == 0, mirror, inp)
+
+
+def induce_symfill(train) -> Optional[dict]:
+    if not all(inp.shape == out.shape for inp, out in train):
+        return None
+    for sym_name, _ in SYMS:
+        preds = [_apply_symfill(inp, sym_name) for inp, out in train]
+        if any(p is None for p in preds):
+            continue
+        if not all(_grid_eq(p, out) for p, (_, out) in zip(preds, train)):
+            continue
+        if all(np.array_equal(p, inp) for p, (inp, _) in zip(preds, train)):
+            continue  # filled nothing: vacuous
+        return {"family": "symfill", "sym": sym_name}
+    return None
+
+
 def induce(train) -> Optional[dict]:
-    """Try all (family, mode) combinations in fixed order; return first verified rule."""
+    """Try families in fixed simplicity order; return first verified rule."""
+    r = induce_colormap(train)
+    if r:
+        return r
     for mode in MODES:
         r = induce_same_shape(train, mode)
         if r:
             return r
+    r = induce_gravity(train)
+    if r:
+        return r
+    r = induce_symfill(train)
+    if r:
+        return r
     for mode in MODES:
         r = induce_select_crop(train, mode)
         if r:
@@ -170,8 +272,15 @@ def induce(train) -> Optional[dict]:
 
 
 def apply_rule(rule: dict, inp: Grid) -> Optional[Grid]:
-    if rule["family"] == "same_shape_fates":
+    fam = rule["family"]
+    if fam == "colormap":
+        return _apply_colormap(rule["_mapping"], inp)
+    if fam == "same_shape_fates":
         return _apply_fates(inp, rule["mode"], rule["key"], rule["_mapping"])
+    if fam == "gravity":
+        return _apply_gravity(inp, rule["mode"], rule["dir"])
+    if fam == "symfill":
+        return _apply_symfill(inp, rule["sym"])
     objs = seg.segment(inp, rule["mode"])
     chosen = SELECTOR_LOOKUP[rule["selector"]](objs) if objs else None
     if chosen is None:
