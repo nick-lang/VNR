@@ -39,15 +39,17 @@ The invariant is the interpreter; only the short, MDL-selected program changes p
 ```mermaid
 flowchart TD
   S0["Stage 0: reproduce shoulders (TRM, CompressARC)"] --> S1
-  S1["Stage 1: library vs per-task MDL search (H5, riskiest)"] --> S2
-  S2["Stage 2: neural proposer amortizes search (H6)"] --> S3
-  S3["Stage 3: object-centric perception (H7)"] --> S4
+  S1["Stage 1: library vs per-task MDL search (H5, riskiest)"] --> S3
+  S3["Stage 3: object-centric perception + richer DSL (H7)"] --> S2
+  S2["Stage 2: neural proposer amortizes search (H6)"] --> S4
   S4["Stage 4: test-time training, MDL-as-loss (H3)"] --> S5
   S5["Stage 5: integrate full refinement loop (H4)"] --> S6
   S6["Stage 6: write-up + spec v1"]
 ```
 
 Ordering principle: **test the riskiest, cheapest-to-falsify assumption first.** Stage 1 (does a growing library actually beat per-task search?) is the load-bearing thesis; if it fails we pivot before investing in the rest.
+
+**Ordering pivot (2026-06-09):** Stage 3 runs **before** Stage 2. Stage 1 accepted H5 but exposed the binding constraint: the 13-op geometric DSL covers only ~2% of real ARC-AGI-1, so amortizing search with a neural proposer (Stage 2) would be optimizing search over a DSL that cannot express real tasks. Raising DSL/perception coverage first makes every later stage's result meaningful on non-synthetic data.
 
 ---
 

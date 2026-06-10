@@ -32,11 +32,17 @@ Legend: `[ ]` todo, `[~]` in progress, `[x]` done, `[-]` deferred/blocked (note 
 - [x] Decide H5: ACCEPTED — median states-to-solution 746 -> 228 (~3.3x), solve rate unchanged (60/60). See `ledger/results.md` + notebook `2026-06-09-stage1-library.md`.
 - [ ] Caveat to address later: DSL covers only ~2% of real ARC-AGI-1 (geometric ops only); richer ops + object-centric perception needed (Stage 3) to retest H5 on non-synthetic reuse.
 
-## Stage 2 — Neural proposer amortizes search (H6)
-- [ ] Tiny recurrent proposer trained on Stage-1 success traces; compare search cost vs uninformed.
+## Stage 3 — Object-centric perception + richer DSL (H7) — PULLED AHEAD OF STAGE 2
+(Pivot 2026-06-09: DSL coverage (~2% of real ARC-AGI-1) is the binding constraint after Stage 1; a neural proposer over an inexpressive DSL would be premature.)
+- [ ] Pre-register concrete H7 metrics/thresholds.
+- [ ] Connected-component perception + param-free object ops (`objects.py`).
+- [ ] Enriched DSL: geometric + object ops + per-task recolor tokens.
+- [ ] Raw vs enriched arm on the ARC-AGI-1 dev split (matched search budget); ARC-AGI-2 probe.
+- [ ] H5-on-real-ARC probe: library from ARC-1 training-split solves; transfer to dev split.
+- [ ] Decide H7 against pre-registered rule.
 
-## Stage 3 — Object-centric perception (H7)
-- [ ] Object/relation extractor front-end; ablate vs raw-grid on AGI-2 subset.
+## Stage 2 — Neural proposer amortizes search (H6) — now after Stage 3
+- [ ] Tiny recurrent proposer trained on success traces over the enriched DSL; compare search cost vs uninformed.
 
 ## Stage 4 — Test-time training, MDL-as-loss (H3)
 - [ ] Label-free per-task adaptation; quantify lift and added cost.
