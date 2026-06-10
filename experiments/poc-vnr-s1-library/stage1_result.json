@@ -1,0 +1,73 @@
+{
+  "config": {
+    "n_train": 60,
+    "n_heldout": 60,
+    "budget": 50000,
+    "max_depth": 7,
+    "lib_cap": 8,
+    "seed": 0,
+    "arc_coverage": 50,
+    "out": "experiments/poc-vnr-s1-library/stage1_result.json"
+  },
+  "train_solve_rate": 1.0,
+  "library_size": 8,
+  "library": {
+    "m0": [
+      "mirror_h",
+      "mirror_v"
+    ],
+    "m1": [
+      "mirror_h",
+      "mirror_v",
+      "scale2"
+    ],
+    "m2": [
+      "mirror_h",
+      "scale2"
+    ],
+    "m3": [
+      "mirror_v",
+      "tile_h2"
+    ],
+    "m4": [
+      "mirror_h",
+      "mirror_h",
+      "mirror_v",
+      "scale2"
+    ],
+    "m5": [
+      "flip_h",
+      "mirror_v",
+      "tile_h2"
+    ],
+    "m6": [
+      "rot90",
+      "flip_h"
+    ],
+    "m7": [
+      "mirror_h",
+      "mirror_v",
+      "tile2x2"
+    ]
+  },
+  "arm_a_no_library": {
+    "solve_rate": 1.0,
+    "n_solved": 60
+  },
+  "arm_b_with_library": {
+    "solve_rate": 1.0,
+    "n_solved": 60
+  },
+  "shared_solved": 60,
+  "median_nodes_no_library": 746.0,
+  "median_nodes_with_library": 228.0,
+  "efficiency_ratio_b_over_a": 0.30563002680965146,
+  "speedup_x": 3.2719298245614037,
+  "decision": "ACCEPT H5 (>=2x search efficiency, solve rate not lower)",
+  "seconds": 6.6,
+  "arc_coverage_primitives": {
+    "n": 50,
+    "solved": 1,
+    "rate": 0.02
+  }
+}

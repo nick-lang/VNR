@@ -24,12 +24,13 @@ Legend: `[ ]` todo, `[~]` in progress, `[x]` done, `[-]` deferred/blocked (note 
 - [-] TRM baseline: DEFERRED. Full ARC-AGI-1 training needs ~4 H100s for ~3 days; not feasible on an 8 GB GPU. Do a code-read + cost note now; run on cloud later.
 - [x] Stage 0 gate: CompressARC runs correctly end-to-end on GPU and trains as expected (loss decreasing). Per-task cost characterized. Stage 0 complete; ready for Stage 1.
 
-## Stage 1 — Library vs per-task MDL search (H5, riskiest)
-- [ ] Define minimal grid DSL + interpreter.
-- [ ] Define MDL score (program description length; library calls at compressed cost).
-- [ ] Implement enumerative/guided search to shortest consistent program.
-- [ ] Arm A (no library) vs Arm B (growing library); measure solves/budget + transfer.
-- [ ] Decide H5 against pre-registered rule (kill-criterion: no library gain -> pivot).
+## Stage 1 — Library vs per-task MDL search (H5, riskiest) — COMPLETE, H5 ACCEPTED
+- [x] Define minimal grid DSL + interpreter (`dsl.py`, 13 param-free ops).
+- [x] Define MDL score (program token count; library macros = 1 token; BPE/MDL compression in `library.py`).
+- [x] Implement search to shortest consistent program (`search.py`, BFS over joint grid-state, dedup, budget).
+- [x] Arm A (no library) vs Arm B (growing library) on identical held-out tasks (`run_stage1.py`).
+- [x] Decide H5: ACCEPTED — median states-to-solution 746 -> 228 (~3.3x), solve rate unchanged (60/60). See `ledger/results.md` + notebook `2026-06-09-stage1-library.md`.
+- [ ] Caveat to address later: DSL covers only ~2% of real ARC-AGI-1 (geometric ops only); richer ops + object-centric perception needed (Stage 3) to retest H5 on non-synthetic reuse.
 
 ## Stage 2 — Neural proposer amortizes search (H6)
 - [ ] Tiny recurrent proposer trained on Stage-1 success traces; compare search cost vs uninformed.
