@@ -1,0 +1,170 @@
+{
+  "00576224": {
+    "task": "00576224",
+    "steps": 2000,
+    "seconds": 2709.8,
+    "solved_top1": true,
+    "solved_top2": true,
+    "final_loss": 113.398193359375
+  },
+  "08573cc6": {
+    "task": "08573cc6",
+    "steps": 2000,
+    "seconds": 2768.4,
+    "solved_top1": false,
+    "solved_top2": false,
+    "final_loss": 194.2460479736328
+  },
+  "0c786b71": {
+    "task": "0c786b71",
+    "steps": 2000,
+    "seconds": 2657.2,
+    "solved_top1": false,
+    "solved_top2": false,
+    "final_loss": 138.93948364257812
+  },
+  "12997ef3": {
+    "task": "12997ef3",
+    "steps": 2000,
+    "seconds": 2118.8,
+    "solved_top1": false,
+    "solved_top2": false,
+    "final_loss": 300.4775695800781
+  },
+  "15663ba9": {
+    "task": "15663ba9",
+    "steps": 2000,
+    "seconds": 1818.7,
+    "solved_top1": true,
+    "solved_top2": true,
+    "final_loss": 710.2009887695312
+  },
+  "1990f7a8": {
+    "task": "1990f7a8",
+    "steps": 2000,
+    "seconds": 5008.1,
+    "solved_top1": false,
+    "solved_top2": false,
+    "final_loss": 327.08551025390625
+  },
+  "1d0a4b61": {
+    "task": "1d0a4b61",
+    "steps": 2000,
+    "seconds": 2994.4,
+    "solved_top1": true,
+    "solved_top2": true,
+    "final_loss": 959.1572265625
+  },
+  "20981f0e": {
+    "task": "20981f0e",
+    "steps": 2000,
+    "seconds": 3038.0,
+    "solved_top1": false,
+    "solved_top2": false,
+    "final_loss": 333.2723693847656
+  },
+  "2697da3f": {
+    "task": "2697da3f",
+    "steps": 2000,
+    "seconds": 4420.1,
+    "solved_top1": false,
+    "solved_top2": false,
+    "final_loss": 517.4208984375
+  },
+  "2b01abd0": {
+    "task": "2b01abd0",
+    "steps": 2000,
+    "seconds": 2876.5,
+    "solved_top1": false,
+    "solved_top2": false,
+    "final_loss": 239.33041381835938
+  },
+  "31d5ba1a": {
+    "task": "31d5ba1a",
+    "steps": 2000,
+    "seconds": 1766.9,
+    "solved_top1": false,
+    "solved_top2": false,
+    "final_loss": 268.0662841796875
+  },
+  "358ba94e": {
+    "task": "358ba94e",
+    "steps": 2000,
+    "seconds": 2401.2,
+    "solved_top1": false,
+    "solved_top2": false,
+    "final_loss": 819.755126953125
+  },
+  "3f23242b": {
+    "task": "3f23242b",
+    "steps": 2000,
+    "seconds": 3131.8,
+    "solved_top1": false,
+    "solved_top2": false,
+    "final_loss": 133.51564025878906
+  },
+  "45737921": {
+    "task": "45737921",
+    "steps": 2000,
+    "seconds": 2846.2,
+    "solved_top1": true,
+    "solved_top2": true,
+    "final_loss": 416.0723876953125
+  },
+  "4acc7107": {
+    "task": "4acc7107",
+    "steps": 2000,
+    "seconds": 2763.0,
+    "solved_top1": false,
+    "solved_top2": false,
+    "final_loss": 423.2373046875
+  },
+  "505fff84": {
+    "task": "505fff84",
+    "steps": 2000,
+    "seconds": 4795.8,
+    "solved_top1": false,
+    "solved_top2": false,
+    "final_loss": 900.3011474609375
+  },
+  "52fd389e": {
+    "task": "52fd389e",
+    "steps": 2000,
+    "seconds": 3118.4,
+    "solved_top1": false,
+    "solved_top2": false,
+    "final_loss": 535.4479370117188
+  },
+  "58743b76": {
+    "task": "58743b76",
+    "steps": 2000,
+    "seconds": 2832.1,
+    "solved_top1": false,
+    "solved_top2": false,
+    "final_loss": 439.3473205566406
+  },
+  "5d2a5c43": {
+    "task": "5d2a5c43",
+    "steps": 2000,
+    "seconds": 1619.5,
+    "solved_top1": false,
+    "solved_top2": false,
+    "final_loss": 543.692138671875
+  },
+  "639f5a19": {
+    "task": "639f5a19",
+    "steps": 2000,
+    "seconds": 2993.6,
+    "solved_top1": false,
+    "solved_top2": false,
+    "final_loss": 486.8631591796875
+  },
+  "67c52801": {
+    "task": "67c52801",
+    "steps": 2000,
+    "seconds": 1491.5,
+    "solved_top1": false,
+    "solved_top2": false,
+    "final_loss": 462.06890869140625
+  }
+}

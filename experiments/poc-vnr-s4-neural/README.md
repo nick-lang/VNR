@@ -20,4 +20,18 @@ modal run experiments/poc-vnr-s4-neural/modal_app.py           # full 50-task ru
 ```
 
 ## Result
-Pending.
+See [stage4_result.json](stage4_result.json). **ACCEPT H8: 11/50 pass@2 (22%),
+all 11 also pass@1** — bar was >= 5/50 and >= 4x the raw-BFS control (1/50).
+Matches published CompressARC (~20% on ARC-AGI-1 eval). Superset of every
+symbolic-substrate solve (Stages 3b/3c), including `6df30ad6`, which the
+symbolic rule overfit and CompressARC solves correctly; raw BFS's `0c786b71`
+was not solved (union 12/50).
+
+Cost: 43.3 GPU-hours, ~$84.50 list (~$1.69/task, mean ~52 min/task on L40S).
+The run was split by a Modal billing-cap pause at 21/50: banked results are in
+`stage4_banked.json` and the remaining 29 were resumed with
+`--banked experiments/poc-vnr-s4-neural/stage4_banked.json` (no recompute).
+
+Full narrative: `experiments/notebook/2026-06-10-stage4-compressarc.md`.
+Next: H9 — cross-task program memory on this substrate (artifact-saving to be
+added to the harness).

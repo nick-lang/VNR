@@ -58,22 +58,23 @@ Legend: `[ ]` todo, `[~]` in progress, `[x]` done, `[-]` deferred/blocked (note 
 - [x] Decide H7-v3: **KILL** — guarded union 1/50; new families added zero solves even unguarded; ARC-2 0/30. See notebook `2026-06-09-stage3c-families-guard.md`.
 - [x] NEXT decided (2026-06-09): **Option B as Stage 4**, on cloud (Modal) with a <= $30 out-of-pocket budget approved by owner; local fallback if the smoke-test cost projection exceeds it.
 
-## Stage 4 — Neural per-task MDL substrate baseline (H8, Option B)
-- [ ] Pre-register H8: unmodified CompressARC, 2000 steps/task, pass@2, same 50-task dev split, same numeric bar (accept >= 5/50; kill <= 2/50); cost gate $30.
-- [ ] Build Modal fan-out harness (`experiments/poc-vnr-s4-neural/`): one GPU job per task, results collected locally.
-- [ ] Owner: create Modal account; authorize this machine (`modal setup`).
-- [ ] Cloud smoke: 1 task, measure s/step on L40S, project full-run cost; abort to local if > $30.
-- [ ] Full 50-task fan-out; record pass@1/pass@2, per-task seconds, actual $ cost.
-- [ ] Decide H8 against the pre-registered rule; record in ledger/results, notebook, README.
+## Stage 4 — Neural per-task MDL substrate baseline (H8, Option B) — RUN; ACCEPTED
+- [x] Pre-register H8: unmodified CompressARC, 2000 steps/task, pass@2, same 50-task dev split, same numeric bar (accept >= 5/50; kill <= 2/50); cost gate $30.
+- [x] Build Modal fan-out harness (`experiments/poc-vnr-s4-neural/`): one GPU job per task, results collected locally.
+- [x] Owner: create Modal account; authorize this machine (`modal setup`).
+- [x] Cloud smoke: 1 task, 0.825 s/step on L40S, projected $44.71 list (under budget after credits) — gate passed.
+- [x] Full 50-task fan-out (split by a billing-cap pause at 21/50; owner approved cost, plan upgraded, 29 resumed via `--banked`, no recompute). Actual: 43.3 GPU-h, ~$84.50 list (~2x projection — fan-out tasks ran slower than the smoke task).
+- [x] Decide H8: **ACCEPT** — 11/50 pass@2 (all pass@1), superset of all symbolic solves incl. 3b's overfit task `6df30ad6`; raw BFS's `0c786b71` not solved (union 12/50). See notebook `2026-06-10-stage4-compressarc.md`.
+- [ ] NEXT: design + pre-register H9 (cross-task program memory / amortization on the neural substrate — where VNR departs from reproduction); add artifact-saving (weights/latents) to the harness for it.
 
 ## Stage 2 — Neural proposer amortizes search (H6) — now after Stage 3
 - [ ] Tiny recurrent proposer trained on success traces over the enriched DSL; compare search cost vs uninformed.
 
-## Stage 4 — Test-time training, MDL-as-loss (H3)
+## Stage 5 — Test-time training, MDL-as-loss (H3) — renumbered from old Stage 4 (Stage 4 = H8 baseline)
 - [ ] Label-free per-task adaptation; quantify lift and added cost.
 
-## Stage 5 — Integrate full refinement loop (H4)
+## Stage 6 — Integrate full refinement loop (H4)
 - [ ] Wire perception -> proposer+library -> verifier -> revise + TTT; measure AGI-1 vs AGI-2 gap.
 
-## Stage 6 — Write-up + spec v1
+## Stage 7 — Write-up + spec v1
 - [ ] Promote validated design to `spec/architecture-v1.md`; draft write-up; open-source PoCs.

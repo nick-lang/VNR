@@ -96,8 +96,13 @@ def _dev_ids() -> list[str]:
 
 
 @app.local_entrypoint()
-def main(smoke: bool = False, steps: int = STEPS):
+def main(smoke: bool = False, steps: int = STEPS, banked: str = ""):
     ids = _dev_ids()
+    done: dict = {}
+    if banked:
+        done = json.loads(Path(banked).read_text())
+        ids = [i for i in ids if i not in done]
+        print(f"resuming: {len(done)} banked, {len(ids)} remaining", flush=True)
     if smoke:
         # Cost gate (pre-registered): one task, project full-run cost.
         r = solve_task.remote(ids[0], steps)
@@ -113,10 +118,10 @@ def main(smoke: bool = False, steps: int = STEPS):
         return
 
     t0 = time.time()
-    results = []
+    results = list(done.values())
     for r in solve_task.map(ids, kwargs={"steps": steps}):
         results.append(r)
-        print(f"[result {len(results)}/{len(ids)}] {json.dumps(r)}", flush=True)
+        print(f"[result {len(results)}/50] {json.dumps(r)}", flush=True)
     by_task = {r["task"]: r for r in results}
     n1 = sum(r["solved_top1"] for r in results)
     n2 = sum(r["solved_top2"] for r in results)
