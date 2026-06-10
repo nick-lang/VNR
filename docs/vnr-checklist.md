@@ -42,12 +42,13 @@ Legend: `[ ]` todo, `[~]` in progress, `[x]` done, `[-]` deferred/blocked (note 
 - [x] Decide H7: **KILL/PIVOT** — object arm 1/50 = raw arm (same task); ARC-2 0/30. Whole-grid op composition is the wrong substrate. See notebook `2026-06-09-stage3-perception.md`.
 - [x] PIVOT direction decided: **Option A** — structural redesign around per-object program application. (Option B = neural per-task substrate remains the pre-registered fallback if H7-v2 kills.)
 
-## Stage 3b — Object-mapped substrate (H7-v2)
-- [ ] Pre-register H7-v2 (same accept/kill bar as v1) — see `ledger/hypotheses.md`.
-- [ ] `segment.py`: dual segmentation (same-color-4 / multicolor-8) + object features.
-- [ ] `rules.py`: per-object fate induction (keep/delete/recolor by one feature) + selection-crop; exact re-simulation verifier.
-- [ ] `run_stage3b.py`: raw BFS vs object-map vs union on the dev split + ARC-2 probe.
-- [ ] Decide H7-v2 against the pre-registered rule.
+## Stage 3b — Object-mapped substrate (H7-v2) — RUN; INCONCLUSIVE (one solve short of accept)
+- [x] Pre-register H7-v2 (same accept/kill bar as v1); amended pre-run with the MDL smallest-mapping prior (caught by synthetic smoke test).
+- [x] `segment.py`: dual segmentation (same-color-4 / multicolor-8) + object features.
+- [x] `rules.py`: per-object fate induction + selection-crop; exact re-simulation verifier.
+- [x] `run_stage3b.py`: raw BFS vs object-map vs union on the dev split + ARC-2 probe.
+- [x] Decide H7-v2: **INCONCLUSIVE** — union 4/50 train-consistent (3 new; needed >=5), test-correct 3/50 (one overfit: `6df30ad6`), ARC-2 0/30, full run 3.1 s. See notebook `2026-06-09-stage3b-objectmap.md`.
+- [ ] NEXT (owner decision): A-continue (add rule families — movement/draw/symmetry/per-object transforms/relational fates — plus an overfit guard; re-run same bar) vs Option B (neural per-task substrate) vs pause.
 
 ## Stage 2 — Neural proposer amortizes search (H6) — now after Stage 3
 - [ ] Tiny recurrent proposer trained on success traces over the enriched DSL; compare search cost vs uninformed.

@@ -89,7 +89,7 @@ These three are introduced by the synthesized "fixed core + growing library" arc
 ### H7-v2 pre-registration (2026-06-09, before running) — object-mapped substrate
 - **Statement:** a per-object hypothesis substrate (induce a rule mapping each object to a fate, or select-and-crop an object by an induced predicate) lifts real-ARC coverage where whole-grid token composition could not.
 - **Setup:** two segmentations (same-color 4-connected; multicolor 8-connected). Two rule families, both verified by exact re-simulation on all train pairs:
-  1. **Same-shape per-object fates:** each input object maps to keep / delete / recolor-to-c; the fate is a function of ONE object feature (constant, color, is_largest, is_smallest, touches_border, size, size_rank, shape_key, shape_count, color_count — tried in that fixed simplicity order, an MDL prior). Inapplicable if output has cells outside input objects (generative tasks).
+  1. **Same-shape per-object fates:** each input object maps to keep / delete / recolor-to-c; the fate is a function of ONE object feature (constant, color, is_largest, is_smallest, touches_border, size, size_rank, shape_key, shape_count, color_count). *Amended pre-run (2026-06-09, caught by synthetic smoke test before touching the benchmark): among consistent keys, pick the one with the SMALLEST mapping (fewest entries = shortest description, the proper MDL choice), ties broken by the fixed order — a fixed order alone preferred spuriously specific lookups that fail on unseen values.* Inapplicable if output has cells outside input objects (generative tasks).
   2. **Selection-crop:** output equals one input object's crop (object-cells or bbox variant); the selector is a fixed-order list of predicates (is_largest, is_smallest, unique_color, unique_shape, only-touching-border, only-not-touching-border) that must select exactly one object per pair.
 - **Arms:** raw BFS (Stage-1 13 primitives, 50k budget, depth 7) — the unchanged control; object-map solver alone; **union (object-map, else raw BFS) = the system under test.**
 - **Benchmarks:** same as H7-v1 — 50-task ARC-AGI-1 dev split primary, 30-task ARC-AGI-2 probe secondary. "Solved" = train-consistent; test-pair exact accuracy reported separately.
@@ -97,3 +97,9 @@ These three are introduced by the synthesized "fixed core + growing library" arc
   - **Accept H7-v2** if the union solves >= 5/50 AND >= 4x the raw arm's count.
   - **Kill** if the union solves <= 2/50 — the hand-built program substrate road is then judged closed at this effort level; Option B (neural per-task substrate) becomes the default next step.
   - **Inconclusive** otherwise.
+
+### H7-v2 outcome (2026-06-09): INCONCLUSIVE — one solve short of accept
+- Union: **4/50 train-consistent** (raw 1 + 3 new from the object-map substrate); accept needed >= 5. Kill threshold (<= 2) not hit. ARC-AGI-2 probe: 0/30.
+- Test-pair correctness of the new solves: `ae58858e` 1.0 (size-threshold recolor), `cd3c21df` 1.0 (select-crop by unique color), `6df30ad6` 0.0 — a spuriously specific size->color lookup that memorized train pairs (train-consistent but wrong). Union test-correct: 3/50.
+- Cost: the whole dev split + ARC-2 probe ran in ~3 s (vs ~18 min for the v1 token search): rule induction is ~1000x cheaper than BFS over tokens.
+- Reading: the structural substrate change moved coverage where token-stacking moved nothing (0 new -> 3 new), with only TWO rule families implemented (per-object fates, selection-crop). The overfit case shows the verifier needs either more train support or a stronger simplicity prior for parameter-heavy lookups. Direction decision recorded in the notebook/checklist.
