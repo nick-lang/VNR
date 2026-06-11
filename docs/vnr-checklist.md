@@ -68,12 +68,12 @@ Legend: `[ ]` todo, `[~]` in progress, `[x]` done, `[-]` deferred/blocked (note 
 - [x] NEXT decided (2026-06-10): H9 designed and pre-registered as Stage 5 below.
 
 ## Stage 5 — Cross-task weight memory (H9) — first non-reproduction stage
-- [ ] Pre-register H9: LOO weight-soup warm-start over the 11 H8-solved tasks; accept = median steps-to-stable-solve <= 0.5x cold AND retention >= 10/11; kill = no speedup or retention <= 8/11.
-- [ ] Build `experiments/poc-vnr-s5-memory/`: transfer machinery (extract/average/load transformation weights; latents always fresh) + two-phase Modal harness; CompressARC stays unmodified.
-- [ ] Local CPU smoke: transfer mechanics (extract -> soup -> load) verified on tiny runs.
-- [ ] Owner go/no-go on cloud cost (~$55 list projected; local fallback ~58 h).
-- [ ] Phase 1 (cold + donors): 11 tasks, curves + weights; must reproduce H8 solves (determinism check).
-- [ ] Phase 2 (warm LOO + 2 same-task sanity + 5 unsolved exploratory).
+- [x] Pre-register H9: LOO weight-soup warm-start over the 11 H8-solved tasks; accept = median steps-to-stable-solve <= 0.5x cold AND retention >= 10/11; kill = no speedup or retention <= 8/11.
+- [x] Build `experiments/poc-vnr-s5-memory/`: transfer machinery (extract/average/load transformation weights; latents always fresh) + two-phase Modal harness; CompressARC stays unmodified.
+- [x] Local smoke: transfer mechanics verified (10984 tensors, exact round-trip, latents untouched, soup = mean, training runs after warm load).
+- [x] Owner decision (2026-06-10): Modal not usable — **run locally on the 3070 Ti in resumable pieces** (`local_runner.py`: every job banked on completion; early-signal ordering = 2 colds -> 2 same-task validity gates -> rest). Upside: both arms on identical hardware.
+- [~] Piece 1 running: cold_00576224, cold_8597cfd7 + their same-task sanity restarts (~3.5 h).
+- [ ] Pieces 2-4: remaining 9 colds; 11 LOO warms; 5 probes (~30 h GPU total, stop/resume any time).
 - [ ] Decide H9 against the pre-registered rule; record everywhere.
 
 ## Stage 2 — Neural proposer amortizes search (H6) — now after Stage 3
