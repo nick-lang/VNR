@@ -88,6 +88,12 @@ Legend: `[ ]` todo, `[~]` in progress, `[x]` done, `[-]` deferred/blocked (note 
 ## Stage 2 — Neural proposer amortizes search (H6) — now after Stage 3
 - [ ] Tiny recurrent proposer trained on success traces over the enriched DSL; compare search cost vs uninformed.
 
+## Stage 5c — Learned addressing (H11) [GATED: only if H10 accepts]
+- [ ] Owner design direction (linked-hash-map memory, 2026-06-11). Train a task-encoder on H10's banked 11x10 probe matrix; nearest-neighbor in embedding space must predict the trial-loss winner. Replaces O(N) scan with a computed address. Run when convenient post-H10; becomes IMPERATIVE at Stage 5d scale.
+
+## Stage 5d — Memory links + pruning at library scale (H12) [GATED: after Stage 7 loop, unless memory becomes the binding constraint]
+- [ ] ~400-donor library from ARC training tasks (~$110); links = measured transfer-benefit edges; pruning = evict never-retrieved / interference-causing donors (H9's measured failure mode). Per owner: no premature memory optimization before the other architecture pieces validate.
+
 ## Stage 6 — Test-time training, MDL-as-loss (H3) — renumbered (Stage 5 = H9 memory)
 - [ ] Label-free per-task adaptation; quantify lift and added cost.
 
