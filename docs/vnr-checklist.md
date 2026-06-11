@@ -72,8 +72,8 @@ Legend: `[ ]` todo, `[~]` in progress, `[x]` done, `[-]` deferred/blocked (note 
 - [x] Build `experiments/poc-vnr-s5-memory/`: transfer machinery (extract/average/load transformation weights; latents always fresh) + two-phase Modal harness; CompressARC stays unmodified.
 - [x] Local smoke: transfer mechanics verified (10984 tensors, exact round-trip, latents untouched, soup = mean, training runs after warm load).
 - [x] Owner decision (2026-06-10): Modal not usable — **run locally on the 3070 Ti in resumable pieces** (`local_runner.py`: every job banked on completion; early-signal ordering = 2 colds -> 2 same-task validity gates -> rest). Upside: both arms on identical hardware.
-- [~] Piece 1 running: cold_00576224, cold_8597cfd7 + their same-task sanity restarts (~3.5 h).
-- [ ] Pieces 2-4: remaining 9 colds; 11 LOO warms; 5 probes (~30 h GPU total, stop/resume any time).
+- [~] Compute pivot (owner, 2026-06-10): long local runs not feasible -> **RunPod pod, 6x A40 ($2.65/hr, prepaid credit, no usage-cap freeze risk)**. `runpod_queue.py` dispatching all 29 jobs, one per GPU, results banked on the pod's persistent volume; ~1.1 s/step measured (~37 min/2000-step job), ~5 waves ~= 3.5-4 h, ~$10. Local piece 1 (2 colds + 2 sanity gates) left running as a cross-hardware validation sample.
+- [ ] Fetch s5_artifacts + summary from pod; STOP POD; decide H9 against the pre-registered rule; record everywhere.
 - [ ] Decide H9 against the pre-registered rule; record everywhere.
 
 ## Stage 2 — Neural proposer amortizes search (H6) — now after Stage 3
