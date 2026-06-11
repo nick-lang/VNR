@@ -164,3 +164,16 @@ These three are introduced by the synthesized "fixed core + growing library" arc
 - Notable: the soup's biggest wins (`6df30ad6`, `cd3c21df`) are exactly the tasks the symbolic object-substrate could express in Stage 3b — shared structure appears to cluster by task family.
 - **Cross-hardware note:** A40 colds reproduced only 9/11 of the L40S (H8) solves (`15663ba9`, `cd3c21df` failed cold) — per-task trajectories are hardware-sensitive; recorded as a protocol caveat for all future cross-run comparisons.
 - **Per the pre-registered guardrail:** this kills the WEIGHT-SOUP mechanism, not the memory thesis. The win/loss split argues for ADDRESSABLE memory — retrieve the right donor for the task rather than average all donors — which is the natural H10 (and is, notably, the von Neumann point: a memory you address, not a memory you smear).
+
+## H10 — Addressable (retrieval-gated) weight memory amortizes where the soup failed (Stage 5b)
+
+### H10 pre-registration (2026-06-11, before running)
+- **Hypothesis:** for a new task, a cheap content-based lookup over the donor library — train K=100 steps from each candidate donor's weights (fresh latents) and score by mean loss over the last 20 probe steps — selects a SINGLE donor whose weights warm-start the task to a stable solve in materially fewer training steps than cold init, without the soup's interference losses. (MDL reading: "which stored program best compresses this task?")
+- **Design (LOO over the same 11 tasks, same A40 hardware so H9's phase-1 cold baselines are reused unchanged — no recompute of the cold arm):**
+  - `sel_T`: probe the 10 other donors (100 steps each, identical RNG seed before every candidate so probes differ ONLY by donor weights); bank scores + selected donor.
+  - `ret_T`: warm-start from the selected donor, 2000 steps, same metrics as H9.
+- **Primary decision rule (pre-committed, identical numeric bar to H9):** ACCEPT if median ratio (ret_T training steps-to-stable-solve / cold steps-to-stable-solve) <= 0.5 AND retention >= 10/11. KILL if median >= 1.0 OR retention <= 8/11. Else inconclusive.
+- **Honest-accounting caveat (recorded in advance):** the probe itself costs 10 x 100 = 1000 steps per task; the full-cost ratio ((probe + train) / cold) is reported alongside but is NOT decision-bearing. H10 tests whether ADDRESSING works — whether the right donor exists and is findable by content. Making the lookup cheap (an index instead of trial training) is a separate, later engineering stage and only worth building if addressing works at all.
+- **Validity gate (not decision-bearing):** self-retrieval check on 2 tasks — probing the FULL 11-donor pool (own donor included) must rank the task's own donor #1. If lookup can't even find the task's own program, the probe signal is too weak and the run is void.
+- **Secondary readouts:** per-task comparison vs H9's soup arm (does selection fix the 2 interference losses? keep the 3 soup wins?); the full 11x10 probe-score matrix (does retrieval cluster by task family, e.g. the 6df30ad6/cd3c21df pair?).
+- **Cost gate:** ~11 GPU-h on 6x A40 ~= ~2 h wall ~= **~$5-6** (+~$5 donor retrain if the network volume was lost with the pod). Owner go/no-go on pod redeploy before spend.

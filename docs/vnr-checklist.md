@@ -75,7 +75,14 @@ Legend: `[ ]` todo, `[~]` in progress, `[x]` done, `[-]` deferred/blocked (note 
 - [x] Compute pivot (owner, 2026-06-10): long local runs not feasible -> **RunPod pod, 6x A40 ($2.65/hr, prepaid credit, no usage-cap freeze risk)**. All 29 jobs completed in 263 min (~$11.60). Local piece 1 sanity gates agreed with pod (cross-hardware validation).
 - [x] Results fetched (`s5_artifacts/`, `stage5_result.json`); owner reminded to stop the pod.
 - [x] Decide H9: **KILL** (both conditions: median ratio 1.222 >= 1.0; retention 8/11 <= 8) with validity gate PASSED (61/151-step same-task re-solves) — a real negative, not a broken pipeline. Wins on `6df30ad6`/`cd3c21df`/`903d1b4a` prove transferable structure exists; losses prove averaging corrupts. See notebook `2026-06-11-stage5-weightsoup.md`.
-- [ ] NEXT (owner decision): H10 candidate — retrieval-gated weight memory (select nearest donor instead of averaging; reuses this stage's donors, ~half the cost) vs other memory designs (meta-trained shared backbone, latent library) vs pause/write-up.
+- [x] NEXT decided (2026-06-11): **H10 — retrieval-gated weight memory**, Stage 5b below.
+
+## Stage 5b — Addressable memory: retrieval-gated donor selection (H10)
+- [ ] Pre-register H10: trial-loss probe (100 steps/candidate, seeded identically) selects ONE donor; same numeric bar as H9 (median ratio <= 0.5, retention >= 10/11); probe overhead reported but not decision-bearing; self-retrieval validity gate.
+- [ ] Build `s5b_runner.py` (sel_/ret_/selfsel_ jobs vs banked H9 cold baselines) + dispatcher `--stage 5b`.
+- [ ] Local smoke of probe-selection logic.
+- [ ] Owner: redeploy 6x A40 pod with the SAME network volume (donors live there); verify `donor_*.pt` present, else retrain (~$5).
+- [ ] Run; decide H10 against the pre-registered rule; record everywhere.
 - [ ] Decide H9 against the pre-registered rule; record everywhere.
 
 ## Stage 2 — Neural proposer amortizes search (H6) — now after Stage 3
