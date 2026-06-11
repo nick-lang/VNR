@@ -22,8 +22,6 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 
-from local_runner import ARTIFACTS, done_jobs, job_list, summarize  # noqa: E402
-
 LOGS = HERE / "s5_gpu_logs"
 MAX_ATTEMPTS = 3
 
@@ -39,8 +37,18 @@ def n_gpus() -> int:
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--gpus", type=int, default=0, help="0 = autodetect")
+    ap.add_argument("--stage", default="5", choices=["5", "5b"])
     args = ap.parse_args()
     gpus = args.gpus or n_gpus()
+
+    if args.stage == "5b":
+        import s5b_runner as runner
+    else:
+        import local_runner as runner
+    global done_jobs, job_list, summarize, ARTIFACTS
+    done_jobs, job_list, summarize = runner.done_jobs, runner.job_list, runner.summarize
+    ARTIFACTS = runner.ARTIFACTS
+    runner_script = HERE / ("s5b_runner.py" if args.stage == "5b" else "local_runner.py")
 
     ARTIFACTS.mkdir(exist_ok=True)
     LOGS.mkdir(exist_ok=True)
@@ -81,7 +89,7 @@ def main() -> None:
             env = dict(os.environ, CUDA_VISIBLE_DEVICES=str(gpu))
             log = open(LOGS / f"{job['name']}.log", "a")
             proc = subprocess.Popen(
-                [sys.executable, str(HERE / "local_runner.py"), "--only", job["name"]],
+                [sys.executable, str(runner_script), "--only", job["name"]],
                 env=env, stdout=log, stderr=subprocess.STDOUT,
             )
             running[job["name"]] = (proc, gpu)
@@ -93,7 +101,8 @@ def main() -> None:
 
     done = done_jobs()
     summary = summarize(done)
-    (HERE / "stage5_local_summary.json").write_text(json.dumps(summary, indent=2))
+    out_name = "stage5b_summary.json" if args.stage == "5b" else "stage5_local_summary.json"
+    (HERE / out_name).write_text(json.dumps(summary, indent=2))
     failed = [j["name"] for j in jobs if j["name"] not in done]
     print(json.dumps(summary, indent=2))
     if failed:
