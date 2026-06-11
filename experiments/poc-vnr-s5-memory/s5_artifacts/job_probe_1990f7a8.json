@@ -1,0 +1,11 @@
+{
+  "name": "probe_1990f7a8",
+  "kind": "probe",
+  "task": "1990f7a8",
+  "steps": 2000,
+  "seconds": 4655.4,
+  "solved_top1": false,
+  "solved_top2": false,
+  "steps_to_stable_solve": null,
+  "final_loss": 560.0623779296875
+}

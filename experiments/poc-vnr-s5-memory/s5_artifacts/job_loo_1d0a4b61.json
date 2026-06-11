@@ -1,0 +1,11 @@
+{
+  "name": "loo_1d0a4b61",
+  "kind": "loo",
+  "task": "1d0a4b61",
+  "steps": 2000,
+  "seconds": 2574.4,
+  "solved_top1": true,
+  "solved_top2": true,
+  "steps_to_stable_solve": 193,
+  "final_loss": 956.222900390625
+}

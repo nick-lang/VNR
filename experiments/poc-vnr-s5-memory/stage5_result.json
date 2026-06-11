@@ -1,0 +1,89 @@
+{
+  "progress": "29/29 jobs",
+  "cold_solved": "9/11",
+  "sanity": [
+    {
+      "task": "8597cfd7",
+      "solved": true,
+      "steps_to_stable_solve": 151
+    },
+    {
+      "task": "00576224",
+      "solved": true,
+      "steps_to_stable_solve": 61
+    }
+  ],
+  "probe_new_solves": [],
+  "loo_ratios": [
+    {
+      "task": "00576224",
+      "warm": 2000,
+      "cold": 222,
+      "ratio": 9.009
+    },
+    {
+      "task": "15663ba9",
+      "warm": 2000,
+      "cold": 2000,
+      "ratio": 1.0
+    },
+    {
+      "task": "1d0a4b61",
+      "warm": 193,
+      "cold": 158,
+      "ratio": 1.222
+    },
+    {
+      "task": "45737921",
+      "warm": 159,
+      "cold": 62,
+      "ratio": 2.565
+    },
+    {
+      "task": "6df30ad6",
+      "warm": 168,
+      "cold": 541,
+      "ratio": 0.311
+    },
+    {
+      "task": "8597cfd7",
+      "warm": 164,
+      "cold": 138,
+      "ratio": 1.188
+    },
+    {
+      "task": "903d1b4a",
+      "warm": 274,
+      "cold": 480,
+      "ratio": 0.571
+    },
+    {
+      "task": "ae58858e",
+      "warm": 399,
+      "cold": 229,
+      "ratio": 1.742
+    },
+    {
+      "task": "cd3c21df",
+      "warm": 749,
+      "cold": 2000,
+      "ratio": 0.374
+    },
+    {
+      "task": "d2acf2cb",
+      "warm": 2000,
+      "cold": 517,
+      "ratio": 3.868
+    },
+    {
+      "task": "ef26cbf6",
+      "warm": 229,
+      "cold": 186,
+      "ratio": 1.231
+    }
+  ],
+  "median_ratio": 1.222,
+  "retained": "8/11",
+  "sanity_ok": true,
+  "decision_h9": "KILL"
+}

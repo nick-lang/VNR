@@ -1,0 +1,11 @@
+{
+  "name": "probe_08573cc6",
+  "kind": "probe",
+  "task": "08573cc6",
+  "steps": 2000,
+  "seconds": 2568.0,
+  "solved_top1": false,
+  "solved_top2": false,
+  "steps_to_stable_solve": null,
+  "final_loss": 149.98683166503906
+}

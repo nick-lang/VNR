@@ -1,0 +1,149 @@
+dispatching 29 jobs across 6 GPUs
+[launch gpu0] cold_00576224
+[launch gpu1] cold_8597cfd7
+[launch gpu2] cold_15663ba9
+[launch gpu3] cold_1d0a4b61
+[launch gpu4] cold_45737921
+[launch gpu5] cold_6df30ad6
+[done 1/29] cold_00576224 (t+39m)
+[launch gpu0] sanity_00576224
+[done 2/29] cold_6df30ad6 (t+40m)
+[launch gpu5] cold_903d1b4a
+[done 3/29] cold_15663ba9 (t+40m)
+[launch gpu2] cold_ae58858e
+[done 4/29] cold_45737921 (t+42m)
+[launch gpu4] cold_cd3c21df
+[done 5/29] cold_1d0a4b61 (t+42m)
+[launch gpu3] cold_d2acf2cb
+[done 6/29] cold_8597cfd7 (t+48m)
+[launch gpu1] sanity_8597cfd7
+[done 7/29] sanity_00576224 (t+50m)
+[launch gpu0] cold_ef26cbf6
+[done 8/29] sanity_8597cfd7 (t+63m)
+[done 9/29] cold_903d1b4a (t+80m)
+[done 10/29] cold_ae58858e (t+83m)
+[done 11/29] cold_d2acf2cb (t+83m)
+[done 12/29] cold_ef26cbf6 (t+92m)
+[launch gpu1] loo_cd3c21df
+[done 13/29] cold_cd3c21df (t+100m)
+[launch gpu5] loo_00576224
+[launch gpu2] loo_15663ba9
+[launch gpu3] loo_1d0a4b61
+[launch gpu0] loo_45737921
+[launch gpu4] loo_6df30ad6
+[done 14/29] loo_6df30ad6 (t+141m)
+[launch gpu4] loo_8597cfd7
+[done 15/29] loo_00576224 (t+141m)
+[launch gpu5] loo_903d1b4a
+[done 16/29] loo_15663ba9 (t+142m)
+[launch gpu2] loo_ae58858e
+[done 17/29] loo_1d0a4b61 (t+143m)
+[launch gpu3] loo_d2acf2cb
+[done 18/29] loo_45737921 (t+145m)
+[launch gpu0] loo_ef26cbf6
+[done 19/29] loo_cd3c21df (t+151m)
+[launch gpu1] probe_08573cc6
+[done 20/29] loo_d2acf2cb (t+185m)
+[launch gpu3] probe_0c786b71
+[done 22/29] loo_903d1b4a (t+185m)
+[done 22/29] loo_ae58858e (t+185m)
+[launch gpu5] probe_12997ef3
+[launch gpu2] probe_1990f7a8
+[done 23/29] loo_ef26cbf6 (t+187m)
+[launch gpu0] probe_20981f0e
+[done 24/29] probe_08573cc6 (t+194m)
+[done 25/29] loo_8597cfd7 (t+194m)
+[done 26/29] probe_0c786b71 (t+226m)
+[done 27/29] probe_20981f0e (t+233m)
+[done 28/29] probe_12997ef3 (t+249m)
+[done 29/29] probe_1990f7a8 (t+263m)
+{
+  "progress": "29/29 jobs",
+  "cold_solved": "9/11",
+  "sanity": [
+    {
+      "task": "8597cfd7",
+      "solved": true,
+      "steps_to_stable_solve": 151
+    },
+    {
+      "task": "00576224",
+      "solved": true,
+      "steps_to_stable_solve": 61
+    }
+  ],
+  "probe_new_solves": [],
+  "loo_ratios": [
+    {
+      "task": "00576224",
+      "warm": 2000,
+      "cold": 222,
+      "ratio": 9.009
+    },
+    {
+      "task": "15663ba9",
+      "warm": 2000,
+      "cold": 2000,
+      "ratio": 1.0
+    },
+    {
+      "task": "1d0a4b61",
+      "warm": 193,
+      "cold": 158,
+      "ratio": 1.222
+    },
+    {
+      "task": "45737921",
+      "warm": 159,
+      "cold": 62,
+      "ratio": 2.565
+    },
+    {
+      "task": "6df30ad6",
+      "warm": 168,
+      "cold": 541,
+      "ratio": 0.311
+    },
+    {
+      "task": "8597cfd7",
+      "warm": 164,
+      "cold": 138,
+      "ratio": 1.188
+    },
+    {
+      "task": "903d1b4a",
+      "warm": 274,
+      "cold": 480,
+      "ratio": 0.571
+    },
+    {
+      "task": "ae58858e",
+      "warm": 399,
+      "cold": 229,
+      "ratio": 1.742
+    },
+    {
+      "task": "cd3c21df",
+      "warm": 749,
+      "cold": 2000,
+      "ratio": 0.374
+    },
+    {
+      "task": "d2acf2cb",
+      "warm": 2000,
+      "cold": 517,
+      "ratio": 3.868
+    },
+    {
+      "task": "ef26cbf6",
+      "warm": 229,
+      "cold": 186,
+      "ratio": 1.231
+    }
+  ],
+  "median_ratio": 1.222,
+  "retained": "8/11",
+  "sanity_ok": true,
+  "decision_h9": "KILL"
+}
+total wall: 263.0 min

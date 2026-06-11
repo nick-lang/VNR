@@ -1,0 +1,11 @@
+{
+  "name": "loo_cd3c21df",
+  "kind": "loo",
+  "task": "cd3c21df",
+  "steps": 2000,
+  "seconds": 3510.9,
+  "solved_top1": false,
+  "solved_top2": true,
+  "steps_to_stable_solve": 749,
+  "final_loss": 375.12841796875
+}

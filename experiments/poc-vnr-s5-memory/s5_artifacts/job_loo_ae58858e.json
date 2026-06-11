@@ -1,0 +1,11 @@
+{
+  "name": "loo_ae58858e",
+  "kind": "loo",
+  "task": "ae58858e",
+  "steps": 2000,
+  "seconds": 2568.1,
+  "solved_top1": true,
+  "solved_top2": true,
+  "steps_to_stable_solve": 399,
+  "final_loss": 228.394775390625
+}

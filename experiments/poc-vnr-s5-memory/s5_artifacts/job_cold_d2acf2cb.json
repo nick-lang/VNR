@@ -1,0 +1,11 @@
+{
+  "name": "cold_d2acf2cb",
+  "kind": "cold",
+  "task": "d2acf2cb",
+  "steps": 2000,
+  "seconds": 2466.8,
+  "solved_top1": true,
+  "solved_top2": true,
+  "steps_to_stable_solve": 517,
+  "final_loss": 514.8833618164062
+}

@@ -1,0 +1,17 @@
+{
+  "progress": "4/29 jobs",
+  "cold_solved": "2/2",
+  "sanity": [
+    {
+      "task": "00576224",
+      "solved": true,
+      "steps_to_stable_solve": 153
+    },
+    {
+      "task": "8597cfd7",
+      "solved": false,
+      "steps_to_stable_solve": null
+    }
+  ],
+  "probe_new_solves": []
+}

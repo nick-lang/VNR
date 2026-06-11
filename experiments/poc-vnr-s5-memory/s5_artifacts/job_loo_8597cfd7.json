@@ -1,0 +1,11 @@
+{
+  "name": "loo_8597cfd7",
+  "kind": "loo",
+  "task": "8597cfd7",
+  "steps": 2000,
+  "seconds": 3186.6,
+  "solved_top1": false,
+  "solved_top2": true,
+  "steps_to_stable_solve": 164,
+  "final_loss": 118.88438415527344
+}

@@ -1,0 +1,11 @@
+{
+  "name": "cold_ae58858e",
+  "kind": "cold",
+  "task": "ae58858e",
+  "steps": 2000,
+  "seconds": 2549.9,
+  "solved_top1": true,
+  "solved_top2": true,
+  "steps_to_stable_solve": 229,
+  "final_loss": 310.5841369628906
+}

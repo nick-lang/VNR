@@ -1,0 +1,11 @@
+{
+  "name": "cold_8597cfd7",
+  "kind": "cold",
+  "task": "8597cfd7",
+  "steps": 2000,
+  "seconds": 2864.8,
+  "solved_top1": false,
+  "solved_top2": true,
+  "steps_to_stable_solve": 138,
+  "final_loss": 127.28744506835938
+}

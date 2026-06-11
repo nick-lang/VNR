@@ -1,0 +1,11 @@
+{
+  "name": "sanity_8597cfd7",
+  "kind": "sanity",
+  "task": "8597cfd7",
+  "steps": 600,
+  "seconds": 889.4,
+  "solved_top1": true,
+  "solved_top2": true,
+  "steps_to_stable_solve": 151,
+  "final_loss": 155.06690979003906
+}
