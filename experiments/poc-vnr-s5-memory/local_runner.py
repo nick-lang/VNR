@@ -202,6 +202,7 @@ def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--max-jobs", type=int, default=0, help="0 = run all remaining")
     ap.add_argument("--status", action="store_true")
+    ap.add_argument("--only", default="", help="run exactly this job (for multi-GPU dispatch)")
     args = ap.parse_args()
 
     ARTIFACTS.mkdir(exist_ok=True)
@@ -209,6 +210,21 @@ def main() -> None:
 
     if args.status:
         print(json.dumps(summarize(done), indent=2))
+        return
+
+    if args.only:
+        job = next((j for j in job_list() if j["name"] == args.only), None)
+        if job is None:
+            raise SystemExit(f"unknown job: {args.only}")
+        if job["name"] in done:
+            print(f"{job['name']} already done", flush=True)
+            return
+        missing = [n for n in job.get("needs", []) if n not in done]
+        if missing:
+            raise SystemExit(f"{job['name']} blocked on {missing}")
+        result = run_job(job)
+        (ARTIFACTS / f"job_{job['name']}.json").write_text(json.dumps(result, indent=2))
+        print(json.dumps(result), flush=True)
         return
 
     ran = 0
