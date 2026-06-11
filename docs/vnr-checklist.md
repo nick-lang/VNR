@@ -65,16 +65,25 @@ Legend: `[ ]` todo, `[~]` in progress, `[x]` done, `[-]` deferred/blocked (note 
 - [x] Cloud smoke: 1 task, 0.825 s/step on L40S, projected $44.71 list (under budget after credits) — gate passed.
 - [x] Full 50-task fan-out (split by a billing-cap pause at 21/50; owner approved cost, plan upgraded, 29 resumed via `--banked`, no recompute). Actual: 43.3 GPU-h, ~$84.50 list (~2x projection — fan-out tasks ran slower than the smoke task).
 - [x] Decide H8: **ACCEPT** — 11/50 pass@2 (all pass@1), superset of all symbolic solves incl. 3b's overfit task `6df30ad6`; raw BFS's `0c786b71` not solved (union 12/50). See notebook `2026-06-10-stage4-compressarc.md`.
-- [ ] NEXT: design + pre-register H9 (cross-task program memory / amortization on the neural substrate — where VNR departs from reproduction); add artifact-saving (weights/latents) to the harness for it.
+- [x] NEXT decided (2026-06-10): H9 designed and pre-registered as Stage 5 below.
+
+## Stage 5 — Cross-task weight memory (H9) — first non-reproduction stage
+- [ ] Pre-register H9: LOO weight-soup warm-start over the 11 H8-solved tasks; accept = median steps-to-stable-solve <= 0.5x cold AND retention >= 10/11; kill = no speedup or retention <= 8/11.
+- [ ] Build `experiments/poc-vnr-s5-memory/`: transfer machinery (extract/average/load transformation weights; latents always fresh) + two-phase Modal harness; CompressARC stays unmodified.
+- [ ] Local CPU smoke: transfer mechanics (extract -> soup -> load) verified on tiny runs.
+- [ ] Owner go/no-go on cloud cost (~$55 list projected; local fallback ~58 h).
+- [ ] Phase 1 (cold + donors): 11 tasks, curves + weights; must reproduce H8 solves (determinism check).
+- [ ] Phase 2 (warm LOO + 2 same-task sanity + 5 unsolved exploratory).
+- [ ] Decide H9 against the pre-registered rule; record everywhere.
 
 ## Stage 2 — Neural proposer amortizes search (H6) — now after Stage 3
 - [ ] Tiny recurrent proposer trained on success traces over the enriched DSL; compare search cost vs uninformed.
 
-## Stage 5 — Test-time training, MDL-as-loss (H3) — renumbered from old Stage 4 (Stage 4 = H8 baseline)
+## Stage 6 — Test-time training, MDL-as-loss (H3) — renumbered (Stage 5 = H9 memory)
 - [ ] Label-free per-task adaptation; quantify lift and added cost.
 
-## Stage 6 — Integrate full refinement loop (H4)
+## Stage 7 — Integrate full refinement loop (H4)
 - [ ] Wire perception -> proposer+library -> verifier -> revise + TTT; measure AGI-1 vs AGI-2 gap.
 
-## Stage 7 — Write-up + spec v1
+## Stage 8 — Write-up + spec v1
 - [ ] Promote validated design to `spec/architecture-v1.md`; draft write-up; open-source PoCs.
