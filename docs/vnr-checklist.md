@@ -94,6 +94,9 @@ Legend: `[ ]` todo, `[~]` in progress, `[x]` done, `[-]` deferred/blocked (note 
 ## Stage 5d — Memory links + pruning at library scale (H12) [GATED: after Stage 7 loop, unless memory becomes the binding constraint]
 - [ ] ~400-donor library from ARC training tasks (~$110); links = measured transfer-benefit edges; pruning = evict never-retrieved / interference-causing donors (H9's measured failure mode). Per owner: no premature memory optimization before the other architecture pieces validate.
 
+## Stage 5e — Concept-level decomposition (H13) [GATED: blob-level addressing (5b/5c) must work first]
+- [ ] The hard rung. 5b-5d memories are monolithic BLOBS (whole model per task); concepts require retrievable PARTS. Granularity ladder: (a) layer/module-wise retrieval (testable with transfer.py now), (b) latent-space library, (c) symbolic BPE macros (Stage 1's accepted result — only concept-granularity memory validated so far, synthetic only). Bridges the neural memory track to the Stage 1 symbolic library result.
+
 ## Stage 6 — Test-time training, MDL-as-loss (H3) — renumbered (Stage 5 = H9 memory)
 - [ ] Label-free per-task adaptation; quantify lift and added cost.
 
