@@ -86,6 +86,14 @@ Legend: `[ ]` todo, `[~]` in progress, `[x]` done, `[-]` deferred/blocked (note 
 - [x] Decide H10: **KILL** (both conditions: median ratio 1.396 >= 1.0; retention 7/11 <= 8) with validity gate PASSED (both self-retrieval checks ranked own donor #1 with margin). ZERO wins — no task trained faster from its best foreign donor than from scratch; selection collapsed onto "universal donors" (`d2acf2cb` picked 6/11), not task families. Combined with H9: whole-blob weight memory is closed — the soup's wins came from averaging, not from any single donor's content. See notebook `2026-06-11-stage5b-retrieval.md`.
 - [x] NEXT decided (2026-06-11): memory track PAUSES with a clean two-kill negative (per owner's standing no-premature-memory-optimization direction); program returns to the remaining architecture slots (Stage 6 TTT / Stage 2 redefinition / Stage 7 loop).
 
+## Stage 5f — Jointly trained shared backbone (H14) — the amortization mechanism H9/H10 left alive
+- [x] Protocol decision (2026-06-11, $0, from banked data via `budget_analysis.py`): iteration budget cut 2000 -> 1000 steps (all 9 A40 cold solves stable by step 541, median 222; 9/9 retained at half cost). 2000 stays for benchmark-grade claims.
+- [x] Pre-register H14: joint training (shared transformation weights, per-task latents, round-robin) over 3 folds of the 9 A40-solvable tasks; warm-start held-out tasks; same numeric bar rescaled (accept median <= 0.5 + retention >= 8/9; kill >= 1.0 or <= 7/9); permutation-symmetry rationale recorded in advance.
+- [ ] Build `s5f_runner.py` (fold_/jret_/validity/probe jobs) + dispatcher `--stage 5f`.
+- [ ] Local smoke of joint-training mechanics (shared tensors actually shared; loss decreases on 2 tasks).
+- [ ] Owner go/no-go on ~$6 pod spend; redeploy A40 pod with the same network volume.
+- [ ] Run; decide H14 against the pre-registered rule; record everywhere.
+
 ## Stage 2 — Neural proposer amortizes search (H6) — now after Stage 3
 - [ ] Tiny recurrent proposer trained on success traces over the enriched DSL; compare search cost vs uninformed. NOTE: designed for the killed symbolic substrate — needs redefinition before it runs.
 
