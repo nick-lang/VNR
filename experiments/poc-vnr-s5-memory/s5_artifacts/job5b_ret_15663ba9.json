@@ -1,0 +1,12 @@
+{
+  "name": "ret_15663ba9",
+  "kind": "ret",
+  "task": "15663ba9",
+  "donor": "d2acf2cb",
+  "steps": 2000,
+  "seconds": 2589.6,
+  "solved_top1": false,
+  "solved_top2": false,
+  "steps_to_stable_solve": null,
+  "final_loss": 1033.5089111328125
+}

@@ -77,25 +77,26 @@ Legend: `[ ]` todo, `[~]` in progress, `[x]` done, `[-]` deferred/blocked (note 
 - [x] Decide H9: **KILL** (both conditions: median ratio 1.222 >= 1.0; retention 8/11 <= 8) with validity gate PASSED (61/151-step same-task re-solves) — a real negative, not a broken pipeline. Wins on `6df30ad6`/`cd3c21df`/`903d1b4a` prove transferable structure exists; losses prove averaging corrupts. See notebook `2026-06-11-stage5-weightsoup.md`.
 - [x] NEXT decided (2026-06-11): **H10 — retrieval-gated weight memory**, Stage 5b below.
 
-## Stage 5b — Addressable memory: retrieval-gated donor selection (H10)
-- [ ] Pre-register H10: trial-loss probe (100 steps/candidate, seeded identically) selects ONE donor; same numeric bar as H9 (median ratio <= 0.5, retention >= 10/11); probe overhead reported but not decision-bearing; self-retrieval validity gate.
-- [ ] Build `s5b_runner.py` (sel_/ret_/selfsel_ jobs vs banked H9 cold baselines) + dispatcher `--stage 5b`.
-- [ ] Local smoke of probe-selection logic.
-- [ ] Owner: redeploy 6x A40 pod with the SAME network volume (donors live there); verify `donor_*.pt` present, else retrain (~$5).
-- [ ] Run; decide H10 against the pre-registered rule; record everywhere.
-- [ ] Decide H9 against the pre-registered rule; record everywhere.
+## Stage 5b — Addressable memory: retrieval-gated donor selection (H10) — RUN; KILL-CRITERION FIRED
+- [x] Pre-register H10: trial-loss probe (100 steps/candidate, seeded identically) selects ONE donor; same numeric bar as H9 (median ratio <= 0.5, retention >= 10/11); probe overhead reported but not decision-bearing; self-retrieval validity gate.
+- [x] Build `s5b_runner.py` (sel_/ret_/selfsel_ jobs vs banked H9 cold baselines) + dispatcher `--stage 5b`.
+- [x] Local smoke of probe-selection logic.
+- [x] Owner: redeployed A40 pod (5x, not 6 — same hardware class, comparison unaffected) with the SAME network volume; all 11 `donor_*.pt` + 11 cold baselines survived, no retrain.
+- [x] Run: 24/24 jobs, 175 min wall, ~$6.50; artifacts fetched to `s5_artifacts/` (`job5b_*.json`, `stage5b_summary.json`); owner reminded to stop the pod.
+- [x] Decide H10: **KILL** (both conditions: median ratio 1.396 >= 1.0; retention 7/11 <= 8) with validity gate PASSED (both self-retrieval checks ranked own donor #1 with margin). ZERO wins — no task trained faster from its best foreign donor than from scratch; selection collapsed onto "universal donors" (`d2acf2cb` picked 6/11), not task families. Combined with H9: whole-blob weight memory is closed — the soup's wins came from averaging, not from any single donor's content. See notebook `2026-06-11-stage5b-retrieval.md`.
+- [x] NEXT decided (2026-06-11): memory track PAUSES with a clean two-kill negative (per owner's standing no-premature-memory-optimization direction); program returns to the remaining architecture slots (Stage 6 TTT / Stage 2 redefinition / Stage 7 loop).
 
 ## Stage 2 — Neural proposer amortizes search (H6) — now after Stage 3
-- [ ] Tiny recurrent proposer trained on success traces over the enriched DSL; compare search cost vs uninformed.
+- [ ] Tiny recurrent proposer trained on success traces over the enriched DSL; compare search cost vs uninformed. NOTE: designed for the killed symbolic substrate — needs redefinition before it runs.
 
-## Stage 5c — Learned addressing (H11) [GATED: only if H10 accepts]
-- [ ] Owner design direction (linked-hash-map memory, 2026-06-11). Train a task-encoder on H10's banked 11x10 probe matrix; nearest-neighbor in embedding space must predict the trial-loss winner. Replaces O(N) scan with a computed address. Run when convenient post-H10; becomes IMPERATIVE at Stage 5d scale.
+## Stage 5c — Learned addressing (H11) [CLOSED 2026-06-11: gate failed — H10 killed]
+- [-] Gate was "H10 accepts." With blob retrieval dead there is nothing worth addressing at blob granularity. The banked 11x10 probe matrix is kept as data.
 
-## Stage 5d — Memory links + pruning at library scale (H12) [GATED: after Stage 7 loop, unless memory becomes the binding constraint]
-- [ ] ~400-donor library from ARC training tasks (~$110); links = measured transfer-benefit edges; pruning = evict never-retrieved / interference-causing donors (H9's measured failure mode). Per owner: no premature memory optimization before the other architecture pieces validate.
+## Stage 5d — Memory links + pruning at library scale (H12) [CLOSED 2026-06-11: gate failed — blob memory killed twice (H9, H10)]
+- [-] A 400-donor library of monolithic blobs inherits H10's zero-win result at scale. Links/pruning only become meaningful again over decomposed (part-granularity) memories.
 
-## Stage 5e — Concept-level decomposition (H13) [GATED: blob-level addressing (5b/5c) must work first]
-- [ ] The hard rung. 5b-5d memories are monolithic BLOBS (whole model per task); concepts require retrievable PARTS. Granularity ladder: (a) layer/module-wise retrieval (testable with transfer.py now), (b) latent-space library, (c) symbolic BPE macros (Stage 1's accepted result — only concept-granularity memory validated so far, synthetic only). Bridges the neural memory track to the Stage 1 symbolic library result.
+## Stage 5e — Concept-level decomposition (H13) [DEFERRED: the only surviving form of weight-space memory]
+- [-] H10's kill REDIRECTS here rather than running it now: whole-blob reuse is dead (twice, by independent mechanisms), so any future weight-space memory must store PARTS — (a) layer/module-wise retrieval (testable with transfer.py), (b) latent-space library, (c) symbolic BPE macros (Stage 1's accepted result, still the program's only validated concept-granularity memory). Deferred per owner direction until the integrated loop (Stage 7) shows memory is the binding constraint.
 
 ## Stage 6 — Test-time training, MDL-as-loss (H3) — renumbered (Stage 5 = H9 memory)
 - [ ] Label-free per-task adaptation; quantify lift and added cost.

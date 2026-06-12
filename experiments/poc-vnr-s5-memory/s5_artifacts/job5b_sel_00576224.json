@@ -1,0 +1,49 @@
+{
+  "name": "sel_00576224",
+  "kind": "select",
+  "task": "00576224",
+  "selected": "45737921",
+  "ranking": [
+    {
+      "donor": "45737921",
+      "score": 1398.46
+    },
+    {
+      "donor": "d2acf2cb",
+      "score": 1439.8
+    },
+    {
+      "donor": "ef26cbf6",
+      "score": 1440.0
+    },
+    {
+      "donor": "6df30ad6",
+      "score": 1450.42
+    },
+    {
+      "donor": "cd3c21df",
+      "score": 1486.69
+    },
+    {
+      "donor": "8597cfd7",
+      "score": 1510.19
+    },
+    {
+      "donor": "903d1b4a",
+      "score": 1550.49
+    },
+    {
+      "donor": "15663ba9",
+      "score": 1737.76
+    },
+    {
+      "donor": "ae58858e",
+      "score": 1985.25
+    },
+    {
+      "donor": "1d0a4b61",
+      "score": 3783.54
+    }
+  ],
+  "seconds": 1198.9
+}

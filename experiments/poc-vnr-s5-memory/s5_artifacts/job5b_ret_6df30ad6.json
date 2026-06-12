@@ -1,0 +1,12 @@
+{
+  "name": "ret_6df30ad6",
+  "kind": "ret",
+  "task": "6df30ad6",
+  "donor": "d2acf2cb",
+  "steps": 2000,
+  "seconds": 2494.4,
+  "solved_top1": false,
+  "solved_top2": false,
+  "steps_to_stable_solve": null,
+  "final_loss": 572.910400390625
+}

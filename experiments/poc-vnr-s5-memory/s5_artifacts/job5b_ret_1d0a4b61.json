@@ -1,0 +1,12 @@
+{
+  "name": "ret_1d0a4b61",
+  "kind": "ret",
+  "task": "1d0a4b61",
+  "donor": "d2acf2cb",
+  "steps": 2000,
+  "seconds": 2667.0,
+  "solved_top1": true,
+  "solved_top2": true,
+  "steps_to_stable_solve": 167,
+  "final_loss": 1189.6976318359375
+}

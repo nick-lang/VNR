@@ -1,0 +1,12 @@
+{
+  "name": "ret_ae58858e",
+  "kind": "ret",
+  "task": "ae58858e",
+  "donor": "d2acf2cb",
+  "steps": 2000,
+  "seconds": 2412.2,
+  "solved_top1": true,
+  "solved_top2": true,
+  "steps_to_stable_solve": 326,
+  "final_loss": 428.004638671875
+}

@@ -1,0 +1,12 @@
+{
+  "name": "ret_8597cfd7",
+  "kind": "ret",
+  "task": "8597cfd7",
+  "donor": "cd3c21df",
+  "steps": 2000,
+  "seconds": 3096.6,
+  "solved_top1": false,
+  "solved_top2": true,
+  "steps_to_stable_solve": 153,
+  "final_loss": 844.5579833984375
+}

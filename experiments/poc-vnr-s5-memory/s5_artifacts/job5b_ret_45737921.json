@@ -1,0 +1,12 @@
+{
+  "name": "ret_45737921",
+  "kind": "ret",
+  "task": "45737921",
+  "donor": "cd3c21df",
+  "steps": 2000,
+  "seconds": 2658.2,
+  "solved_top1": true,
+  "solved_top2": true,
+  "steps_to_stable_solve": 1599,
+  "final_loss": 201.21749877929688
+}

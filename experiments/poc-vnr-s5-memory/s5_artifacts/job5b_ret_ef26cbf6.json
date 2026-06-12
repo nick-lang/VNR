@@ -1,0 +1,12 @@
+{
+  "name": "ret_ef26cbf6",
+  "kind": "ret",
+  "task": "ef26cbf6",
+  "donor": "d2acf2cb",
+  "steps": 2000,
+  "seconds": 2463.7,
+  "solved_top1": true,
+  "solved_top2": true,
+  "steps_to_stable_solve": 298,
+  "final_loss": 217.58322143554688
+}

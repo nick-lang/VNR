@@ -1,0 +1,49 @@
+{
+  "name": "sel_8597cfd7",
+  "kind": "select",
+  "task": "8597cfd7",
+  "selected": "cd3c21df",
+  "ranking": [
+    {
+      "donor": "cd3c21df",
+      "score": 1579.28
+    },
+    {
+      "donor": "00576224",
+      "score": 1700.88
+    },
+    {
+      "donor": "ae58858e",
+      "score": 1790.52
+    },
+    {
+      "donor": "15663ba9",
+      "score": 1796.7
+    },
+    {
+      "donor": "45737921",
+      "score": 1881.23
+    },
+    {
+      "donor": "1d0a4b61",
+      "score": 1959.09
+    },
+    {
+      "donor": "903d1b4a",
+      "score": 1962.55
+    },
+    {
+      "donor": "d2acf2cb",
+      "score": 1974.44
+    },
+    {
+      "donor": "ef26cbf6",
+      "score": 2299.25
+    },
+    {
+      "donor": "6df30ad6",
+      "score": 2617.11
+    }
+  ],
+  "seconds": 1472.8
+}

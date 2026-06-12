@@ -1,0 +1,123 @@
+{
+  "progress": "24/24 jobs",
+  "selections": {
+    "00576224": "45737921",
+    "15663ba9": "d2acf2cb",
+    "1d0a4b61": "d2acf2cb",
+    "45737921": "cd3c21df",
+    "6df30ad6": "d2acf2cb",
+    "8597cfd7": "cd3c21df",
+    "903d1b4a": "d2acf2cb",
+    "ae58858e": "d2acf2cb",
+    "cd3c21df": "45737921",
+    "d2acf2cb": "45737921",
+    "ef26cbf6": "d2acf2cb"
+  },
+  "self_retrieval": [
+    {
+      "task": "8597cfd7",
+      "own_first": true,
+      "top": "8597cfd7"
+    },
+    {
+      "task": "00576224",
+      "own_first": true,
+      "top": "00576224"
+    }
+  ],
+  "ratios": [
+    {
+      "task": "00576224",
+      "donor": "45737921",
+      "ret": 310,
+      "cold": 222,
+      "ratio": 1.396,
+      "full_cost_ratio": 5.901
+    },
+    {
+      "task": "15663ba9",
+      "donor": "d2acf2cb",
+      "ret": 2000,
+      "cold": 2000,
+      "ratio": 1.0,
+      "full_cost_ratio": 1.5
+    },
+    {
+      "task": "1d0a4b61",
+      "donor": "d2acf2cb",
+      "ret": 167,
+      "cold": 158,
+      "ratio": 1.057,
+      "full_cost_ratio": 7.386
+    },
+    {
+      "task": "45737921",
+      "donor": "cd3c21df",
+      "ret": 1599,
+      "cold": 62,
+      "ratio": 25.79,
+      "full_cost_ratio": 41.919
+    },
+    {
+      "task": "6df30ad6",
+      "donor": "d2acf2cb",
+      "ret": 2000,
+      "cold": 541,
+      "ratio": 3.697,
+      "full_cost_ratio": 5.545
+    },
+    {
+      "task": "8597cfd7",
+      "donor": "cd3c21df",
+      "ret": 153,
+      "cold": 138,
+      "ratio": 1.109,
+      "full_cost_ratio": 8.355
+    },
+    {
+      "task": "903d1b4a",
+      "donor": "d2acf2cb",
+      "ret": 662,
+      "cold": 480,
+      "ratio": 1.379,
+      "full_cost_ratio": 3.462
+    },
+    {
+      "task": "ae58858e",
+      "donor": "d2acf2cb",
+      "ret": 326,
+      "cold": 229,
+      "ratio": 1.424,
+      "full_cost_ratio": 5.79
+    },
+    {
+      "task": "cd3c21df",
+      "donor": "45737921",
+      "ret": 2000,
+      "cold": 2000,
+      "ratio": 1.0,
+      "full_cost_ratio": 1.5
+    },
+    {
+      "task": "d2acf2cb",
+      "donor": "45737921",
+      "ret": 2000,
+      "cold": 517,
+      "ratio": 3.868,
+      "full_cost_ratio": 5.803
+    },
+    {
+      "task": "ef26cbf6",
+      "donor": "d2acf2cb",
+      "ret": 298,
+      "cold": 186,
+      "ratio": 1.602,
+      "full_cost_ratio": 6.978
+    }
+  ],
+  "median_ratio": 1.396,
+  "median_full_cost_ratio": 5.803,
+  "retained": "7/11",
+  "self_retrieval_ok": true,
+  "decision_h10": "KILL"
+}
