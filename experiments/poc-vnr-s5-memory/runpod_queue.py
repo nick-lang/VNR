@@ -37,18 +37,22 @@ def n_gpus() -> int:
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--gpus", type=int, default=0, help="0 = autodetect")
-    ap.add_argument("--stage", default="5", choices=["5", "5b"])
+    ap.add_argument("--stage", default="5", choices=["5", "5b", "5f"])
     args = ap.parse_args()
     gpus = args.gpus or n_gpus()
 
-    if args.stage == "5b":
+    if args.stage == "5f":
+        import s5f_runner as runner
+        runner_script = HERE / "s5f_runner.py"
+    elif args.stage == "5b":
         import s5b_runner as runner
+        runner_script = HERE / "s5b_runner.py"
     else:
         import local_runner as runner
+        runner_script = HERE / "local_runner.py"
     global done_jobs, job_list, summarize, ARTIFACTS
     done_jobs, job_list, summarize = runner.done_jobs, runner.job_list, runner.summarize
     ARTIFACTS = runner.ARTIFACTS
-    runner_script = HERE / ("s5b_runner.py" if args.stage == "5b" else "local_runner.py")
 
     ARTIFACTS.mkdir(exist_ok=True)
     LOGS.mkdir(exist_ok=True)
@@ -101,7 +105,8 @@ def main() -> None:
 
     done = done_jobs()
     summary = summarize(done)
-    out_name = "stage5b_summary.json" if args.stage == "5b" else "stage5_local_summary.json"
+    out_name = {"5b": "stage5b_summary.json", "5f": "stage5f_summary.json"}.get(
+        args.stage, "stage5_local_summary.json")
     (HERE / out_name).write_text(json.dumps(summary, indent=2))
     failed = [j["name"] for j in jobs if j["name"] not in done]
     print(json.dumps(summary, indent=2))

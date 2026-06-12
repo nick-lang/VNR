@@ -89,8 +89,8 @@ Legend: `[ ]` todo, `[~]` in progress, `[x]` done, `[-]` deferred/blocked (note 
 ## Stage 5f — Jointly trained shared backbone (H14) — the amortization mechanism H9/H10 left alive
 - [x] Protocol decision (2026-06-11, $0, from banked data via `budget_analysis.py`): iteration budget cut 2000 -> 1000 steps (all 9 A40 cold solves stable by step 541, median 222; 9/9 retained at half cost). 2000 stays for benchmark-grade claims.
 - [x] Pre-register H14: joint training (shared transformation weights, per-task latents, round-robin) over 3 folds of the 9 A40-solvable tasks; warm-start held-out tasks; same numeric bar rescaled (accept median <= 0.5 + retention >= 8/9; kill >= 1.0 or <= 7/9); permutation-symmetry rationale recorded in advance.
-- [ ] Build `s5f_runner.py` (fold_/jret_/validity/probe jobs) + dispatcher `--stage 5f`.
-- [ ] Local smoke of joint-training mechanics (shared tensors actually shared; loss decreases on 2 tasks).
+- [x] Build `s5f_runner.py` (fold_/jval_/jret_/jprobe_ jobs; true tensor aliasing for shared weights) + dispatcher `--stage 5f`.
+- [x] Local smoke of joint-training mechanics: 2752 transformation tensors shared as identical objects across 2 task models; both losses dropped 8x in 30 round-robin cycles; backbone save/load round-trips.
 - [ ] Owner go/no-go on ~$6 pod spend; redeploy A40 pod with the same network volume.
 - [ ] Run; decide H14 against the pre-registered rule; record everywhere.
 
