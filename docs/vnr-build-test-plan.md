@@ -6,6 +6,8 @@ This is the concrete, staged engineering plan that sits under the high-level pro
 
 ## Thesis
 
+> **Goal clarification (2026-07-06, owner):** the program's main goal is a model **at least as powerful as frontier models at near-zero usage cost** — capability-per-dollar, not ARC standing. ARC stays as the yardstick (cheap, measures the missing capability), but every stage's result should be judged by whether the mechanism cheapens capability. See [plan.md](plan.md).
+
 ARC is fundamentally a **search for the shortest program consistent with the train pairs**. The current field fills the propose/verify/adapt loop with strong-but-partial components; no team combines the strongest option in every slot. VNR's bet is that the combination below covers each component's weakness — and that the genuinely under-explored piece is a **fixed interpreter + a cross-task growing library** (DreamCoder's wake-sleep idea, fused with MDL and test-time training), which the 2025 lit only hints at (CompressARC has MDL but no library; SOAR amortizes search but has no explicit library; the neurosymbolic system has a fixed, non-growing DSL).
 
 | Slot | VNR choice | Lifted from | Targets |

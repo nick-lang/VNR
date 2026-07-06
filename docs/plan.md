@@ -2,6 +2,8 @@
 
 A theory-first, low-compute program that produces (1) a rigorous research foundation, (2) a conceptual post-LLM architecture spec/manifesto, and (3) staged, laptop-runnable proof-of-concept experiments. The north star is the real open problem the 2026 literature has converged on: **the 2-3x compositional-generalization collapse from ARC-AGI-1 to ARC-AGI-2 that every paradigm exhibits, plus the fact that reasoning is still "knowledge-bound" and expensive.**
 
+> **Goal clarification (2026-07-06, owner):** the main goal is **a model at least as powerful as frontier models that costs next to nothing to use** — capability-per-dollar is the objective, not ARC scores. ARC was chosen as the benchmark because it is cheap to run and measures exactly the capability (fluid, compositional, sample-efficient reasoning) that scaling has not bought; it remains the operational yardstick, but it is a proxy. Any result in this program should be read through the question: *does this mechanism reduce the cost of frontier-level capability?* (This makes L5 — cost/economics — the primary limitation, with L1-L4 as the suspected causes of why capability is currently expensive.)
+
 ## Guiding theses (your intuitions, mapped to live research)
 
 - **"Context limits memory."** Separate *computation* from *addressable memory* (the von Neumann analogy). Live work: SSMs with constant memory (Mamba-3), power-law memory (Sessa), and external/episodic memory.

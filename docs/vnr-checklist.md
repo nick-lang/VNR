@@ -94,7 +94,10 @@ Legend: `[ ]` todo, `[~]` in progress, `[x]` done, `[-]` deferred/blocked (note 
 - [-] Owner go/no-go on ~$6 pod spend; redeploy A40 pod with the same network volume. BLOCKED/STALE (2026-07-06): the A40 pods are no longer available; owner now has a local RTX 5090 (32 GB).
 - [ ] Rebase cold baselines on the new reference hardware: re-run the 9 cold tasks (1000 steps) locally on the 5090 before any H14 warm arm (cross-hardware caveat: A40 reproduced only 9/11 L40S solves, so A40 colds cannot anchor 5090 warms).
 - [ ] Run H14 locally on the 5090 ($0); decide against the pre-registered rule; record everywhere.
-- [ ] Strategic review in progress (2026-07-06): owner questioning plausibility/approach; targeted literature pass under consideration before further spend.
+
+## Strategic review (2026-07-06)
+- [x] Goal clarified (owner): main goal = frontier-level capability at near-zero usage cost; ARC is the benchmark proxy, not the goal. Recorded in `docs/plan.md` + build-test plan thesis.
+- [~] Targeted literature pass BEFORE further spend: (1) model merging / permutation alignment (explains H9/H10), (2) library learning + critiques (H5 external validity), (3) meta-learning priors (H14 design), (4) ARC Prize 2025-26 developments, (5) capability-per-dollar frontier (distillation, small reasoning models, inference economics). Deliverable: notes in `lit/` + written verdict on whether H14's design changes.
 
 ## Stage 2 — Neural proposer amortizes search (H6) — now after Stage 3
 - [ ] Tiny recurrent proposer trained on success traces over the enriched DSL; compare search cost vs uninformed. NOTE: designed for the killed symbolic substrate — needs redefinition before it runs.
