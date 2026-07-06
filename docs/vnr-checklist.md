@@ -92,8 +92,11 @@ Legend: `[ ]` todo, `[~]` in progress, `[x]` done, `[-]` deferred/blocked (note 
 - [x] Build `s5f_runner.py` (fold_/jval_/jret_/jprobe_ jobs; true tensor aliasing for shared weights) + dispatcher `--stage 5f`.
 - [x] Local smoke of joint-training mechanics: 2752 transformation tensors shared as identical objects across 2 task models; both losses dropped 8x in 30 round-robin cycles; backbone save/load round-trips.
 - [-] Owner go/no-go on ~$6 pod spend; redeploy A40 pod with the same network volume. BLOCKED/STALE (2026-07-06): the A40 pods are no longer available; owner now has a local RTX 5090 (32 GB).
-- [ ] Rebase cold baselines on the new reference hardware: re-run the 9 cold tasks (1000 steps) locally on the 5090 before any H14 warm arm (cross-hardware caveat: A40 reproduced only 9/11 L40S solves, so A40 colds cannot anchor 5090 warms).
-- [ ] Run H14 locally on the 5090 ($0); decide against the pre-registered rule; record everywhere.
+- [x] 5090 environment: `.venv-carc` rebuilt (Python 3.12, **torch 2.11.0+cu128** — protocol deviation from the pinned 2.5.1, which predates Blackwell/sm_120; recorded here and in the notebook). CompressARC re-cloned (commit `83a2221`, Jan 2026 upstream). CUDA verified on the 5090; 100-step GPU smoke OK (~1.0 s/step — ~2x the 3070 Ti, slower than L40S; CompressARC is overhead-bound, not compute-bound).
+- [x] Transfer + joint-training mechanics smokes re-run on the new torch: both PASS (10984 tensors round-trip exact; 2752 shared tensors alias correctly; losses drop).
+- [x] `s5f_runner.py` extended per the amendments: `cold5090_*` rebase jobs (all 11 H8-solved tasks, 1000 steps), jret weights saved for the delta-geometry readout, `--deltas` mode (pairwise cosine of per-task deltas vs fold backbone), summary decision now anchored to 5090 colds.
+- [~] Full H14 queue RUNNING locally on the 5090 ($0): 11 colds -> 4 fold joint-trainings -> 3 validity gates -> 9 jret -> 3 probes (30 jobs, banked/resumable, est. ~12-16 h serial).
+- [ ] Decide H14 (and delta-geometry readout) against the pre-registered rule; record everywhere.
 
 ## Strategic review (2026-07-06)
 - [x] Goal clarified (owner): main goal = frontier-level capability at near-zero usage cost; ARC is the benchmark proxy, not the goal. Recorded in `docs/plan.md` + build-test plan thesis.

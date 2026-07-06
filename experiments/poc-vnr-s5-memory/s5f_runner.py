@@ -9,6 +9,10 @@ so every shared-weight update serves all tasks at once (single shared basin).
 Job kinds (3 folds of 3 over the 9 A40-cold-solvable tasks; cold arm = banked
 H9 A40 baselines, no recompute):
 
+  cold5090_T  hardware rebase (2026-07-06): re-run each of the 11 H8-solved
+              tasks cold at 1000 steps on the local RTX 5090 (A40 pods gone;
+              cross-hardware caveat forbids comparing 5090 warms to A40
+              colds). These become the cold arm for the ratio.
   fold_N    joint-train a backbone on the 6 tasks NOT in fold N
             (1000 cycles x 6 tasks = 6000 shared-weight updates); save
             backbone_fN.pt.
@@ -16,10 +20,13 @@ H9 A40 baselines, no recompute):
   jval_N    validity gate: warm-start the first task of fold N's TRAINING set
             from backbone_fN; must re-solve stably within ~200 steps.
   jret_T    the hypothesis test: warm-start held-out task T from its fold's
-            backbone, 1000 steps (the new iteration budget).
+            backbone, 1000 steps (the new iteration budget). Final
+            transformation weights are saved (jretw_T.pt) for the
+            delta-geometry readout (2026-07-06 lit-pass amendment).
   jprobe_T  exploratory: warm-start 3 H8-unsolved tasks from backbone_all.
 
 Usage mirrors local_runner.py:  --status | --only JOB | --max-jobs N
+Extra:      --deltas  (delta-geometry readout over saved jretw_*.pt)
 """
 from __future__ import annotations
 
@@ -33,16 +40,20 @@ HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 
 from local_runner import (  # noqa: E402
-    ARTIFACTS, UNSOLVED_PROBE, _env, _stable_solve_step,
+    ARTIFACTS, SOLVED, UNSOLVED_PROBE, _env, _stable_solve_step,
 )
 
-# The 9 tasks whose A40 cold runs solved (banked steps_to_stable_solve).
+# The 9 tasks whose A40 cold runs solved (fold composition fixed at
+# pre-registration; unchanged by the 2026-07-06 hardware rebase).
 SOLVED_A40 = [
     "00576224", "1d0a4b61", "45737921", "6df30ad6", "8597cfd7",
     "903d1b4a", "ae58858e", "d2acf2cb", "ef26cbf6",
 ]
 FOLDS = [SOLVED_A40[0:3], SOLVED_A40[3:6], SOLVED_A40[6:9]]
 PROBE_TASKS = UNSOLVED_PROBE[:3]
+# Hardware rebase: cold arm re-run on the 5090 for ALL 11 H8-solved tasks
+# (the 2 A40-cold-failures included, as a free cross-hardware datapoint).
+COLD_TASKS = list(SOLVED)
 
 JOINT_CYCLES = 1000
 RET_STEPS = 1000   # iteration budget (pre-registered cut from 2000)
@@ -57,6 +68,8 @@ def fold_of(task_id: str) -> int:
 
 def job_list() -> list[dict]:
     jobs = []
+    for tid in COLD_TASKS:
+        jobs.append({"name": f"cold5090_{tid}", "kind": "cold5090", "task": tid})
     for i in range(3):
         train_tasks = [t for t in SOLVED_A40 if t not in FOLDS[i]]
         jobs.append({"name": f"fold_{i}", "kind": "fold", "tasks": train_tasks})
@@ -179,26 +192,34 @@ def _joint_train(task_ids: list[str], out_name: str) -> dict:
     }
 
 
-def _warm_run(task_id: str, backbone: str, steps: int) -> dict:
+def _warm_run(task_id: str, backbone: str | None, steps: int,
+              save_weights: str | None = None) -> dict:
+    """Train one task for `steps`; warm-start from `backbone` if given (else cold)."""
     e = _env()
     torch, transfer = e["torch"], e["transfer"]
     import numpy as np
 
     t0 = time.time()
-    blob = transfer.from_bytes((ARTIFACTS / backbone).read_bytes())
+    blob = (transfer.from_bytes((ARTIFACTS / backbone).read_bytes())
+            if backbone else None)
     torch.manual_seed(0)
     np.random.seed(0)
     task = e["preprocessing"].preprocess_tasks("evaluation", [task_id])[0]
     model = e["arc_compressor"].ARCCompressor(task)
-    transfer.load_weights(model, blob)
+    if blob is not None:
+        transfer.load_weights(model, blob)
     opt = torch.optim.Adam(model.weights_list, lr=0.01, betas=(0.5, 0.9))
     logger = e["solution_selection"].Logger(task)
+    src = backbone or "cold"
     for step in range(steps):
         e["train"].take_step(task, model, opt, step, logger)
         if (step + 1) % 200 == 0:
-            print(f"  [{task_id}<-{backbone}] step {step + 1}/{steps} "
+            print(f"  [{task_id}<-{src}] step {step + 1}/{steps} "
                   f"elapsed={time.time() - t0:.0f}s loss={logger.loss_curve[-1]:.1f}",
                   flush=True)
+    if save_weights:
+        (ARTIFACTS / save_weights).write_bytes(
+            transfer.to_bytes(transfer.extract_weights(model)))
     top1 = (logger.solution_most_frequent is not None
             and hash(logger.solution_most_frequent) == task.solution_hash)
     top2 = top1 or (logger.solution_second_most_frequent is not None
@@ -216,18 +237,20 @@ def run_job(job: dict) -> dict:
         out_name = ("backbone_all.pt" if job["name"] == "fold_all"
                     else f"backbone_f{job['name'].split('_')[1]}.pt")
         result = _joint_train(job["tasks"], out_name)
+    elif job["kind"] == "cold5090":
+        result = _warm_run(job["task"], None, RET_STEPS)
     else:
         steps = VAL_STEPS if job["kind"] == "jval" else RET_STEPS
-        result = _warm_run(job["task"], job["backbone"], steps)
+        save = f"jretw_{job['task']}.pt" if job["kind"] == "jret" else None
+        result = _warm_run(job["task"], job["backbone"], steps, save_weights=save)
     result.update(name=job["name"], kind=job["kind"])
     return result
 
 
 def summarize(done: dict[str, dict]) -> dict:
-    cold = {}
-    for f in ARTIFACTS.glob("job_cold_*.json"):
-        r = json.loads(f.read_text())
-        cold[r["task"]] = r
+    # Cold arm = the 5090 rebased colds (hardware pivot 2026-07-06); the old
+    # A40 job_cold_*.json files are no longer decision-bearing.
+    cold = {r["task"]: r for r in done.values() if r["kind"] == "cold5090"}
     jret = {r["task"]: r for r in done.values() if r["kind"] == "jret"}
     jval = sorted((r for r in done.values() if r["kind"] == "jval"),
                   key=lambda r: r["name"])
@@ -235,6 +258,9 @@ def summarize(done: dict[str, dict]) -> dict:
 
     out: dict = {
         "progress": f"{len(done)}/{len(job_list())} jobs",
+        "cold5090_solved": f"{sum(r['solved_top2'] for r in cold.values())}/{len(cold)}",
+        "cold5090_unsolved_tasks": sorted(
+            t for t, r in cold.items() if not r["solved_top2"]),
         "validity": [{"fold": r["name"], "task": r["task"],
                       "steps_to_stable_solve": r["steps_to_stable_solve"]}
                      for r in jval],
@@ -245,7 +271,7 @@ def summarize(done: dict[str, dict]) -> dict:
         for tid, r in sorted(jret.items()):
             if tid not in cold:
                 continue
-            c = cold[tid]["steps_to_stable_solve"] or 2000
+            c = cold[tid]["steps_to_stable_solve"] or RET_STEPS
             w = r["steps_to_stable_solve"] or RET_STEPS
             if r["solved_top2"]:
                 retained += 1
@@ -271,12 +297,76 @@ def summarize(done: dict[str, dict]) -> dict:
     return out
 
 
+def _flatten_blob(blob) -> "object":
+    """Flatten a transfer blob (nested lists of tensors) into one 1-D tensor."""
+    import torch
+
+    flat = []
+
+    def walk(node):
+        if node is None:
+            return
+        if isinstance(node, torch.Tensor):
+            flat.append(node.float().flatten())
+            return
+        if isinstance(node, list):
+            for c in node:
+                walk(c)
+            return
+        raise TypeError(f"unexpected node: {type(node)}")
+
+    for attr in sorted(blob.keys()):
+        walk(blob[attr])
+    return torch.cat(flat)
+
+
+def delta_geometry() -> dict:
+    """Secondary readout (2026-07-06 amendment, not decision-bearing):
+    per-task deltas vs each fold's backbone; pairwise cosine matrix.
+    Task-vector geometry predicts deltas from a shared base are composable."""
+    import torch
+    sys.path.insert(0, str(HERE))
+    import transfer
+
+    deltas, norms = {}, {}
+    for tid in SOLVED_A40:
+        w = ARTIFACTS / f"jretw_{tid}.pt"
+        bb = ARTIFACTS / f"backbone_f{fold_of(tid)}.pt"
+        if not (w.exists() and bb.exists()):
+            continue
+        d = (_flatten_blob(transfer.from_bytes(w.read_bytes()))
+             - _flatten_blob(transfer.from_bytes(bb.read_bytes())))
+        deltas[tid] = d
+        norms[tid] = round(float(d.norm()), 2)
+    tids = sorted(deltas)
+    cos = {}
+    for i, a in enumerate(tids):
+        for b in tids[i + 1:]:
+            c = torch.nn.functional.cosine_similarity(
+                deltas[a], deltas[b], dim=0)
+            cos[f"{a}~{b}"] = round(float(c), 4)
+    vals = sorted(cos.values())
+    out = {"tasks": tids, "delta_norms": norms, "pairwise_cosine": cos}
+    if vals:
+        out["cosine_median"] = vals[len(vals) // 2]
+        out["cosine_min"] = vals[0]
+        out["cosine_max"] = vals[-1]
+    return out
+
+
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--max-jobs", type=int, default=0)
     ap.add_argument("--status", action="store_true")
     ap.add_argument("--only", default="")
+    ap.add_argument("--deltas", action="store_true")
     args = ap.parse_args()
+
+    if args.deltas:
+        result = delta_geometry()
+        (ARTIFACTS / "delta_geometry.json").write_text(json.dumps(result, indent=2))
+        print(json.dumps(result, indent=2))
+        return
 
     ARTIFACTS.mkdir(exist_ok=True)
     done = done_jobs()
