@@ -97,7 +97,8 @@ Legend: `[ ]` todo, `[~]` in progress, `[x]` done, `[-]` deferred/blocked (note 
 
 ## Strategic review (2026-07-06)
 - [x] Goal clarified (owner): main goal = frontier-level capability at near-zero usage cost; ARC is the benchmark proxy, not the goal. Recorded in `docs/plan.md` + build-test plan thesis.
-- [~] Targeted literature pass BEFORE further spend: (1) model merging / permutation alignment (explains H9/H10), (2) library learning + critiques (H5 external validity), (3) meta-learning priors (H14 design), (4) ARC Prize 2025-26 developments, (5) capability-per-dollar frontier (distillation, small reasoning models, inference economics). Deliverable: notes in `lit/` + written verdict on whether H14's design changes.
+- [x] Targeted literature pass done ($0): 7 notes in `lit/` + verdict in `experiments/notebook/2026-07-06-lit-pass-strategic-review.md`. Headlines: H9/H10 kills match known merging negatives (basin misalignment), so they don't indict the memory thesis; library thesis got real-ARC external validation (Pang, ARC Prize runner-up) plus a compute-matching evaluation warning; ArcMemo independently confirms parts-not-blobs memory (Stage 5e direction); ARC Prize Foundation names the EFFICIENCY gap as the open science problem — matching the clarified goal; frontier-level usage cost is rising ~3-18x/yr, so cheap capability won't arrive by default.
+- [x] H14 design consequences pre-registered in `ledger/hypotheses.md`: 5090 cold-baseline rebase, H14b (Reptile-style outer step) as the escalation if H14 is marginal/kill, and a delta-geometry secondary readout (task-vector cosine matrix) feeding Stage 5e.
 
 ## Stage 2 — Neural proposer amortizes search (H6) — now after Stage 3
 - [ ] Tiny recurrent proposer trained on success traces over the enriched DSL; compare search cost vs uninformed. NOTE: designed for the killed symbolic substrate — needs redefinition before it runs.
