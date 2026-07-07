@@ -27,11 +27,17 @@ H9 A40 baselines, no recompute):
 
 Usage mirrors local_runner.py:  --status | --only JOB | --max-jobs N
 Extra:      --deltas  (delta-geometry readout over saved jretw_*.pt)
+            --worker  (claim-based loop; run N of these in parallel on one
+                       GPU — the 5090 is <30% utilized by a single job, and
+                       the decision metric is STEPS, not wall-clock, so
+                       concurrency cannot affect comparability)
+            --clear-claims  (drop stale claims after a crash)
 """
 from __future__ import annotations
 
 import argparse
 import json
+import os
 import sys
 import time
 from pathlib import Path
@@ -354,13 +360,74 @@ def delta_geometry() -> dict:
     return out
 
 
+CLAIMS = ARTIFACTS / "claims5f"
+
+
+def _try_claim(name: str) -> bool:
+    """Atomically claim a job; False if another worker holds it."""
+    CLAIMS.mkdir(exist_ok=True)
+    try:
+        with open(CLAIMS / f"{name}.claim", "x", encoding="utf-8") as f:
+            f.write(f"pid={os.getpid()} at={time.time():.0f}\n")
+        return True
+    except FileExistsError:
+        return False
+
+
+def worker_loop() -> None:
+    """Pull runnable unclaimed jobs until the queue is exhausted."""
+    while True:
+        done = done_jobs()
+        remaining = [j for j in job_list() if j["name"] not in done]
+        if not remaining:
+            print("worker: queue empty, exiting", flush=True)
+            return
+        ran_one = False
+        for job in remaining:
+            if any(n not in done for n in job.get("needs", [])):
+                continue
+            if not _try_claim(job["name"]):
+                continue
+            print(f"=== {job['name']} ===", flush=True)
+            result = run_job(job)
+            (ARTIFACTS / f"job5f_{job['name']}.json").write_text(
+                json.dumps(result, indent=2))
+            ran_one = True
+            break
+        if not ran_one:
+            # Jobs remain but all are claimed or dep-blocked; wait for folds.
+            time.sleep(30)
+
+
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--max-jobs", type=int, default=0)
     ap.add_argument("--status", action="store_true")
     ap.add_argument("--only", default="")
     ap.add_argument("--deltas", action="store_true")
+    ap.add_argument("--worker", action="store_true")
+    ap.add_argument("--clear-claims", action="store_true")
     args = ap.parse_args()
+
+    if args.clear_claims:
+        done = done_jobs()
+        n = 0
+        for c in CLAIMS.glob("*.claim"):
+            if c.stem not in done:
+                c.unlink()
+                n += 1
+        print(f"cleared {n} stale claims")
+        return
+
+    if args.worker:
+        ARTIFACTS.mkdir(exist_ok=True)
+        worker_loop()
+        done = done_jobs()
+        if len(done) == len(job_list()):
+            summary = summarize(done)
+            (HERE / "stage5f_summary.json").write_text(json.dumps(summary, indent=2))
+            print(json.dumps(summary, indent=2))
+        return
 
     if args.deltas:
         result = delta_geometry()
