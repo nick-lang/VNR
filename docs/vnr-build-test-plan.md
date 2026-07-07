@@ -109,6 +109,7 @@ Ordering principle: **test the riskiest, cheapest-to-falsify assumption first.**
 - **Build:** at test time, adapt the proposer/core by minimizing the MDL/consistency energy on the task's train pairs (label-free TTT). Quantify lift and added cost.
 - **Metric / decision rule (H3):** solve-rate lift vs the no-TTT solver, and the compute it costs (cost is a first-class metric).
 - **Deliverable:** `experiments/poc-vnr-s4-ttt/`, notebook + results + spec update.
+- **Redefined (2026-07-07) as Stage 6 / H15:** in the CompressARC substrate all training is already test-time, so the live H3 question is how to SPEND test-time compute. H15 tests restart diversity + label-free MDL selection vs longer convergence at matched compute (PTRM-inspired; see `lit/2026-trm-followups.md`), on the 39 H8-unsolved dev tasks. Pre-registered in `ledger/hypotheses.md`; runner `experiments/poc-vnr-s6-ttc/`. Weight-space track closure (owner, 2026-07-07): H14b will not run; Stage 5e stays deferred.
 
 ## Stage 5 — Integrate the full refinement loop (H4)
 - **Goal:** end-to-end VNR; measure the gap that matters.

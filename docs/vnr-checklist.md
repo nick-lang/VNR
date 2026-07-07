@@ -97,7 +97,7 @@ Legend: `[ ]` todo, `[~]` in progress, `[x]` done, `[-]` deferred/blocked (note 
 - [x] `s5f_runner.py` extended per the amendments: `cold5090_*` rebase jobs (all 11 H8-solved tasks, 1000 steps), jret weights saved for the delta-geometry readout, `--deltas` mode (pairwise cosine of per-task deltas vs fold backbone), summary decision now anchored to 5090 colds.
 - [x] Full H14 queue run locally on the 5090 ($0): 30/30 jobs, ~10.4 h wall (4-way parallel workers, ~1.36x aggregate; WDDM context switching caps the gain). 5090 cold rebase clean: 9/11, same tasks as A40.
 - [x] Decide H14: **VOID per pre-registered rule — validity gate failed 3/3** (no backbone re-solved its own training task; plumbing separately verified). Descriptive: median jret/cold 3.436 (warm slower on all 9), retention 6/9, probes 0/3. Delta readout: per-task deltas orthogonal (median cos 0.0067) — nothing to amortize. Third weight-space-memory negative (H9, H10, H14). See notebook `2026-07-07-stage5f-joint-backbone.md`.
-- [ ] OWNER FORK: H14b (Reptile outer step, ~1 night, $0 — pre-registration formality; trigger did not fire and premise undercut by delta orthogonality) vs CLOSE the weight-space amortization track and return to Stage 6 (TTT-as-MDL) / Stage 2 (proposer redefinition). Recommendation: close.
+- [x] OWNER FORK resolved (2026-07-07): **CLOSE the weight-space amortization track** (owner accepted recommendation). H14b will not run; Stage 5e stays deferred; three independent negatives stand (H9, H10, H14).
 
 ## Strategic review (2026-07-06)
 - [x] Goal clarified (owner): main goal = frontier-level capability at near-zero usage cost; ARC is the benchmark proxy, not the goal. Recorded in `docs/plan.md` + build-test plan thesis.
@@ -116,8 +116,11 @@ Legend: `[ ]` todo, `[~]` in progress, `[x]` done, `[-]` deferred/blocked (note 
 ## Stage 5e — Concept-level decomposition (H13) [DEFERRED: the only surviving form of weight-space memory]
 - [-] H10's kill REDIRECTS here rather than running it now: whole-blob reuse is dead (twice, by independent mechanisms), so any future weight-space memory must store PARTS — (a) layer/module-wise retrieval (testable with transfer.py), (b) latent-space library, (c) symbolic BPE macros (Stage 1's accepted result, still the program's only validated concept-granularity memory). Deferred per owner direction until the integrated loop (Stage 7) shows memory is the binding constraint.
 
-## Stage 6 — Test-time training, MDL-as-loss (H3) — renumbered (Stage 5 = H9 memory)
-- [ ] Label-free per-task adaptation; quantify lift and added cost.
+## Stage 6 — Test-time compute: restart diversity + MDL selection (H15; H3 redefined for the neural substrate)
+- [x] Pre-register H15 (2026-07-07): on the 39 H8-unsolved dev tasks, arm A = 1x2000 steps seed 0 vs arm B = 2x1000 steps seeds 1/2 with tail-loss (MDL) selection, matched compute; ACCEPT if B >= A+2 and B >= 2; KILL if B <= A. Secondary: selection accuracy, union-of-B oracle, seed-sensitivity check on the 9 solved tasks.
+- [x] Build `experiments/poc-vnr-s6-ttc/s6_runner.py` (claims-based parallel workers, banked/resumable; 126 jobs, ~165k steps, ~34h at measured 4-way throughput, $0).
+- [~] Run on the 5090 (launched 2026-07-07; owner may pause/resume freely — kill workers, `--clear-claims`, relaunch).
+- [ ] Decide H15 against the pre-registered rule; record everywhere.
 
 ## Stage 7 — Integrate full refinement loop (H4)
 - [ ] Wire perception -> proposer+library -> verifier -> revise + TTT; measure AGI-1 vs AGI-2 gap.
