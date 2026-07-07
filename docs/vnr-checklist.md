@@ -95,8 +95,9 @@ Legend: `[ ]` todo, `[~]` in progress, `[x]` done, `[-]` deferred/blocked (note 
 - [x] 5090 environment: `.venv-carc` rebuilt (Python 3.12, **torch 2.11.0+cu128** — protocol deviation from the pinned 2.5.1, which predates Blackwell/sm_120; recorded here and in the notebook). CompressARC re-cloned (commit `83a2221`, Jan 2026 upstream). CUDA verified on the 5090; 100-step GPU smoke OK (~1.0 s/step — ~2x the 3070 Ti, slower than L40S; CompressARC is overhead-bound, not compute-bound).
 - [x] Transfer + joint-training mechanics smokes re-run on the new torch: both PASS (10984 tensors round-trip exact; 2752 shared tensors alias correctly; losses drop).
 - [x] `s5f_runner.py` extended per the amendments: `cold5090_*` rebase jobs (all 11 H8-solved tasks, 1000 steps), jret weights saved for the delta-geometry readout, `--deltas` mode (pairwise cosine of per-task deltas vs fold backbone), summary decision now anchored to 5090 colds.
-- [~] Full H14 queue RUNNING locally on the 5090 ($0): 11 colds -> 4 fold joint-trainings -> 3 validity gates -> 9 jret -> 3 probes (30 jobs, banked/resumable, est. ~12-16 h serial).
-- [ ] Decide H14 (and delta-geometry readout) against the pre-registered rule; record everywhere.
+- [x] Full H14 queue run locally on the 5090 ($0): 30/30 jobs, ~10.4 h wall (4-way parallel workers, ~1.36x aggregate; WDDM context switching caps the gain). 5090 cold rebase clean: 9/11, same tasks as A40.
+- [x] Decide H14: **VOID per pre-registered rule — validity gate failed 3/3** (no backbone re-solved its own training task; plumbing separately verified). Descriptive: median jret/cold 3.436 (warm slower on all 9), retention 6/9, probes 0/3. Delta readout: per-task deltas orthogonal (median cos 0.0067) — nothing to amortize. Third weight-space-memory negative (H9, H10, H14). See notebook `2026-07-07-stage5f-joint-backbone.md`.
+- [ ] OWNER FORK: H14b (Reptile outer step, ~1 night, $0 — pre-registration formality; trigger did not fire and premise undercut by delta orthogonality) vs CLOSE the weight-space amortization track and return to Stage 6 (TTT-as-MDL) / Stage 2 (proposer redefinition). Recommendation: close.
 
 ## Strategic review (2026-07-06)
 - [x] Goal clarified (owner): main goal = frontier-level capability at near-zero usage cost; ARC is the benchmark proxy, not the goal. Recorded in `docs/plan.md` + build-test plan thesis.

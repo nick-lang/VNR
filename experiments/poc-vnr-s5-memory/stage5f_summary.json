@@ -1,0 +1,86 @@
+{
+  "progress": "30/30 jobs",
+  "cold5090_solved": "9/11",
+  "cold5090_unsolved_tasks": [
+    "15663ba9",
+    "cd3c21df"
+  ],
+  "validity": [
+    {
+      "fold": "jval_0",
+      "task": "6df30ad6",
+      "steps_to_stable_solve": null
+    },
+    {
+      "fold": "jval_1",
+      "task": "00576224",
+      "steps_to_stable_solve": null
+    },
+    {
+      "fold": "jval_2",
+      "task": "00576224",
+      "steps_to_stable_solve": null
+    }
+  ],
+  "probe_new_solves": [],
+  "ratios": [
+    {
+      "task": "00576224",
+      "jret": 1000,
+      "cold": 230,
+      "ratio": 4.348
+    },
+    {
+      "task": "1d0a4b61",
+      "jret": 246,
+      "cold": 154,
+      "ratio": 1.597
+    },
+    {
+      "task": "45737921",
+      "jret": 156,
+      "cold": 152,
+      "ratio": 1.026
+    },
+    {
+      "task": "6df30ad6",
+      "jret": 1000,
+      "cold": 160,
+      "ratio": 6.25
+    },
+    {
+      "task": "8597cfd7",
+      "jret": 632,
+      "cold": 117,
+      "ratio": 5.402
+    },
+    {
+      "task": "903d1b4a",
+      "jret": 433,
+      "cold": 356,
+      "ratio": 1.216
+    },
+    {
+      "task": "ae58858e",
+      "jret": 932,
+      "cold": 268,
+      "ratio": 3.478
+    },
+    {
+      "task": "d2acf2cb",
+      "jret": 1000,
+      "cold": 291,
+      "ratio": 3.436
+    },
+    {
+      "task": "ef26cbf6",
+      "jret": 242,
+      "cold": 177,
+      "ratio": 1.367
+    }
+  ],
+  "median_ratio": 3.436,
+  "retained": "6/9",
+  "validity_ok": false,
+  "decision_h14": "VOID (validity gate failed)"
+}
