@@ -1,0 +1,25 @@
+{
+  "progress": "126/126 jobs",
+  "tasks_complete": "39/39",
+  "armA_solves": [
+    "981571dc",
+    "be03b35f",
+    "e66aafb8"
+  ],
+  "armB_solves": [
+    "73182012",
+    "e66aafb8"
+  ],
+  "unionB_oracle_solves": [
+    "73182012",
+    "be03b35f",
+    "e66aafb8"
+  ],
+  "selection_accuracy": "1/2",
+  "seedchk_retained": "7/9",
+  "seedchk_lost": [
+    "00576224",
+    "6df30ad6"
+  ],
+  "decision_h15": "KILL"
+}

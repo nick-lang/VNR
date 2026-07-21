@@ -119,8 +119,9 @@ Legend: `[ ]` todo, `[~]` in progress, `[x]` done, `[-]` deferred/blocked (note 
 ## Stage 6 — Test-time compute: restart diversity + MDL selection (H15; H3 redefined for the neural substrate)
 - [x] Pre-register H15 (2026-07-07): on the 39 H8-unsolved dev tasks, arm A = 1x2000 steps seed 0 vs arm B = 2x1000 steps seeds 1/2 with tail-loss (MDL) selection, matched compute; ACCEPT if B >= A+2 and B >= 2; KILL if B <= A. Secondary: selection accuracy, union-of-B oracle, seed-sensitivity check on the 9 solved tasks.
 - [x] Build `experiments/poc-vnr-s6-ttc/s6_runner.py` (claims-based parallel workers, banked/resumable; 126 jobs, ~165k steps, ~34h at measured 4-way throughput, $0).
-- [~] Run on the 5090 (launched 2026-07-07; owner may pause/resume freely — kill workers, `--clear-claims`, relaunch).
-- [ ] Decide H15 against the pre-registered rule; record everywhere.
+- [x] Run on the 5090: 126/126 jobs, 169.3 GPU-h summed, $0, 2026-07-07 -> 07-20 (survived owner pauses, an IDE-session death, and a reboot via the banked queue).
+- [x] Decide H15: **KILL per pre-registered rule** — arm A 3/39 vs arm B 2/39; union-of-B oracle ties A (3), so even perfect selection adds nothing; tail-loss selector refuted (1/2, anti-correlated with solving). Headline finding: coverage is seed-stochastic (arm A solved 3 tasks H8 didn't with the SAME protocol; seed-1 check lost 2/9 banked solves; dev union 11 -> 15/50 by re-rolls). Seed-marginalized solve probability is the metric from now on. See notebook `2026-07-20-stage6-restart-diversity.md`.
+- [ ] NEXT (owner input welcome): Stage 2 proposer redefinition is the last unbuilt architecture slot; substrate-external memory (symbolic library / concept memory) is the surviving memory route; a voting/consistency selector over seeds is a deferred H16 candidate.
 
 ## Stage 7 — Integrate full refinement loop (H4)
 - [ ] Wire perception -> proposer+library -> verifier -> revise + TTT; measure AGI-1 vs AGI-2 gap.
