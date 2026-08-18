@@ -1,0 +1,181 @@
+{
+  "b_pair": {
+    "tail_loss": {
+      "accuracy": "1/2",
+      "cases": [
+        {
+          "task": "be03b35f",
+          "picked": "b_be03b35f_s1",
+          "picked_solved": false,
+          "solver": "b_be03b35f_s2",
+          "tail_loss": {
+            "b_be03b35f_s1": 87.058,
+            "b_be03b35f_s2": 127.899
+          }
+        },
+        {
+          "task": "e66aafb8",
+          "picked": "b_e66aafb8_s1",
+          "picked_solved": true,
+          "solver": "b_e66aafb8_s1",
+          "tail_loss": {
+            "b_e66aafb8_s1": 6672.767,
+            "b_e66aafb8_s2": 7963.744
+          }
+        }
+      ]
+    },
+    "final_loss": {
+      "accuracy": "2/2",
+      "cases": [
+        {
+          "task": "be03b35f",
+          "picked": "b_be03b35f_s2",
+          "picked_solved": true,
+          "solver": "b_be03b35f_s2",
+          "final_loss": {
+            "b_be03b35f_s1": 70.22569274902344,
+            "b_be03b35f_s2": 54.97944641113281
+          }
+        },
+        {
+          "task": "e66aafb8",
+          "picked": "b_e66aafb8_s1",
+          "picked_solved": true,
+          "solver": "b_e66aafb8_s1",
+          "final_loss": {
+            "b_e66aafb8_s1": 6585.74365234375,
+            "b_e66aafb8_s2": 8250.19140625
+          }
+        }
+      ]
+    }
+  },
+  "trio": {
+    "tail_loss": {
+      "accuracy": "3/4",
+      "cases": [
+        {
+          "task": "73182012",
+          "picked": "a_73182012",
+          "picked_solved": false,
+          "solver": "b_73182012_s1",
+          "tail_loss": {
+            "a_73182012": 256.347,
+            "b_73182012_s1": 449.09,
+            "b_73182012_s2": 350.538
+          }
+        },
+        {
+          "task": "981571dc",
+          "picked": "a_981571dc",
+          "picked_solved": true,
+          "solver": "a_981571dc",
+          "tail_loss": {
+            "a_981571dc": 10279.727,
+            "b_981571dc_s1": 11112.815,
+            "b_981571dc_s2": 13152.791
+          }
+        },
+        {
+          "task": "be03b35f",
+          "picked": "a_be03b35f",
+          "picked_solved": true,
+          "solver": "a_be03b35f",
+          "tail_loss": {
+            "a_be03b35f": 44.517,
+            "b_be03b35f_s1": 87.058,
+            "b_be03b35f_s2": 127.899
+          }
+        },
+        {
+          "task": "e66aafb8",
+          "picked": "a_e66aafb8",
+          "picked_solved": true,
+          "solver": "a_e66aafb8",
+          "tail_loss": {
+            "a_e66aafb8": 3974.792,
+            "b_e66aafb8_s1": 6672.767,
+            "b_e66aafb8_s2": 7963.744
+          }
+        }
+      ]
+    },
+    "final_loss": {
+      "accuracy": "3/4",
+      "cases": [
+        {
+          "task": "73182012",
+          "picked": "a_73182012",
+          "picked_solved": false,
+          "solver": "b_73182012_s1",
+          "final_loss": {
+            "a_73182012": 229.9530029296875,
+            "b_73182012_s1": 392.8681640625,
+            "b_73182012_s2": 306.67681884765625
+          }
+        },
+        {
+          "task": "981571dc",
+          "picked": "a_981571dc",
+          "picked_solved": true,
+          "solver": "a_981571dc",
+          "final_loss": {
+            "a_981571dc": 9320.1220703125,
+            "b_981571dc_s1": 9669.357421875,
+            "b_981571dc_s2": 12424.85546875
+          }
+        },
+        {
+          "task": "be03b35f",
+          "picked": "a_be03b35f",
+          "picked_solved": true,
+          "solver": "a_be03b35f",
+          "final_loss": {
+            "a_be03b35f": 37.19384002685547,
+            "b_be03b35f_s1": 70.22569274902344,
+            "b_be03b35f_s2": 54.97944641113281
+          }
+        },
+        {
+          "task": "e66aafb8",
+          "picked": "a_e66aafb8",
+          "picked_solved": true,
+          "solver": "a_e66aafb8",
+          "final_loss": {
+            "a_e66aafb8": 3929.25830078125,
+            "b_e66aafb8_s1": 6585.74365234375,
+            "b_e66aafb8_s2": 8250.19140625
+          }
+        }
+      ]
+    }
+  },
+  "s_pair": {
+    "final_loss": {
+      "accuracy": "1/2",
+      "cases": [
+        {
+          "task": "00576224",
+          "picked": "seedchk_00576224",
+          "picked_solved": false,
+          "solver": "cold5090_00576224",
+          "final_loss": {
+            "cold5090_00576224": 159.869140625,
+            "seedchk_00576224": 101.4691162109375
+          }
+        },
+        {
+          "task": "6df30ad6",
+          "picked": "cold5090_6df30ad6",
+          "picked_solved": true,
+          "solver": "cold5090_6df30ad6",
+          "final_loss": {
+            "cold5090_6df30ad6": 398.02294921875,
+            "seedchk_6df30ad6": 628.850341796875
+          }
+        }
+      ]
+    }
+  }
+}
