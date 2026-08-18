@@ -18,8 +18,12 @@ Master list of reading notes, grouped by pillar. Add an entry (link to the note 
 
 ## 4. ARC corpus
 - [2026 — ARC Prize 2025 Technical Report + Living Survey cost analysis](2026-arc-prize-2025-report.md) — accuracy gap = engineering; EFFICIENCY gap = open science; accuracy ~ 0.15 log(cost).
+- [2026 — ARC-AGI-3 Technical Report](2026-arc-agi-3-report.md) — interactive agentic benchmark; RHAE = capability-per-action metric; frontier <1%, humans 100%. The benchmark where the memory thesis becomes load-bearing.
 - [2025 — Pang, Efficient Evolutionary Program Synthesis](2025-pang-library-arc.md) — DreamCoder-style growing library on real ARC: 77.1% ARC-1 at ~$4/task; strongest external validation of the library thesis (LLM-dependent).
 - [2026 — TRM follow-ups (TRM-Planner, PTRM, mechanistics)](2026-trm-followups.md) — noise + learned selection escapes refinement attractors; frontier-beating accuracy at ~1e-4x cost within a domain.
+- [2025 — TRM test-time adaptation (competition note)](2025-trm-tta-competition.md) — 7M TRM + full-FT TTA: 6.67% semi-private ARC-2; the pretrained-prior counterpart to our substrate; public->private drop is an overfitting caution.
+- [2026 — Test-Time Augmentation at matched compute](2026-tta-matched-compute.md) — input diversity beats output diversity at equal compute (~1.8x accuracy/$); H15 tested the wrong diversity axis; direct H16 design template. (Also pillar 5.)
+- [2025 — Program Synthesis via Test-Time Transduction](2025-test-time-transduction.md) — selection as hypothesis ELIMINATION on disagreement, not scoring; framing for the H16 selector after two score-based selectors died.
 - ARC Prize 2025: Technical Report — https://arxiv.org/html/2601.10904
 - The ARC of Progress: Living Survey of 82 approaches — https://arxiv.org/html/2603.13372v1
 - Compositional Neuro-Symbolic Reasoning (ARC-AGI-2) — https://arxiv.org/pdf/2604.02434
@@ -32,7 +36,9 @@ Master list of reading notes, grouped by pillar. Add an entry (link to the note 
 - TAOCP Vol 4 (combinatorial searching) — for program/DSL search
 - Kolmogorov complexity / MDL — link to CompressARC's objective
 - [2026 — Library-learning critique (compute-matched evaluation)](2026-library-learning-critique.md) — ICL library-learning gains vanish at equal compute; reuse must be measured. Raises the bar for all future library claims; symbolic compression (Stitch/our Stage 1) exempted.
+- [2025 — Certified Self-Consistency](2025-certified-self-consistency.md) — majority voting as mode estimation with finite-sample certificates + adaptive stopping (MMC); the formalism behind "seed-marginalized solve probability" and vote-margin confidence for H16.
 
 ## 6. Cognitive science of fluid intelligence
 - Chollet, "On the Measure of Intelligence" (skill-acquisition efficiency) — _(todo)_
 - [2023 — Pre-training vs meta-learning (task diversity)](2023-pretrain-vs-meta.md) — plain multi-task init wins at low task diversity, meta-learning at high; calibrates H14 expectations and pre-registers the Reptile escalation.
+- [2026 — Prospective Compression in Human Abstraction Learning](2026-prospective-compression.md) — humans pick abstractions for FUTURE compression, not past; cog-sci anchor for the library thesis; critique of purely retrospective Stage-1 BPE.

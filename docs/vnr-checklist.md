@@ -123,6 +123,13 @@ Legend: `[ ]` todo, `[~]` in progress, `[x]` done, `[-]` deferred/blocked (note 
 - [x] Decide H15: **KILL per pre-registered rule** — arm A 3/39 vs arm B 2/39; union-of-B oracle ties A (3), so even perfect selection adds nothing; tail-loss selector refuted (1/2, anti-correlated with solving). Headline finding: coverage is seed-stochastic (arm A solved 3 tasks H8 didn't with the SAME protocol; seed-1 check lost 2/9 banked solves; dev union 11 -> 15/50 by re-rolls). Seed-marginalized solve probability is the metric from now on. See notebook `2026-07-20-stage6-restart-diversity.md`.
 - [ ] NEXT (owner input welcome): Stage 2 proposer redefinition is the last unbuilt architecture slot; substrate-external memory (symbolic library / concept memory) is the surviving memory route; a voting/consistency selector over seeds is a deferred H16 candidate.
 
+## Write-up prep (Stage 8 pulled forward; owner decision 2026-08-18)
+- [x] Post-H15 literature pass for the write-up ($0): 6 new notes in `lit/` (TTA-at-matched-compute, certified self-consistency, test-time transduction, ARC-AGI-3 report, prospective compression, TRM-TTA note); 2 candidates rejected (DSL-synthesis = pure theory; TTU voting paper inaccessible). Verdicts + write-up consequences in `experiments/notebook/2026-08-18-lit-pass-writeup-prep.md`. Headline: H15 tested the wrong diversity axis (input augmentation, not seed, wins at matched compute); mode-estimation formalism found for seed-marginalized metrics; selection should eliminate on disagreement, not score.
+- [~] E1 — selector bake-off on BANKED runs ($0, no new GPU time): retrospectively evaluate label-free selectors (cross-run agreement voting, pick-stability, vote-margin) on the 126 banked H15 jobs + earlier banked runs. Gate for E3/H16: if no selector beats tail-loss retrospectively, augmentation-voting needs a rethink before new compute.
+- [ ] E2 — seed-budget curve: binomial CIs on per-task solve probability + pass@k-over-seeds plot (~15-30 h wall on the 5090, $0). Owner go/no-go after E1.
+- [ ] E3 — H16 pre-registration: augmentation-voting (D8 x color perms) at matched compute vs banked arm A; equivariance smoke gate BEFORE the full run (if CompressARC is effectively D8/color-equivariant, augmentation collapses into seed diversity). Owner go/no-go after E1.
+- [ ] Draft the write-up: three claims (weight-space negatives; seed-stochastic coverage; selector refutations + live H16) targeting the ARC Prize paper track.
+
 ## Stage 7 — Integrate full refinement loop (H4)
 - [ ] Wire perception -> proposer+library -> verifier -> revise + TTT; measure AGI-1 vs AGI-2 gap.
 
