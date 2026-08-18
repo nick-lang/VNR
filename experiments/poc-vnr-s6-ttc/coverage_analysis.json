@@ -1,0 +1,458 @@
+{
+  "n_runs": 198,
+  "timeline": [
+    {
+      "stage": "H8",
+      "runs": 50,
+      "new_tasks": [
+        "00576224",
+        "15663ba9",
+        "1d0a4b61",
+        "45737921",
+        "6df30ad6",
+        "8597cfd7",
+        "903d1b4a",
+        "ae58858e",
+        "cd3c21df",
+        "d2acf2cb",
+        "ef26cbf6"
+      ],
+      "union": 11
+    },
+    {
+      "stage": "H9",
+      "runs": 11,
+      "new_tasks": [],
+      "union": 11
+    },
+    {
+      "stage": "H14",
+      "runs": 11,
+      "new_tasks": [],
+      "union": 11
+    },
+    {
+      "stage": "H15",
+      "runs": 126,
+      "new_tasks": [
+        "73182012",
+        "981571dc",
+        "be03b35f",
+        "e66aafb8"
+      ],
+      "union": 15
+    }
+  ],
+  "union_final": [
+    "00576224",
+    "15663ba9",
+    "1d0a4b61",
+    "45737921",
+    "6df30ad6",
+    "73182012",
+    "8597cfd7",
+    "903d1b4a",
+    "981571dc",
+    "ae58858e",
+    "be03b35f",
+    "cd3c21df",
+    "d2acf2cb",
+    "e66aafb8",
+    "ef26cbf6"
+  ],
+  "matched_flips": [
+    {
+      "label": "cross-hardware L40S vs A40 @2000 s0",
+      "n_common": 11,
+      "n_solved_either": 11,
+      "flips": [
+        "15663ba9",
+        "cd3c21df"
+      ],
+      "flip_rate_among_solved": 0.182
+    },
+    {
+      "label": "cross-hardware L40S vs 5090 @2000 s0",
+      "n_common": 39,
+      "n_solved_either": 3,
+      "flips": [
+        "981571dc",
+        "be03b35f",
+        "e66aafb8"
+      ],
+      "flip_rate_among_solved": 1.0
+    },
+    {
+      "label": "cross-seed 5090 @1000 s0 vs s1 (solved tasks)",
+      "n_common": 9,
+      "n_solved_either": 9,
+      "flips": [
+        "00576224",
+        "6df30ad6"
+      ],
+      "flip_rate_among_solved": 0.222
+    },
+    {
+      "label": "cross-seed 5090 @1000 s1 vs s2 (unsolved tasks)",
+      "n_common": 39,
+      "n_solved_either": 3,
+      "flips": [
+        "be03b35f",
+        "e66aafb8"
+      ],
+      "flip_rate_among_solved": 0.667
+    }
+  ],
+  "per_task": [
+    {
+      "task": "00576224",
+      "runs": 4,
+      "solved": 3,
+      "p_hat": 0.75
+    },
+    {
+      "task": "08573cc6",
+      "runs": 4,
+      "solved": 0,
+      "p_hat": 0.0
+    },
+    {
+      "task": "0c786b71",
+      "runs": 4,
+      "solved": 0,
+      "p_hat": 0.0
+    },
+    {
+      "task": "12997ef3",
+      "runs": 4,
+      "solved": 0,
+      "p_hat": 0.0
+    },
+    {
+      "task": "15663ba9",
+      "runs": 3,
+      "solved": 1,
+      "p_hat": 0.333
+    },
+    {
+      "task": "1990f7a8",
+      "runs": 4,
+      "solved": 0,
+      "p_hat": 0.0
+    },
+    {
+      "task": "1d0a4b61",
+      "runs": 4,
+      "solved": 4,
+      "p_hat": 1.0
+    },
+    {
+      "task": "20981f0e",
+      "runs": 4,
+      "solved": 0,
+      "p_hat": 0.0
+    },
+    {
+      "task": "2697da3f",
+      "runs": 4,
+      "solved": 0,
+      "p_hat": 0.0
+    },
+    {
+      "task": "2b01abd0",
+      "runs": 4,
+      "solved": 0,
+      "p_hat": 0.0
+    },
+    {
+      "task": "31d5ba1a",
+      "runs": 4,
+      "solved": 0,
+      "p_hat": 0.0
+    },
+    {
+      "task": "358ba94e",
+      "runs": 4,
+      "solved": 0,
+      "p_hat": 0.0
+    },
+    {
+      "task": "3f23242b",
+      "runs": 4,
+      "solved": 0,
+      "p_hat": 0.0
+    },
+    {
+      "task": "45737921",
+      "runs": 4,
+      "solved": 4,
+      "p_hat": 1.0
+    },
+    {
+      "task": "4acc7107",
+      "runs": 4,
+      "solved": 0,
+      "p_hat": 0.0
+    },
+    {
+      "task": "505fff84",
+      "runs": 4,
+      "solved": 0,
+      "p_hat": 0.0
+    },
+    {
+      "task": "52fd389e",
+      "runs": 4,
+      "solved": 0,
+      "p_hat": 0.0
+    },
+    {
+      "task": "58743b76",
+      "runs": 4,
+      "solved": 0,
+      "p_hat": 0.0
+    },
+    {
+      "task": "5d2a5c43",
+      "runs": 4,
+      "solved": 0,
+      "p_hat": 0.0
+    },
+    {
+      "task": "639f5a19",
+      "runs": 4,
+      "solved": 0,
+      "p_hat": 0.0
+    },
+    {
+      "task": "67c52801",
+      "runs": 4,
+      "solved": 0,
+      "p_hat": 0.0
+    },
+    {
+      "task": "6df30ad6",
+      "runs": 4,
+      "solved": 3,
+      "p_hat": 0.75
+    },
+    {
+      "task": "73182012",
+      "runs": 4,
+      "solved": 2,
+      "p_hat": 0.5
+    },
+    {
+      "task": "7953d61e",
+      "runs": 4,
+      "solved": 0,
+      "p_hat": 0.0
+    },
+    {
+      "task": "7e02026e",
+      "runs": 4,
+      "solved": 0,
+      "p_hat": 0.0
+    },
+    {
+      "task": "8597cfd7",
+      "runs": 4,
+      "solved": 4,
+      "p_hat": 1.0
+    },
+    {
+      "task": "8b28cd80",
+      "runs": 4,
+      "solved": 0,
+      "p_hat": 0.0
+    },
+    {
+      "task": "903d1b4a",
+      "runs": 4,
+      "solved": 4,
+      "p_hat": 1.0
+    },
+    {
+      "task": "94133066",
+      "runs": 4,
+      "solved": 0,
+      "p_hat": 0.0
+    },
+    {
+      "task": "981571dc",
+      "runs": 4,
+      "solved": 1,
+      "p_hat": 0.25
+    },
+    {
+      "task": "9c1e755f",
+      "runs": 4,
+      "solved": 0,
+      "p_hat": 0.0
+    },
+    {
+      "task": "a3f84088",
+      "runs": 4,
+      "solved": 0,
+      "p_hat": 0.0
+    },
+    {
+      "task": "aa300dc3",
+      "runs": 4,
+      "solved": 0,
+      "p_hat": 0.0
+    },
+    {
+      "task": "ae58858e",
+      "runs": 4,
+      "solved": 4,
+      "p_hat": 1.0
+    },
+    {
+      "task": "b20f7c8b",
+      "runs": 4,
+      "solved": 0,
+      "p_hat": 0.0
+    },
+    {
+      "task": "b9630600",
+      "runs": 4,
+      "solved": 0,
+      "p_hat": 0.0
+    },
+    {
+      "task": "be03b35f",
+      "runs": 4,
+      "solved": 2,
+      "p_hat": 0.5
+    },
+    {
+      "task": "c48954c1",
+      "runs": 4,
+      "solved": 0,
+      "p_hat": 0.0
+    },
+    {
+      "task": "c8b7cc0f",
+      "runs": 4,
+      "solved": 0,
+      "p_hat": 0.0
+    },
+    {
+      "task": "cd3c21df",
+      "runs": 3,
+      "solved": 1,
+      "p_hat": 0.333
+    },
+    {
+      "task": "d2acf2cb",
+      "runs": 4,
+      "solved": 4,
+      "p_hat": 1.0
+    },
+    {
+      "task": "d5c634a2",
+      "runs": 4,
+      "solved": 0,
+      "p_hat": 0.0
+    },
+    {
+      "task": "de493100",
+      "runs": 4,
+      "solved": 0,
+      "p_hat": 0.0
+    },
+    {
+      "task": "e345f17b",
+      "runs": 4,
+      "solved": 0,
+      "p_hat": 0.0
+    },
+    {
+      "task": "e66aafb8",
+      "runs": 4,
+      "solved": 2,
+      "p_hat": 0.5
+    },
+    {
+      "task": "e7a25a18",
+      "runs": 4,
+      "solved": 0,
+      "p_hat": 0.0
+    },
+    {
+      "task": "e9b4f6fc",
+      "runs": 4,
+      "solved": 0,
+      "p_hat": 0.0
+    },
+    {
+      "task": "ef26cbf6",
+      "runs": 4,
+      "solved": 4,
+      "p_hat": 1.0
+    },
+    {
+      "task": "f45f5ca7",
+      "runs": 4,
+      "solved": 0,
+      "p_hat": 0.0
+    },
+    {
+      "task": "fafd9572",
+      "runs": 4,
+      "solved": 0,
+      "p_hat": 0.0
+    }
+  ],
+  "fractional_tasks": [
+    {
+      "task": "00576224",
+      "runs": 4,
+      "solved": 3,
+      "p_hat": 0.75
+    },
+    {
+      "task": "6df30ad6",
+      "runs": 4,
+      "solved": 3,
+      "p_hat": 0.75
+    },
+    {
+      "task": "73182012",
+      "runs": 4,
+      "solved": 2,
+      "p_hat": 0.5
+    },
+    {
+      "task": "be03b35f",
+      "runs": 4,
+      "solved": 2,
+      "p_hat": 0.5
+    },
+    {
+      "task": "e66aafb8",
+      "runs": 4,
+      "solved": 2,
+      "p_hat": 0.5
+    },
+    {
+      "task": "15663ba9",
+      "runs": 3,
+      "solved": 1,
+      "p_hat": 0.333
+    },
+    {
+      "task": "cd3c21df",
+      "runs": 3,
+      "solved": 1,
+      "p_hat": 0.333
+    },
+    {
+      "task": "981571dc",
+      "runs": 4,
+      "solved": 1,
+      "p_hat": 0.25
+    }
+  ]
+}
