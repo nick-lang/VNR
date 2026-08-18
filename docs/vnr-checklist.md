@@ -133,6 +133,11 @@ Legend: `[ ]` todo, `[~]` in progress, `[x]` done, `[-]` deferred/blocked (note 
 - [x] E1-B selector evaluation script ready (`e1b_eval.py`, dry-run clean on empty artifacts): final_loss / tail_loss / vote_margin / pick_stability run-pick selectors + cross-run agreement voting with the never-arm wrong-modal (false-positive) readout; re-runnable on partial queues.
 - [~] Write-up draft v0 (`writeup/draft-v0.md`, 2026-08-18): full structure + all banked numbers in; `[E1B: ...]` slots await capture results; targets ARC Prize paper track.
 
+## Stage 9 — Amortized interpreter: latent-program search (H17/H18) [PROPOSED 2026-08-18; owner go/no-go pending]
+- [ ] OWNER: approve/amend H17 pre-registration (draft bars in `experiments/notebook/2026-08-18-strategic-direction-h17.md`): tiny-LPN (10-30M) on re-arc, Grad-1 train-for-search, frozen-decoder latent-only inference; run-marginalized dev-split coverage at total-cost accounting vs banked CompressARC baselines. Drops zero-pretraining purity (teacher-free procedural pretrain, one-time, ~2-6 days 5090, $0 cloud); rationale recorded in the notebook entry.
+- [ ] H18 (gated on H17 accept): grow the latent-program distribution via hindsight replay of self-verified solves vs frozen-distribution control — the LLM-free library-thesis attack on LPN's stated program-diversity ceiling.
+- Context: LPN (NeurIPS 2025) = the correctly-run inversion of our H14 negative; see `lit/2025-latent-program-network.md`.
+
 ## Stage 7 — Integrate full refinement loop (H4)
 - [ ] Wire perception -> proposer+library -> verifier -> revise + TTT; measure AGI-1 vs AGI-2 gap.
 

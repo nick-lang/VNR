@@ -24,6 +24,8 @@ Master list of reading notes, grouped by pillar. Add an entry (link to the note 
 - [2025 — TRM test-time adaptation (competition note)](2025-trm-tta-competition.md) — 7M TRM + full-FT TTA: 6.67% semi-private ARC-2; the pretrained-prior counterpart to our substrate; public->private drop is an overfitting caution.
 - [2026 — Test-Time Augmentation at matched compute](2026-tta-matched-compute.md) — input diversity beats output diversity at equal compute (~1.8x accuracy/$); H15 tested the wrong diversity axis; direct H16 design template. (Also pillar 5.)
 - [2025 — Program Synthesis via Test-Time Transduction](2025-test-time-transduction.md) — selection as hypothesis ELIMINATION on disagreement, not scoring; framing for the H16 selector after two score-based selectors died.
+- [2025 — Latent Program Network (Searching Latent Program Spaces)](2025-latent-program-network.md) — frozen decoder + test-time GRADIENT SEARCH IN LATENT SPACE; train-for-search lesson; OOD 15.5% on ARC eval at collapsed marginal cost; its stated limitation (program diversity) is the library thesis' opening. The literature-backed inversion of our H14 negative.
+- Tracked, unread: ARC-TGI task generators (arXiv 2603.05099); ARC-GEN mimetic generator (arXiv 2511.00162); Slots/Transitions/Loops composable world models (arXiv 2606.12316); T5-ARC transductive TTT (OpenReview TtGONY7UKy).
 - ARC Prize 2025: Technical Report — https://arxiv.org/html/2601.10904
 - The ARC of Progress: Living Survey of 82 approaches — https://arxiv.org/html/2603.13372v1
 - Compositional Neuro-Symbolic Reasoning (ARC-AGI-2) — https://arxiv.org/pdf/2604.02434
