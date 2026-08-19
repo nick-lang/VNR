@@ -25,7 +25,7 @@ Master list of reading notes, grouped by pillar. Add an entry (link to the note 
 - [2026 — Test-Time Augmentation at matched compute](2026-tta-matched-compute.md) — input diversity beats output diversity at equal compute (~1.8x accuracy/$); H15 tested the wrong diversity axis; direct H16 design template. (Also pillar 5.)
 - [2025 — Program Synthesis via Test-Time Transduction](2025-test-time-transduction.md) — selection as hypothesis ELIMINATION on disagreement, not scoring; framing for the H16 selector after two score-based selectors died.
 - [2025 — Latent Program Network (Searching Latent Program Spaces)](2025-latent-program-network.md) — frozen decoder + test-time GRADIENT SEARCH IN LATENT SPACE; train-for-search lesson; OOD 15.5% on ARC eval at collapsed marginal cost; its stated limitation (program diversity) is the library thesis' opening. The literature-backed inversion of our H14 negative.
-- Tracked, unread: ARC-TGI task generators (arXiv 2603.05099); ARC-GEN mimetic generator (arXiv 2511.00162); Slots/Transitions/Loops composable world models (arXiv 2606.12316); T5-ARC transductive TTT (OpenReview TtGONY7UKy).
+- Tracked, unread: ILP-for-ARC / ILPAR (arXiv 2405.06399, verified real); Combining Induction and Transduction for Abstract Reasoning (arXiv 2411.02272 — different approaches solve DIFFERENT subsets, ensembling approaches human level; independent echo of our portfolio/churn finding); Gold/Angluin grammatical-inference bounds as DSL-learnability theory (teatime dossier direction 3, long-horizon); ARC-TGI task generators (arXiv 2603.05099); ARC-GEN mimetic generator (arXiv 2511.00162); Slots/Transitions/Loops composable world models (arXiv 2606.12316); T5-ARC transductive TTT (OpenReview TtGONY7UKy).
 - ARC Prize 2025: Technical Report — https://arxiv.org/html/2601.10904
 - The ARC of Progress: Living Survey of 82 approaches — https://arxiv.org/html/2603.13372v1
 - Compositional Neuro-Symbolic Reasoning (ARC-AGI-2) — https://arxiv.org/pdf/2604.02434
@@ -38,9 +38,11 @@ Master list of reading notes, grouped by pillar. Add an entry (link to the note 
 - TAOCP Vol 4 (combinatorial searching) — for program/DSL search
 - Kolmogorov complexity / MDL — link to CompressARC's objective
 - [2026 — Library-learning critique (compute-matched evaluation)](2026-library-learning-critique.md) — ICL library-learning gains vanish at equal compute; reuse must be measured. Raises the bar for all future library claims; symbolic compression (Stitch/our Stage 1) exempted.
+- [1988 — The utility problem + case-base maintenance](1988-minton-utility-problem.md) — learned abstractions can SLOW a solver; 15 years of retention/forgetting policy theory; the decision rule for H18's library curation. (Teatime dossier import.)
 - [2025 — Certified Self-Consistency](2025-certified-self-consistency.md) — majority voting as mode estimation with finite-sample certificates + adaptive stopping (MMC); the formalism behind "seed-marginalized solve probability" and vote-margin confidence for H16.
 
 ## 6. Cognitive science of fluid intelligence
 - Chollet, "On the Measure of Intelligence" (skill-acquisition efficiency) — _(todo)_
 - [2023 — Pre-training vs meta-learning (task diversity)](2023-pretrain-vs-meta.md) — plain multi-task init wins at low task diversity, meta-learning at high; calibrates H14 expectations and pre-registers the Reptile escalation.
+- [2005 — Kashtan & Alon, modularly varying goals](2005-kashtan-alon-mvg.md) — modularity/reuse emerges iff goals vary modularly (shared subgoals); random variation -> none. Retroactive frame for H14's orthogonal deltas; curriculum arm for H18. (Teatime dossier import.)
 - [2026 — Prospective Compression in Human Abstraction Learning](2026-prospective-compression.md) — humans pick abstractions for FUTURE compression, not past; cog-sci anchor for the library thesis; critique of purely retrospective Stage-1 BPE.
