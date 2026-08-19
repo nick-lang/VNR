@@ -1,0 +1,1264 @@
+{
+  "seed": 999,
+  "M": {
+    "arm": "M",
+    "online": [
+      {
+        "epoch": 0,
+        "task": "M_e00_t0",
+        "solved": true,
+        "nodes": 476,
+        "depth": 3,
+        "test_acc": 1.0
+      },
+      {
+        "epoch": 0,
+        "task": "M_e00_t1",
+        "solved": true,
+        "nodes": 765,
+        "depth": 3,
+        "test_acc": 1.0
+      },
+      {
+        "epoch": 0,
+        "task": "M_e00_t2",
+        "solved": true,
+        "nodes": 674,
+        "depth": 3,
+        "test_acc": 1.0
+      },
+      {
+        "epoch": 0,
+        "task": "M_e00_t3",
+        "solved": true,
+        "nodes": 3336,
+        "depth": 4,
+        "test_acc": 1.0
+      },
+      {
+        "epoch": 1,
+        "task": "M_e01_t0",
+        "solved": true,
+        "nodes": 78,
+        "depth": 2,
+        "test_acc": 1.0
+      },
+      {
+        "epoch": 1,
+        "task": "M_e01_t1",
+        "solved": true,
+        "nodes": 78,
+        "depth": 2,
+        "test_acc": 1.0
+      },
+      {
+        "epoch": 1,
+        "task": "M_e01_t2",
+        "solved": true,
+        "nodes": 1843,
+        "depth": 4,
+        "test_acc": 1.0
+      },
+      {
+        "epoch": 1,
+        "task": "M_e01_t3",
+        "solved": true,
+        "nodes": 78,
+        "depth": 2,
+        "test_acc": 1.0
+      },
+      {
+        "epoch": 2,
+        "task": "M_e02_t0",
+        "solved": true,
+        "nodes": 410,
+        "depth": 3,
+        "test_acc": 1.0
+      },
+      {
+        "epoch": 2,
+        "task": "M_e02_t1",
+        "solved": true,
+        "nodes": 826,
+        "depth": 3,
+        "test_acc": 1.0
+      },
+      {
+        "epoch": 2,
+        "task": "M_e02_t2",
+        "solved": true,
+        "nodes": 410,
+        "depth": 3,
+        "test_acc": 1.0
+      },
+      {
+        "epoch": 2,
+        "task": "M_e02_t3",
+        "solved": true,
+        "nodes": 769,
+        "depth": 3,
+        "test_acc": 1.0
+      }
+    ],
+    "transfer": [
+      {
+        "task": "X_000",
+        "solved": true,
+        "nodes": 888,
+        "test_acc": 1.0
+      },
+      {
+        "task": "X_001",
+        "solved": true,
+        "nodes": 546,
+        "test_acc": 1.0
+      },
+      {
+        "task": "X_002",
+        "solved": true,
+        "nodes": 104,
+        "test_acc": 1.0
+      },
+      {
+        "task": "X_003",
+        "solved": true,
+        "nodes": 182,
+        "test_acc": 1.0
+      },
+      {
+        "task": "X_004",
+        "solved": true,
+        "nodes": 333,
+        "test_acc": 1.0
+      },
+      {
+        "task": "X_005",
+        "solved": true,
+        "nodes": 1095,
+        "test_acc": 1.0
+      },
+      {
+        "task": "X_006",
+        "solved": true,
+        "nodes": 288,
+        "test_acc": 1.0
+      },
+      {
+        "task": "X_007",
+        "solved": true,
+        "nodes": 11,
+        "test_acc": 1.0
+      },
+      {
+        "task": "X_008",
+        "solved": true,
+        "nodes": 104,
+        "test_acc": 1.0
+      },
+      {
+        "task": "X_009",
+        "solved": true,
+        "nodes": 182,
+        "test_acc": 1.0
+      },
+      {
+        "task": "X_010",
+        "solved": true,
+        "nodes": 60,
+        "test_acc": 1.0
+      },
+      {
+        "task": "X_011",
+        "solved": true,
+        "nodes": 205,
+        "test_acc": 1.0
+      },
+      {
+        "task": "X_012",
+        "solved": true,
+        "nodes": 888,
+        "test_acc": 1.0
+      },
+      {
+        "task": "X_013",
+        "solved": true,
+        "nodes": 18,
+        "test_acc": 1.0
+      },
+      {
+        "task": "X_014",
+        "solved": true,
+        "nodes": 104,
+        "test_acc": 1.0
+      },
+      {
+        "task": "X_015",
+        "solved": true,
+        "nodes": 497,
+        "test_acc": 1.0
+      },
+      {
+        "task": "X_016",
+        "solved": true,
+        "nodes": 14,
+        "test_acc": 1.0
+      },
+      {
+        "task": "X_017",
+        "solved": true,
+        "nodes": 18,
+        "test_acc": 1.0
+      },
+      {
+        "task": "X_018",
+        "solved": true,
+        "nodes": 333,
+        "test_acc": 1.0
+      },
+      {
+        "task": "X_019",
+        "solved": true,
+        "nodes": 840,
+        "test_acc": 1.0
+      },
+      {
+        "task": "X_020",
+        "solved": true,
+        "nodes": 104,
+        "test_acc": 1.0
+      },
+      {
+        "task": "X_021",
+        "solved": true,
+        "nodes": 182,
+        "test_acc": 1.0
+      },
+      {
+        "task": "X_022",
+        "solved": true,
+        "nodes": 60,
+        "test_acc": 1.0
+      },
+      {
+        "task": "X_023",
+        "solved": true,
+        "nodes": 205,
+        "test_acc": 1.0
+      },
+      {
+        "task": "X_024",
+        "solved": true,
+        "nodes": 888,
+        "test_acc": 1.0
+      },
+      {
+        "task": "X_025",
+        "solved": true,
+        "nodes": 840,
+        "test_acc": 1.0
+      },
+      {
+        "task": "X_026",
+        "solved": true,
+        "nodes": 104,
+        "test_acc": 1.0
+      },
+      {
+        "task": "X_027",
+        "solved": true,
+        "nodes": 182,
+        "test_acc": 1.0
+      },
+      {
+        "task": "X_028",
+        "solved": true,
+        "nodes": 14,
+        "test_acc": 1.0
+      },
+      {
+        "task": "X_029",
+        "solved": true,
+        "nodes": 18,
+        "test_acc": 1.0
+      }
+    ],
+    "library_log": [
+      {
+        "epoch": 0,
+        "added": [
+          {
+            "name": "m0",
+            "expansion": [
+              "mirror_h",
+              "mirror_v"
+            ]
+          },
+          {
+            "name": "m1",
+            "expansion": [
+              "mirror_h",
+              "mirror_v",
+              "tile2x2"
+            ]
+          }
+        ],
+        "pruned": [],
+        "size": 3
+      },
+      {
+        "epoch": 1,
+        "added": [
+          {
+            "name": "m2",
+            "expansion": [
+              "flip_h",
+              "mirror_h"
+            ]
+          },
+          {
+            "name": "m3",
+            "expansion": [
+              "flip_h",
+              "mirror_h",
+              "mirror_v"
+            ]
+          }
+        ],
+        "pruned": [],
+        "size": 6
+      },
+      {
+        "epoch": 2,
+        "added": [
+          {
+            "name": "m4",
+            "expansion": [
+              "tile_h2",
+              "scale2"
+            ]
+          },
+          {
+            "name": "m5",
+            "expansion": [
+              "rot90",
+              "tile_h2",
+              "scale2"
+            ]
+          },
+          {
+            "name": "m6",
+            "expansion": [
+              "rot270",
+              "tile_h2",
+              "scale2"
+            ]
+          }
+        ],
+        "pruned": [
+          "m1"
+        ],
+        "size": 10
+      }
+    ],
+    "final_macros": {
+      "m0": [
+        "mirror_h",
+        "mirror_v"
+      ],
+      "m2": [
+        "flip_h",
+        "mirror_h"
+      ],
+      "m3": [
+        "flip_h",
+        "mirror_h",
+        "mirror_v"
+      ],
+      "m4": [
+        "tile_h2",
+        "scale2"
+      ],
+      "m5": [
+        "rot90",
+        "tile_h2",
+        "scale2"
+      ],
+      "m6": [
+        "rot270",
+        "tile_h2",
+        "scale2"
+      ]
+    },
+    "alignment": "1/6",
+    "seconds": 0.2
+  },
+  "R": {
+    "arm": "R",
+    "online": [
+      {
+        "epoch": 0,
+        "task": "M_e00_t1",
+        "solved": true,
+        "nodes": 765,
+        "depth": 3,
+        "test_acc": 1.0
+      },
+      {
+        "epoch": 0,
+        "task": "M_e00_t0",
+        "solved": true,
+        "nodes": 476,
+        "depth": 3,
+        "test_acc": 1.0
+      },
+      {
+        "epoch": 0,
+        "task": "M_e02_t2",
+        "solved": true,
+        "nodes": 233,
+        "depth": 3,
+        "test_acc": 1.0
+      },
+      {
+        "epoch": 0,
+        "task": "M_e01_t3",
+        "solved": true,
+        "nodes": 476,
+        "depth": 3,
+        "test_acc": 1.0
+      },
+      {
+        "epoch": 1,
+        "task": "M_e01_t0",
+        "solved": true,
+        "nodes": 16,
+        "depth": 1,
+        "test_acc": 1.0
+      },
+      {
+        "epoch": 1,
+        "task": "M_e00_t3",
+        "solved": true,
+        "nodes": 750,
+        "depth": 3,
+        "test_acc": 1.0
+      },
+      {
+        "epoch": 1,
+        "task": "M_e02_t1",
+        "solved": true,
+        "nodes": 652,
+        "depth": 3,
+        "test_acc": 1.0
+      },
+      {
+        "epoch": 1,
+        "task": "M_e00_t2",
+        "solved": true,
+        "nodes": 219,
+        "depth": 2,
+        "test_acc": 1.0
+      },
+      {
+        "epoch": 2,
+        "task": "M_e01_t1",
+        "solved": true,
+        "nodes": 16,
+        "depth": 1,
+        "test_acc": 1.0
+      },
+      {
+        "epoch": 2,
+        "task": "M_e02_t3",
+        "solved": true,
+        "nodes": 604,
+        "depth": 3,
+        "test_acc": 1.0
+      },
+      {
+        "epoch": 2,
+        "task": "M_e02_t0",
+        "solved": true,
+        "nodes": 332,
+        "depth": 3,
+        "test_acc": 1.0
+      },
+      {
+        "epoch": 2,
+        "task": "M_e01_t2",
+        "solved": true,
+        "nodes": 383,
+        "depth": 3,
+        "test_acc": 1.0
+      }
+    ],
+    "transfer": [
+      {
+        "task": "X_000",
+        "solved": true,
+        "nodes": 609,
+        "test_acc": 1.0
+      },
+      {
+        "task": "X_001",
+        "solved": true,
+        "nodes": 889,
+        "test_acc": 1.0
+      },
+      {
+        "task": "X_002",
+        "solved": true,
+        "nodes": 80,
+        "test_acc": 1.0
+      },
+      {
+        "task": "X_003",
+        "solved": true,
+        "nodes": 1031,
+        "test_acc": 1.0
+      },
+      {
+        "task": "X_004",
+        "solved": true,
+        "nodes": 249,
+        "test_acc": 1.0
+      },
+      {
+        "task": "X_005",
+        "solved": true,
+        "nodes": 795,
+        "test_acc": 1.0
+      },
+      {
+        "task": "X_006",
+        "solved": true,
+        "nodes": 216,
+        "test_acc": 1.0
+      },
+      {
+        "task": "X_007",
+        "solved": true,
+        "nodes": 11,
+        "test_acc": 1.0
+      },
+      {
+        "task": "X_008",
+        "solved": true,
+        "nodes": 80,
+        "test_acc": 1.0
+      },
+      {
+        "task": "X_009",
+        "solved": true,
+        "nodes": 1133,
+        "test_acc": 1.0
+      },
+      {
+        "task": "X_010",
+        "solved": true,
+        "nodes": 48,
+        "test_acc": 1.0
+      },
+      {
+        "task": "X_011",
+        "solved": true,
+        "nodes": 339,
+        "test_acc": 1.0
+      },
+      {
+        "task": "X_012",
+        "solved": true,
+        "nodes": 609,
+        "test_acc": 1.0
+      },
+      {
+        "task": "X_013",
+        "solved": true,
+        "nodes": 16,
+        "test_acc": 1.0
+      },
+      {
+        "task": "X_014",
+        "solved": true,
+        "nodes": 80,
+        "test_acc": 1.0
+      },
+      {
+        "task": "X_015",
+        "solved": true,
+        "nodes": 879,
+        "test_acc": 1.0
+      },
+      {
+        "task": "X_016",
+        "solved": true,
+        "nodes": 14,
+        "test_acc": 1.0
+      },
+      {
+        "task": "X_017",
+        "solved": true,
+        "nodes": 16,
+        "test_acc": 1.0
+      },
+      {
+        "task": "X_018",
+        "solved": true,
+        "nodes": 249,
+        "test_acc": 1.0
+      },
+      {
+        "task": "X_019",
+        "solved": true,
+        "nodes": 574,
+        "test_acc": 1.0
+      },
+      {
+        "task": "X_020",
+        "solved": true,
+        "nodes": 80,
+        "test_acc": 1.0
+      },
+      {
+        "task": "X_021",
+        "solved": true,
+        "nodes": 1133,
+        "test_acc": 1.0
+      },
+      {
+        "task": "X_022",
+        "solved": true,
+        "nodes": 48,
+        "test_acc": 1.0
+      },
+      {
+        "task": "X_023",
+        "solved": true,
+        "nodes": 322,
+        "test_acc": 1.0
+      },
+      {
+        "task": "X_024",
+        "solved": true,
+        "nodes": 609,
+        "test_acc": 1.0
+      },
+      {
+        "task": "X_025",
+        "solved": true,
+        "nodes": 574,
+        "test_acc": 1.0
+      },
+      {
+        "task": "X_026",
+        "solved": true,
+        "nodes": 80,
+        "test_acc": 1.0
+      },
+      {
+        "task": "X_027",
+        "solved": true,
+        "nodes": 1133,
+        "test_acc": 1.0
+      },
+      {
+        "task": "X_028",
+        "solved": true,
+        "nodes": 14,
+        "test_acc": 1.0
+      },
+      {
+        "task": "X_029",
+        "solved": true,
+        "nodes": 16,
+        "test_acc": 1.0
+      }
+    ],
+    "library_log": [
+      {
+        "epoch": 0,
+        "added": [
+          {
+            "name": "m0",
+            "expansion": [
+              "mirror_h",
+              "mirror_v"
+            ]
+          },
+          {
+            "name": "m1",
+            "expansion": [
+              "flip_h",
+              "mirror_h",
+              "mirror_v"
+            ]
+          }
+        ],
+        "pruned": [],
+        "size": 3
+      },
+      {
+        "epoch": 1,
+        "added": [],
+        "pruned": [],
+        "size": 3
+      },
+      {
+        "epoch": 2,
+        "added": [
+          {
+            "name": "m2",
+            "expansion": [
+              "tile_h2",
+              "scale2"
+            ]
+          }
+        ],
+        "pruned": [],
+        "size": 4
+      }
+    ],
+    "final_macros": {
+      "m0": [
+        "mirror_h",
+        "mirror_v"
+      ],
+      "m1": [
+        "flip_h",
+        "mirror_h",
+        "mirror_v"
+      ],
+      "m2": [
+        "tile_h2",
+        "scale2"
+      ]
+    },
+    "alignment": "1/3",
+    "seconds": 0.2
+  },
+  "F": {
+    "arm": "F",
+    "online": [
+      {
+        "epoch": 0,
+        "task": "F_000",
+        "solved": true,
+        "nodes": 1269,
+        "depth": 4,
+        "test_acc": 1.0
+      },
+      {
+        "epoch": 0,
+        "task": "F_001",
+        "solved": true,
+        "nodes": 1230,
+        "depth": 4,
+        "test_acc": 1.0
+      },
+      {
+        "epoch": 0,
+        "task": "F_002",
+        "solved": true,
+        "nodes": 1269,
+        "depth": 4,
+        "test_acc": 1.0
+      },
+      {
+        "epoch": 0,
+        "task": "F_003",
+        "solved": true,
+        "nodes": 2985,
+        "depth": 4,
+        "test_acc": 1.0
+      },
+      {
+        "epoch": 1,
+        "task": "F_004",
+        "solved": true,
+        "nodes": 19,
+        "depth": 1,
+        "test_acc": 1.0
+      },
+      {
+        "epoch": 1,
+        "task": "F_005",
+        "solved": true,
+        "nodes": 239,
+        "depth": 2,
+        "test_acc": 1.0
+      },
+      {
+        "epoch": 1,
+        "task": "F_006",
+        "solved": true,
+        "nodes": 95,
+        "depth": 2,
+        "test_acc": 1.0
+      },
+      {
+        "epoch": 1,
+        "task": "F_007",
+        "solved": true,
+        "nodes": 168,
+        "depth": 2,
+        "test_acc": 1.0
+      },
+      {
+        "epoch": 2,
+        "task": "F_008",
+        "solved": true,
+        "nodes": 100,
+        "depth": 2,
+        "test_acc": 1.0
+      },
+      {
+        "epoch": 2,
+        "task": "F_009",
+        "solved": true,
+        "nodes": 100,
+        "depth": 2,
+        "test_acc": 1.0
+      },
+      {
+        "epoch": 2,
+        "task": "F_010",
+        "solved": true,
+        "nodes": 100,
+        "depth": 2,
+        "test_acc": 1.0
+      },
+      {
+        "epoch": 2,
+        "task": "F_011",
+        "solved": true,
+        "nodes": 176,
+        "depth": 2,
+        "test_acc": 1.0
+      }
+    ],
+    "transfer": [
+      {
+        "task": "X_000",
+        "solved": true,
+        "nodes": 828,
+        "test_acc": 1.0
+      },
+      {
+        "task": "X_001",
+        "solved": true,
+        "nodes": 1169,
+        "test_acc": 1.0
+      },
+      {
+        "task": "X_002",
+        "solved": true,
+        "nodes": 96,
+        "test_acc": 1.0
+      },
+      {
+        "task": "X_003",
+        "solved": true,
+        "nodes": 6152,
+        "test_acc": 1.0
+      },
+      {
+        "task": "X_004",
+        "solved": true,
+        "nodes": 183,
+        "test_acc": 1.0
+      },
+      {
+        "task": "X_005",
+        "solved": true,
+        "nodes": 1076,
+        "test_acc": 1.0
+      },
+      {
+        "task": "X_006",
+        "solved": true,
+        "nodes": 264,
+        "test_acc": 1.0
+      },
+      {
+        "task": "X_007",
+        "solved": true,
+        "nodes": 11,
+        "test_acc": 1.0
+      },
+      {
+        "task": "X_008",
+        "solved": true,
+        "nodes": 96,
+        "test_acc": 1.0
+      },
+      {
+        "task": "X_009",
+        "solved": true,
+        "nodes": 8465,
+        "test_acc": 1.0
+      },
+      {
+        "task": "X_010",
+        "solved": true,
+        "nodes": 61,
+        "test_acc": 1.0
+      },
+      {
+        "task": "X_011",
+        "solved": true,
+        "nodes": 269,
+        "test_acc": 1.0
+      },
+      {
+        "task": "X_012",
+        "solved": true,
+        "nodes": 828,
+        "test_acc": 1.0
+      },
+      {
+        "task": "X_013",
+        "solved": true,
+        "nodes": 21,
+        "test_acc": 1.0
+      },
+      {
+        "task": "X_014",
+        "solved": true,
+        "nodes": 96,
+        "test_acc": 1.0
+      },
+      {
+        "task": "X_015",
+        "solved": true,
+        "nodes": 6221,
+        "test_acc": 1.0
+      },
+      {
+        "task": "X_016",
+        "solved": true,
+        "nodes": 19,
+        "test_acc": 1.0
+      },
+      {
+        "task": "X_017",
+        "solved": true,
+        "nodes": 21,
+        "test_acc": 1.0
+      },
+      {
+        "task": "X_018",
+        "solved": true,
+        "nodes": 183,
+        "test_acc": 1.0
+      },
+      {
+        "task": "X_019",
+        "solved": true,
+        "nodes": 785,
+        "test_acc": 1.0
+      },
+      {
+        "task": "X_020",
+        "solved": true,
+        "nodes": 96,
+        "test_acc": 1.0
+      },
+      {
+        "task": "X_021",
+        "solved": true,
+        "nodes": 7918,
+        "test_acc": 1.0
+      },
+      {
+        "task": "X_022",
+        "solved": true,
+        "nodes": 61,
+        "test_acc": 1.0
+      },
+      {
+        "task": "X_023",
+        "solved": true,
+        "nodes": 269,
+        "test_acc": 1.0
+      },
+      {
+        "task": "X_024",
+        "solved": true,
+        "nodes": 828,
+        "test_acc": 1.0
+      },
+      {
+        "task": "X_025",
+        "solved": true,
+        "nodes": 785,
+        "test_acc": 1.0
+      },
+      {
+        "task": "X_026",
+        "solved": true,
+        "nodes": 96,
+        "test_acc": 1.0
+      },
+      {
+        "task": "X_027",
+        "solved": true,
+        "nodes": 7918,
+        "test_acc": 1.0
+      },
+      {
+        "task": "X_028",
+        "solved": true,
+        "nodes": 19,
+        "test_acc": 1.0
+      },
+      {
+        "task": "X_029",
+        "solved": true,
+        "nodes": 21,
+        "test_acc": 1.0
+      }
+    ],
+    "library_log": [
+      {
+        "epoch": 0,
+        "added": [
+          {
+            "name": "m0",
+            "expansion": [
+              "mirror_h",
+              "mirror_h"
+            ]
+          },
+          {
+            "name": "m1",
+            "expansion": [
+              "mirror_h",
+              "mirror_h",
+              "mirror_v"
+            ]
+          },
+          {
+            "name": "m2",
+            "expansion": [
+              "rot90",
+              "mirror_h",
+              "mirror_h",
+              "mirror_v"
+            ]
+          }
+        ],
+        "pruned": [],
+        "size": 6
+      },
+      {
+        "epoch": 1,
+        "added": [
+          {
+            "name": "m3",
+            "expansion": [
+              "mirror_h",
+              "mirror_v"
+            ]
+          }
+        ],
+        "pruned": [],
+        "size": 7
+      },
+      {
+        "epoch": 2,
+        "added": [
+          {
+            "name": "m4",
+            "expansion": [
+              "flip_h",
+              "mirror_h",
+              "mirror_v"
+            ]
+          }
+        ],
+        "pruned": [
+          "m0"
+        ],
+        "size": 8
+      }
+    ],
+    "final_macros": {
+      "m1": [
+        "mirror_h",
+        "mirror_h",
+        "mirror_v"
+      ],
+      "m2": [
+        "rot90",
+        "mirror_h",
+        "mirror_h",
+        "mirror_v"
+      ],
+      "m3": [
+        "mirror_h",
+        "mirror_v"
+      ],
+      "m4": [
+        "flip_h",
+        "mirror_h",
+        "mirror_v"
+      ]
+    },
+    "alignment": "1/4",
+    "seconds": 0.6
+  },
+  "RAW": {
+    "transfer": [
+      {
+        "task": "X_000",
+        "solved": true,
+        "nodes": 2872
+      },
+      {
+        "task": "X_001",
+        "solved": true,
+        "nodes": 490
+      },
+      {
+        "task": "X_002",
+        "solved": true,
+        "nodes": 64
+      },
+      {
+        "task": "X_003",
+        "solved": true,
+        "nodes": 2534
+      },
+      {
+        "task": "X_004",
+        "solved": true,
+        "nodes": 765
+      },
+      {
+        "task": "X_005",
+        "solved": true,
+        "nodes": 3197
+      },
+      {
+        "task": "X_006",
+        "solved": true,
+        "nodes": 168
+      },
+      {
+        "task": "X_007",
+        "solved": true,
+        "nodes": 11
+      },
+      {
+        "task": "X_008",
+        "solved": true,
+        "nodes": 64
+      },
+      {
+        "task": "X_009",
+        "solved": true,
+        "nodes": 3431
+      },
+      {
+        "task": "X_010",
+        "solved": true,
+        "nodes": 268
+      },
+      {
+        "task": "X_011",
+        "solved": true,
+        "nodes": 1260
+      },
+      {
+        "task": "X_012",
+        "solved": true,
+        "nodes": 2950
+      },
+      {
+        "task": "X_013",
+        "solved": true,
+        "nodes": 424
+      },
+      {
+        "task": "X_014",
+        "solved": true,
+        "nodes": 64
+      },
+      {
+        "task": "X_015",
+        "solved": true,
+        "nodes": 3483
+      },
+      {
+        "task": "X_016",
+        "solved": true,
+        "nodes": 99
+      },
+      {
+        "task": "X_017",
+        "solved": true,
+        "nodes": 424
+      },
+      {
+        "task": "X_018",
+        "solved": true,
+        "nodes": 765
+      },
+      {
+        "task": "X_019",
+        "solved": true,
+        "nodes": 569
+      },
+      {
+        "task": "X_020",
+        "solved": true,
+        "nodes": 64
+      },
+      {
+        "task": "X_021",
+        "solved": true,
+        "nodes": 3275
+      },
+      {
+        "task": "X_022",
+        "solved": true,
+        "nodes": 294
+      },
+      {
+        "task": "X_023",
+        "solved": true,
+        "nodes": 1026
+      },
+      {
+        "task": "X_024",
+        "solved": true,
+        "nodes": 2807
+      },
+      {
+        "task": "X_025",
+        "solved": true,
+        "nodes": 569
+      },
+      {
+        "task": "X_026",
+        "solved": true,
+        "nodes": 64
+      },
+      {
+        "task": "X_027",
+        "solved": true,
+        "nodes": 3262
+      },
+      {
+        "task": "X_028",
+        "solved": true,
+        "nodes": 99
+      },
+      {
+        "task": "X_029",
+        "solved": true,
+        "nodes": 424
+      }
+    ]
+  }
+}

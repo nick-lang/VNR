@@ -1,0 +1,276 @@
+{
+  "progress": "34/34",
+  "informative_groups": [
+    "00576224",
+    "6df30ad6",
+    "73182012"
+  ],
+  "run_pick": {
+    "final_loss": [
+      {
+        "task": "00576224",
+        "picked": "c_00576224_s1",
+        "picked_solved": false,
+        "solvers": [
+          "c_00576224_s0"
+        ]
+      },
+      {
+        "task": "6df30ad6",
+        "picked": "c_6df30ad6_s0",
+        "picked_solved": false,
+        "solvers": [
+          "c_6df30ad6_s1"
+        ]
+      },
+      {
+        "task": "73182012",
+        "picked": "a_73182012",
+        "picked_solved": false,
+        "solvers": [
+          "b_73182012_s1",
+          "b_73182012_s2"
+        ]
+      }
+    ],
+    "tail_loss": [
+      {
+        "task": "00576224",
+        "picked": "c_00576224_s1",
+        "picked_solved": false,
+        "solvers": [
+          "c_00576224_s0"
+        ]
+      },
+      {
+        "task": "6df30ad6",
+        "picked": "c_6df30ad6_s0",
+        "picked_solved": false,
+        "solvers": [
+          "c_6df30ad6_s1"
+        ]
+      },
+      {
+        "task": "73182012",
+        "picked": "a_73182012",
+        "picked_solved": false,
+        "solvers": [
+          "b_73182012_s1",
+          "b_73182012_s2"
+        ]
+      }
+    ],
+    "vote_margin": [
+      {
+        "task": "00576224",
+        "picked": "c_00576224_s0",
+        "picked_solved": true,
+        "solvers": [
+          "c_00576224_s0"
+        ]
+      },
+      {
+        "task": "6df30ad6",
+        "picked": "c_6df30ad6_s0",
+        "picked_solved": false,
+        "solvers": [
+          "c_6df30ad6_s1"
+        ]
+      },
+      {
+        "task": "73182012",
+        "picked": "b_73182012_s2",
+        "picked_solved": true,
+        "solvers": [
+          "b_73182012_s1",
+          "b_73182012_s2"
+        ]
+      }
+    ],
+    "pick_stability": [
+      {
+        "task": "00576224",
+        "picked": "c_00576224_s0",
+        "picked_solved": true,
+        "solvers": [
+          "c_00576224_s0"
+        ]
+      },
+      {
+        "task": "6df30ad6",
+        "picked": "c_6df30ad6_s0",
+        "picked_solved": false,
+        "solvers": [
+          "c_6df30ad6_s1"
+        ]
+      },
+      {
+        "task": "73182012",
+        "picked": "b_73182012_s2",
+        "picked_solved": true,
+        "solvers": [
+          "b_73182012_s1",
+          "b_73182012_s2"
+        ]
+      }
+    ]
+  },
+  "agreement": [
+    {
+      "task": "00576224",
+      "n_runs": 2,
+      "n_solved_runs": 1,
+      "votes": {
+        "-4331280360233147820": 1,
+        "-8433438651940610326": 1
+      },
+      "agreement_solved_top2": true
+    },
+    {
+      "task": "08573cc6",
+      "n_runs": 3,
+      "n_solved_runs": 0,
+      "votes": {
+        "-6091292775107248732": 2,
+        "-4782670507396929961": 1
+      },
+      "agreement_solved_top2": false
+    },
+    {
+      "task": "0c786b71",
+      "n_runs": 3,
+      "n_solved_runs": 0,
+      "votes": {
+        "4083072468089584146": 1,
+        "649071035583686756": 1,
+        "6535246160086770110": 1
+      },
+      "agreement_solved_top2": false
+    },
+    {
+      "task": "12997ef3",
+      "n_runs": 3,
+      "n_solved_runs": 0,
+      "votes": {
+        "-1887684148154172088": 1,
+        "6329314532264072918": 1,
+        "2896343487477571709": 1
+      },
+      "agreement_solved_top2": false
+    },
+    {
+      "task": "1990f7a8",
+      "n_runs": 3,
+      "n_solved_runs": 0,
+      "votes": {
+        "-1498947737611575506": 1,
+        "-762401538469917075": 1,
+        "683079231293907800": 1
+      },
+      "agreement_solved_top2": false
+    },
+    {
+      "task": "20981f0e",
+      "n_runs": 3,
+      "n_solved_runs": 0,
+      "votes": {
+        "-8746144293279336250": 1,
+        "-3324764055274961597": 1,
+        "-3019685539096646100": 1
+      },
+      "agreement_solved_top2": false
+    },
+    {
+      "task": "2697da3f",
+      "n_runs": 3,
+      "n_solved_runs": 0,
+      "votes": {
+        "-8224693866259233860": 3
+      },
+      "agreement_solved_top2": false
+    },
+    {
+      "task": "6df30ad6",
+      "n_runs": 2,
+      "n_solved_runs": 1,
+      "votes": {
+        "6263132514637654485": 2
+      },
+      "agreement_solved_top2": false
+    },
+    {
+      "task": "73182012",
+      "n_runs": 3,
+      "n_solved_runs": 2,
+      "votes": {
+        "4714880589439272048": 2,
+        "-527707213799441788": 1
+      },
+      "agreement_solved_top2": true
+    },
+    {
+      "task": "981571dc",
+      "n_runs": 3,
+      "n_solved_runs": 0,
+      "votes": {
+        "7192375664072740162": 2,
+        "4450231194387416623": 1
+      },
+      "agreement_solved_top2": false
+    },
+    {
+      "task": "be03b35f",
+      "n_runs": 3,
+      "n_solved_runs": 0,
+      "votes": {
+        "-3659994965625594940": 1,
+        "-2393023241395515956": 1,
+        "3549365804876059155": 1
+      },
+      "agreement_solved_top2": false
+    },
+    {
+      "task": "e66aafb8",
+      "n_runs": 3,
+      "n_solved_runs": 0,
+      "votes": {
+        "2356475984948351784": 1,
+        "4985184651040764482": 1,
+        "-5921805650802373692": 1
+      },
+      "agreement_solved_top2": false
+    }
+  ],
+  "never_arm": [
+    {
+      "task": "08573cc6",
+      "wrong_modal_agreement": true,
+      "modal_votes": 2
+    },
+    {
+      "task": "0c786b71",
+      "wrong_modal_agreement": false,
+      "modal_votes": 1
+    },
+    {
+      "task": "12997ef3",
+      "wrong_modal_agreement": false,
+      "modal_votes": 1
+    },
+    {
+      "task": "1990f7a8",
+      "wrong_modal_agreement": false,
+      "modal_votes": 1
+    },
+    {
+      "task": "20981f0e",
+      "wrong_modal_agreement": false,
+      "modal_votes": 1
+    },
+    {
+      "task": "2697da3f",
+      "wrong_modal_agreement": true,
+      "modal_votes": 3
+    }
+  ]
+}

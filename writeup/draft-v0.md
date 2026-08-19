@@ -1,8 +1,9 @@
 # Weight-Space Memory Fails Three Ways, and Coverage Is a Draw: Pre-Registered Negative Results from a Zero-Pretraining ARC Substrate
 
-> **Status:** draft v0 (2026-08-18). Slots marked `[E1B: ...]` await the
-> in-flight capture runs; everything else is backed by banked artifacts in
-> this repository. Target venue: ARC Prize paper track / TTU-style workshop.
+> **Status:** draft v1 (2026-08-19). All experimental slots filled; every
+> number is backed by banked artifacts in this repository. Target venue:
+> ARC Prize 2026 paper track (deadline Nov 2; Kaggle linkage entry TODO),
+> arXiv preprint first, TMLR after.
 
 ## Abstract (draft)
 
@@ -22,20 +23,24 @@ tasks without co-adapted per-task latents, and per-task adaptation deltas
 from the shared basin are mutually orthogonal (median pairwise cosine
 0.007). Separately, matched-compute restart diversity does not beat longer
 convergence (kill), but the experiment surfaced a methodological finding
-that outranks the verdict: solve coverage is a stochastic draw. Across 198
+that outranks the verdict: solve coverage is a stochastic draw. Across 232
 cold runs of the unmodified substrate on a fixed 50-task dev split, the
 ever-solved set (15 tasks) splits into a deterministic core of 7 and a
 stochastic fringe of 8 — the fringe is larger than half the margin — and
-same-seed same-hardware runs are not even deterministic (final loss spread
-436–571 across seven identical 120-step configs). Single-run solve counts,
+same-seed same-hardware runs are not even deterministic: 5 of 7 exact
+re-runs of solving configurations (same task, seed, steps, hardware,
+torch) failed to re-solve. Single-run solve counts,
 including our own baseline's 11/50, are therefore 1-sample mode estimates;
 we argue coverage claims in this substrate class must be reported
 run-marginalized with stated budgets. Label-free selection — the missing
 piece that would convert re-roll coverage into benchmark score under ARC's
-pass@2 budget — remains open: two loss-scorer selectors are refuted
-(trial-loss probes; tail-mean loss anti-correlates with solving), while
-last-step loss and cross-run agreement voting survive a small
-retrospective test `[E1B: and a pre-registered capture evaluation]`.
+pass@2 budget — remains open, but the design space is now pruned: a pre-registered
+capture evaluation on fresh runs refutes loss-level scoring outright
+(0/6 informative cases, reversing a weak retrospective hint), while
+trajectory-derived signals — within-run vote margin and trailing
+pick stability — picked the solver in 2 of 3 cases, and cross-run
+agreement voting chose the correct answer wherever a solving run
+existed, at a measured 2/6 wrong-consensus rate on never-solved tasks.
 
 ## 1. Introduction
 
@@ -76,13 +81,16 @@ undermines single-run benchmark claims, including ours.
 - A delta-geometry readout: per-task adaptation vectors from a shared
   basin are pairwise orthogonal (median cos 0.007) — the null case for
   cross-task transfer (§4.3).
-- A 198-run coverage study: the solve set = deterministic core (7) +
-  stochastic fringe (8, per-task p̂ 0.25–0.75) + never-solved (35);
-  same-seed runs are nondeterministic on consumer hardware; matched-run
-  flip rates 18–67% among fringe tasks (§5).
-- Refutation of two label-free loss-scorer selectors and a pre-registered
-  evaluation of agreement/stability/margin selectors `[E1B: results]`
-  (§6).
+- A 232-run coverage study: the solve set = deterministic core (7) +
+  stochastic fringe (8, per-task p̂ 0.14–0.67) + never-solved (35);
+  same-seed runs are nondeterministic on consumer hardware — 5/7 exact
+  re-runs of solving configs failed to re-solve; matched-run flip rates
+  18–67% among fringe tasks (§5).
+- Refutation of loss-level label-free selection by three independent
+  experiments, and a pre-registered capture evaluation in which
+  trajectory-derived signals (vote margin, pick stability) and cross-run
+  agreement voting survive — with agreement's false-positive rate
+  measured on a never-solved arm (§6).
 - The full pre-registration discipline itself: hypotheses, numeric bars,
   and kill decisions committed in advance in a public git history — rare
   in this literature and, we argue, the reason the negatives are legible.
@@ -220,16 +228,16 @@ free lunch on this axis. (The 2026 matched-compute TTA result suggests we
 tested the wrong diversity axis — input augmentation, not init/seed
 [TTA 2026]; this is pre-registered as future H16, §7.)
 
-### 5.2 The 198-run coverage study
+### 5.2 The 232-run coverage study
 
-The program's banked cold runs (H8 50; H9 11; H14 11; H15 126 `[E1B: +34]`)
+The program's banked cold runs (H8 50; H9 11; H14 11; H15 126; E1-B 34)
 form an unplanned but well-controlled coverage corpus over the fixed dev
 split:
 
 - **Union timeline:** 11/50 (H8, single seed) → 15/50 after H15's
   re-rolls — +36% coverage from protocol-identical re-runs alone.
 - **Core/fringe split (tasks with ≥3 runs):** always-solved **7**,
-  fractional **8** (p̂ from 0.25 to 0.75), never-solved **35**. The
+  fractional **8** (p̂ from 0.14 to 0.67), never-solved **35**. The
   stochastic fringe outnumbers the deterministic margin of the core.
 - **Matched-group flip rates:** cross-hardware @2000 (L40S vs A40, 11
   solved tasks): 2/11 flips; cross-seed @1000 on solved tasks: 2/9;
@@ -240,8 +248,10 @@ split:
   task, seed, hardware, torch) spread final loss 436–571. A fixed seed
   does not pin the trajectory on consumer hardware (CUDA kernel
   nondeterminism compounds over steps). "Seed-stochastic" understates the
-  case: coverage is **run**-stochastic. `[E1B: same-config S6-vs-rerun
-  flip readout across 30 duplicated configs]`
+  case: coverage is **run**-stochastic — confirmed directly by re-running
+  30 configs identical to banked runs: 5 of the 7 that solved originally
+  failed to re-solve, while two never-solved-in-that-config tasks solved
+  fresh in the same batch.
 
 ### 5.3 Consequence for benchmark claims
 
@@ -276,11 +286,25 @@ point away from scoring and toward *agreement across candidates*:
 candidates form a finite hypothesis class over their outputs, and
 disagreement, not loss, is the label-free signal.
 
-`[E1B: pre-registered capture evaluation — final_loss vs vote-margin vs
-pick-stability vs cross-run agreement voting, with a never-solved
-precision arm measuring agreement's wrong-modal (false-positive) rate.
-34 fresh runs banking full pick histories, top-2 grids, and vote
-margins. Results land here.]`
+The pre-registered capture evaluation (34 fresh runs banking full pick
+histories, top-2 grids, and vote margins; scope fixed in advance with a
+no-cherry-picking never-solved arm) settled it — against the
+retrospective hint. On fresh draws, last-step loss picked the solver in
+**0/3** informative groups and tail-mean in 0/3: loss-level scoring is
+refuted in this substrate by three independent experiments (H10, H15,
+E1). The trajectory-derived signals did better: within-run vote margin
+and trailing pick stability each picked the solver in **2/3** (missing
+the same case, where the losing run was more confident). Cross-run
+agreement voting chose the ground-truth answer on the only task where
+any run solved (2/3 runs agreeing), and the never-solved precision arm
+measured its failure mode: on **2/6** tasks, multiple runs agreed on the
+same wrong answer (once unanimously, 3/3) — confidently-wrong consensus
+is real and must be budgeted for. The informative-case counts are small
+because the draw itself was unlucky (three of four solve-relevant tasks
+produced no solving run — itself a coverage datum consistent with the
+fringe estimates), but the direction is consistent: signals derived from
+the trajectory's answer dynamics beat signals derived from its loss,
+exactly as the hypothesis-elimination framing predicts.
 
 ## 7. Limitations and live hypotheses
 
@@ -332,9 +356,9 @@ to keep what the draws find.
 
 ### Appendix B — per-task solve probabilities (198 cold runs)
 
-See `experiments/poc-vnr-s6-ttc/coverage_analysis.json`; fractional tasks:
-00576224 3/4, 6df30ad6 3/4, 73182012 2/4, be03b35f 2/4, e66aafb8 2/4,
-15663ba9 1/3, cd3c21df 1/3, 981571dc 1/4. `[E1B: refresh with +34 runs]`
+See `experiments/poc-vnr-s6-ttc/coverage_analysis.json` (232 cold runs);
+fractional tasks: 00576224 4/6, 6df30ad6 4/6, 73182012 4/7, 15663ba9 1/3,
+cd3c21df 1/3, be03b35f 2/7, e66aafb8 2/7, 981571dc 1/7.
 
 ### Appendix C — reproducibility
 
