@@ -1,0 +1,75 @@
+{
+  "name": "g1_73182012",
+  "task": "73182012",
+  "aug": 1,
+  "aug_name": "rot90",
+  "steps": 1000,
+  "seed": 0,
+  "seconds": 2243.7,
+  "solved_in_frame_top1": false,
+  "solved_in_frame_top2": false,
+  "vote_margin": 0.2568051437528318,
+  "pick_stability": 0.322,
+  "tail_loss": 365.192,
+  "final_loss": 308.71295166015625,
+  "top1_grids_origframe": [
+    [
+      [
+        8,
+        8,
+        6,
+        6
+      ],
+      [
+        8,
+        8,
+        6,
+        6
+      ],
+      [
+        3,
+        2,
+        8,
+        8
+      ],
+      [
+        5,
+        3,
+        8,
+        8
+      ]
+    ]
+  ],
+  "top2_grids_origframe": [
+    [
+      [
+        6,
+        6,
+        8,
+        8
+      ],
+      [
+        6,
+        6,
+        8,
+        8
+      ],
+      [
+        8,
+        8,
+        2,
+        3
+      ],
+      [
+        8,
+        8,
+        3,
+        5
+      ]
+    ]
+  ],
+  "top1_hash_origframe": 8528569043802354811,
+  "top2_hash_origframe": -255744055785254691,
+  "gt_hash_origframe": 4714880589439272048,
+  "solved_origframe_top1": false
+}

@@ -1,0 +1,75 @@
+{
+  "name": "g3_73182012",
+  "task": "73182012",
+  "aug": 3,
+  "aug_name": "transpose",
+  "steps": 1000,
+  "seed": 0,
+  "seconds": 1489.2,
+  "solved_in_frame_top1": false,
+  "solved_in_frame_top2": false,
+  "vote_margin": 0.08790929983953277,
+  "pick_stability": 0.432,
+  "tail_loss": 330.886,
+  "final_loss": 345.80804443359375,
+  "top1_grids_origframe": [
+    [
+      [
+        3,
+        2,
+        0,
+        0
+      ],
+      [
+        8,
+        2,
+        0,
+        8
+      ],
+      [
+        5,
+        2,
+        5,
+        5
+      ],
+      [
+        1,
+        5,
+        0,
+        3
+      ]
+    ]
+  ],
+  "top2_grids_origframe": [
+    [
+      [
+        3,
+        0,
+        2,
+        0
+      ],
+      [
+        3,
+        0,
+        2,
+        8
+      ],
+      [
+        5,
+        0,
+        2,
+        5
+      ],
+      [
+        3,
+        0,
+        3,
+        5
+      ]
+    ]
+  ],
+  "top1_hash_origframe": 5833016898933867803,
+  "top2_hash_origframe": 8071294707103335056,
+  "gt_hash_origframe": 4714880589439272048,
+  "solved_origframe_top1": false
+}
